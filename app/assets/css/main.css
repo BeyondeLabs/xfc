@@ -1,0 +1,79 @@
+/* 	@author - Beyonde Labs, (c) Oct, 2014 */
+
+body {
+  padding-top: 70px;
+}
+
+/*buttons*/
+.btn{
+	border-radius: 0;
+}
+
+
+/*forms */
+
+.form{
+	padding-top: 20px;
+}
+
+.form input[type=text],
+.form input[type=password],
+.form label{
+	width:90%;
+}
+
+.form input[type=text],
+.form input[type=password],
+.form input[type=text]:focus,
+.form input[type=password]:focus{
+	padding:5px;
+	border: none;
+	border-bottom: solid 2px #aaa;
+	outline: none;
+	font-weight: bold;
+	color: #888;
+}
+
+.form input[type=text]:focus,
+.form input[type=password]:focus{
+	border-bottom: solid 2px #449D44;
+}
+
+.form label{
+	color: #aaa;
+	font-weight: normal;
+}
+
+.form input[type=submit]{
+	margin-top:10px;
+}
+
+/*end of forms */
+
+
+/*others - uncategorized */
+.highlight{
+	font-weight: bold;
+	color: #449D44;
+}
+
+.description{
+	color: #888;
+}
+
+.navbar-header .navbar-brand{
+	font-weight: bold;
+	color: #449D44;
+}
+
+.navbar-header .navbar-brand:hover{
+	color: #449D44;
+}
+
+
+/*end of others */
+
+
+
+
+
