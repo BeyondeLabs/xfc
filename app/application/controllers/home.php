@@ -19,13 +19,8 @@ class Home extends CI_Controller {
 	}
 
 	/*for initial lazy registration */
-	public function register($type="school"){
-		if($type=="school" || $type=="member"){
-			if($type=="school"){
-				$this->data['tid'] = 1;
-			}else{
-				$this->data['tid'] = 2; //member
-			}
+	public function register($type="form"){
+		if($type=="form"){
 			$this->data['type'] = $type;
 			$this->data['main'] = "home/register";
 			$this->_load_view();

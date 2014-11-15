@@ -1,8 +1,9 @@
 <div class="row">
 	<div class="col-md-6">
-		<h1>Register as a <span class="highlight"><?php echo ucfirst($type); ?></span></h1>
+		<h1>Sign Up </h1>
 		<div class="description">
-			Registration done by an <a href="#">authorized</a> school representative.
+			Signing up as a <?php echo anchor("http://www.focuskenya.org/",
+			"FOCUS","target='blank'") ?> Champion.
 		</div>
 		<?php
 
@@ -17,7 +18,6 @@
 		echo form_label("Password","password");
 		echo form_password("password_confirm",set_value("password_confirm"));
 		echo form_label("Confirm Password");
-		echo form_hidden("tid",$tid);
 
 		echo form_submit("register","Register","class='btn btn-lg btn-success'");
 

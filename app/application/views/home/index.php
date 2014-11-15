@@ -1,1 +1,3 @@
-<em>Silence is golden :-) </em>
+
+
+<?php echo anchor("home/register","Sign Up","class='btn btn-success'"); ?>
