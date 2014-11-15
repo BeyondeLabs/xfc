@@ -37,7 +37,8 @@ body {
 .form input[type=text],
 .form input[type=password],
 .form input[type=text]:focus,
-.form input[type=password]:focus{
+.form input[type=password]:focus,
+.form select{
 	padding:5px;
 	border: none;
 	border-bottom: solid 2px #aaa;
@@ -92,6 +93,16 @@ body {
 
 .navbar-header .navbar-brand:hover{
 	color: #449D44;
+}
+
+.cu-list{
+	height: 300px;
+	padding: 10px;
+	overflow-y: scroll;
+}
+
+.cu-list ul{
+	margin-left: 0px;
 }
 
 

@@ -100,6 +100,25 @@ class Home extends CI_Controller {
 		}
 	}
 
+	public function alogin($mode="form"){
+		if($mode=="form"){
+			$this->data['main'] = "home/login_admin";
+			$this->_load_view();
+		}
+		if($mode=="submit"){
+			$this->load->model("admin_model");
+			if($this->admin_model->validate_admin()){
+				$admin = $this->admin_model->get_admin($this->input->post("email"));
+				$this->session->set_userdata($admin);
+				$this->session->set_userdata("logged_in",TRUE);
+				
+				redirect("admin");
+			}else{
+				redirect("home/alogin");
+			}
+		}
+	}
+
 	public function logout(){
 		$this->session->sess_destroy();
 		redirect("home");

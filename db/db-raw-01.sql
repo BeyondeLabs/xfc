@@ -1,3 +1,10 @@
+CREATE TABLE admin(
+	aid int primary key auto_increment,
+	email varchar(50),
+	username varchar(50),
+	password varchar(50)
+)
+
 CREATE TABLE university(
 	uid int primary key auto_increment,
 	name varchar(50),
