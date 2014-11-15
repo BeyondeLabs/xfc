@@ -1,4 +1,7 @@
-/* 	@author - Beyonde Labs, (c) Oct, 2014 */
+/* 	@author - Beyonde Labs, (c) Nov, 2014 
+	Lead - @profnandaa
+	Others -
+*/
 
 body {
   padding-top: 70px;
@@ -18,8 +21,17 @@ body {
 
 .form input[type=text],
 .form input[type=password],
-.form label{
+.form label,
+.form select{
 	width:90%;
+}
+
+.form input[type=text].half,
+.form input[type=password].half,
+.form label.half,
+.form select.half{
+	width:43%;
+	margin-right: 4%;
 }
 
 .form input[type=text],
@@ -44,9 +56,21 @@ body {
 	font-weight: normal;
 }
 
+.form label span.right{
+	float:right;
+	width: 48%;
+}
+
 .form input[type=submit]{
 	margin-top:10px;
 }
+
+.form select{
+	border: none;
+	border-bottom: solid 1px #aaa;
+	padding: 5px;
+}
+
 
 /*end of forms */
 
