@@ -5,7 +5,12 @@ class Home extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-		$this->load->model("user_model");
+		$this->load->model("champion_model");
+		$this->load->model("cu_model");
+	}
+
+	private function is_logged_in(){
+		return $this->session->userdata("logged_in");
 	}
 
 	private function _load_view(){
@@ -14,31 +19,46 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		$this->data['main'] = "home/index";
+		if($this->is_logged_in()){
+			$this->data['main'] = "home/index_auth";
+		}else{
+			$this->data['main'] = "home/index";
+		}
 		$this->_load_view();
 	}
 
-	/*for initial lazy registration */
-	public function register($type="form"){
-		if($type=="form"){
-			$this->data['type'] = $type;
+	public function register($mode="form"){
+		if($mode=="form"){
+			$this->data['uni_cu'] = $this->cu_model->get_uni_cu();
+			// affiliation types
+			$this->data['aff_type'] = $this->cu_model->get_aff_type();
 			$this->data['main'] = "home/register";
 			$this->_load_view();
 		}
-		elseif($type=="submit"){
+		elseif($mode=="submit"){
 			#process submitted form
 			$this->load->library("form_validation");
 
 			$rules = array(
 					array(
-						'field'=>'username',
-						'label'=>'Username',
-						'rules'=>'required|is_unique[user.username]|max_length[15]'
+						'field'=>'first_name',
+						'label'=>'First Name',
+						'rules'=>'required'
+					),
+					array(
+						'field'=>'last_name',
+						'label'=>'Last Name',
+						'rules'=>'required'
 					),
 					array(
 						'field'=>'email',
 						'label'=>'Email',
-						'rules'=>'required|valid_email|is_unique[user.email]'
+						'rules'=>'required|valid_email|is_unique[champion.email]'
+					),
+					array(
+						'field'=>'phone',
+						'label'=>'Phone Number',
+						'rules'=>'required'
 					),
 					array(
 						'field'=>'password',
@@ -54,22 +74,18 @@ class Home extends CI_Controller {
 			$this->form_validation->set_rules($rules);
 
 			if($this->form_validation->run()){
-				if($this->user_model->register_user()){
+				if($this->champion_model->register_champ()){
 					#auto-login user
-					$user = $this->user_model->get_user($this->input->post("email"));
+					$user = $this->champion_model->get_champ($this->input->post("email"));
 					$this->session->set_userdata($user);
 					$this->session->set_userdata("logged_in",TRUE);
 
-					redirect("school/add");
+					redirect("champion/profile");
 				}else{
 					#almost impossible to get here?
 				}
 			}else{
-				if($this->input->post("tid") == 2){
-					$this->register("member");
-				}else{
-					$this->register();
-				}
+				$this->register();
 			}	
 		}
 		else{
@@ -84,16 +100,12 @@ class Home extends CI_Controller {
 			$this->_load_view();
 		}
 		if($mode=="submit"){
-			if($this->user_model->validate_user()){
-				$user = $this->user_model->get_user($this->input->post("email"));
+			if($this->champion_model->validate_champ()){
+				$user = $this->champion_model->get_champ($this->input->post("email"));
 				$this->session->set_userdata($user);
 				$this->session->set_userdata("logged_in",TRUE);
-				#redirect to respective profile page
-				if($user['type'] == 1){
-					redirect("school/profile");
-				}else{
-					redirect("member/profile");
-				}
+				
+				redirect("champion/profile");
 			}else{
 				redirect("home/login");
 			}

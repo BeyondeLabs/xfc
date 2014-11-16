@@ -58,4 +58,9 @@ class Cu_model extends CI_Model{
 
 		return $this->db->query($sql);
 	}
+
+	function get_aff_type(){
+		//get affiliation type
+		return $this->db->get("affiliation_type");
+	}
 }

@@ -42,12 +42,24 @@
             <li class="dropdown active">
             <?php if($this->session->userdata('logged_in')){ ?>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-arrow-circle-right"></i> 
-                <?php echo $this->session->userdata('username') ?> <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#"><i class='fa fa-user'></i> My Profile</a></li>
-                    <li><a href="#"><i class='fa fa-gear'></i> Settings</a></li>
-                    <li><?php echo anchor("home/logout","<i class='fa fa-sign-out'></i> Logout"); ?></li>
-                </ul>
+                  <?php if($this->session->userdata('is_admin')): ?>
+        
+                    <!-- admin menu here -->
+                    <?php echo $this->session->userdata('username') ?> <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><?php echo anchor("home/logout","<i class='fa fa-sign-out'></i> Logout"); ?></li>
+                    </ul>
+                  <?php else: ?>
+                    <?php echo $this->session->userdata('first_name')." ".
+                                $this->session->userdata('last_name');
+                       ?> <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><?php echo anchor("champion/profile","<i class='fa fa-user'></i> My Profile"); ?></a></li>
+                        <li><a href="#"><i class='fa fa-gear'></i> Settings</a></li>
+                        <li><?php echo anchor("home/logout","<i class='fa fa-sign-out'></i> Logout"); ?></li>
+                    </ul>
+                  <?php endif; ?>
+
             <?php } else{ ?>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-arrow-circle-o-right"></i> Guest <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
