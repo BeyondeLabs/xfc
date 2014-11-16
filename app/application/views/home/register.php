@@ -7,11 +7,14 @@ foreach($uni_cu->result() as $row){
 	$_uni_cu[$row->cuid] = $row->uni." - ".$row->cu;
 }
 
+//get list of affiliation types
+
 $_aff_type = array();
 foreach($aff_type->result() as $row){
 	$_aff_type[$row->atid] = $row->name;
 }
 
+//generate list of years
 $_year = array();
 for($i=date("Y"); $i>=1950; $i--){
 	$_year[$i] = $i;
