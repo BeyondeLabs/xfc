@@ -76,7 +76,8 @@ class Admin_model extends CI_Model{
 				university.name as uni,
 				cu.website as cu_website
 				FROM cu
-				LEFT JOIN university ON cu.uid = university.uid";
+				LEFT JOIN university ON cu.uid = university.uid
+				ORDER BY university.name, cu.name";
 
 		return $this->db->query($sql);
 	}

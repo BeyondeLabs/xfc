@@ -2,26 +2,8 @@
 
 <div class="row">
 	<div class="col-md-6">
-
-
-		<?php
-		echo validation_errors('<div class="alert alert-danger" role="alert">','</div>');
-
-		echo form_open("admin/cu/add/submit","class='form'");
-		echo form_dropdown("uid",$uni);
-		echo form_label("University/College","uid");
-		echo form_input("name",set_value("name"));
-		echo form_label("CU Name","name");
-		echo form_input("website",set_value("website"));
-		echo form_label("Website","website");
-		echo form_input("email",set_value("email"));
-		echo form_label("Email","email");
-		echo form_submit("add_cu","Add CU","class='btn btn-success'");
-		?>
-
-	</div>
-	<div class="col-md-6">
-		<h2>List of CUs</h2>
+		<h3><i class="fa fa-list"></i> List of CUs 
+			&mdash; <i class="fa fa-pie-chart"></i> <?php echo $uni_cu->num_rows; ?></h3>
 		<div class="cu-list">
 			<ul>
 			<?php
@@ -50,6 +32,26 @@
 
 			</ul>
 		</div>
+
+	</div>
+
+	<div class="col-md-6">
+
+
+		<?php
+		echo validation_errors('<div class="alert alert-danger" role="alert">','</div>');
+
+		echo form_open("admin/cu/add/submit","class='form'");
+		echo form_dropdown("uid",$uni);
+		echo form_label("University/College","uid");
+		echo form_input("name",set_value("name"));
+		echo form_label("CU Name","name");
+		echo form_input("website",set_value("website"));
+		echo form_label("Website","website");
+		echo form_input("email",set_value("email"));
+		echo form_label("Email","email");
+		echo form_submit("add_cu","Add CU","class='btn btn-success'");
+		?>
 
 	</div>
 </div>
