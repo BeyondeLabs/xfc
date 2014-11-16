@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 15, 2014 at 11:56 AM
+-- Generation Time: Nov 16, 2014 at 11:58 PM
 -- Server version: 5.5.25a
 -- PHP Version: 5.4.4
 
@@ -34,7 +34,14 @@ CREATE TABLE IF NOT EXISTS `admin` (
   PRIMARY KEY (`aid`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`aid`, `email`, `username`, `password`) VALUES
+(1, 'focus@beyon.de', 'FOCUS', '644c7646baa0d1c1798a3b2870b1a337');
 
 -- --------------------------------------------------------
 
@@ -46,7 +53,17 @@ CREATE TABLE IF NOT EXISTS `affiliation_type` (
   `atid` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`atid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `affiliation_type`
+--
+
+INSERT INTO `affiliation_type` (`atid`, `name`) VALUES
+(1, 'Associate'),
+(2, 'Current Member'),
+(3, 'Spouse to Associate'),
+(4, 'None');
 
 -- --------------------------------------------------------
 
@@ -75,7 +92,14 @@ CREATE TABLE IF NOT EXISTS `champion` (
   UNIQUE KEY `phone` (`phone`),
   KEY `cuid` (`cuid`),
   KEY `atid` (`atid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `champion`
+--
+
+INSERT INTO `champion` (`cid`, `cuid`, `atid`, `grad_year`, `first_name`, `last_name`, `gender`, `email`, `phone`, `phone_alt`, `location`, `url`, `url_fb`, `url_tw`, `password`) VALUES
+(2, 137, 1, 2012, 'Anthony', 'Nandaa', 'Male', 'prof@nandaa.com', '0728590438', NULL, NULL, NULL, NULL, NULL, '1f32aa4c9a1d2ea010adcf2348166a04');
 
 -- --------------------------------------------------------
 
@@ -98,8 +122,7 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('1ea14aea127e3c3e8075ccbf48094339', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:35.0) Gecko/20100101 Firefox/35.0', 1416008909, ''),
-('ee7b06e780160769f149586ed671ecc5', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:35.0) Gecko/20100101 Firefox/35.0', 1416016196, '');
+('9f4d83012f92f8df5a4345b2c021db78', '::1', 'Mozilla/5.0 (Windows NT 6.1; rv:35.0) Gecko/20100101 Firefox/35.0', 1416178626, 'a:17:{s:9:"user_data";s:0:"";s:3:"cid";s:1:"2";s:4:"cuid";s:3:"137";s:4:"atid";s:1:"1";s:9:"grad_year";s:4:"2012";s:10:"first_name";s:7:"Anthony";s:9:"last_name";s:6:"Nandaa";s:6:"gender";s:4:"Male";s:5:"email";s:15:"prof@nandaa.com";s:5:"phone";s:10:"0728590438";s:9:"phone_alt";N;s:8:"location";N;s:3:"url";N;s:6:"url_fb";N;s:6:"url_tw";N;s:8:"password";s:32:"1f32aa4c9a1d2ea010adcf2348166a04";s:9:"logged_in";b:1;}');
 
 -- --------------------------------------------------------
 
@@ -139,10 +162,160 @@ CREATE TABLE IF NOT EXISTS `cu` (
   `cuid` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   `website` varchar(50) DEFAULT NULL,
+  `email` varchar(50) NOT NULL,
   `uid` int(11) DEFAULT NULL,
   PRIMARY KEY (`cuid`),
   KEY `uid` (`uid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=147 ;
+
+--
+-- Dumping data for table `cu`
+--
+
+INSERT INTO `cu` (`cuid`, `name`, `website`, `email`, `uid`) VALUES
+(1, 'Main Campus', 'http://www.mccuon.org', 'info@mccuon.org', 85),
+(2, 'Technical University of Mombasa', '', '', 1),
+(3, 'Pwani University College', '', '', 2),
+(4, 'Mombasa Technical Training Institute', '', '', 3),
+(5, 'Shanzu TTC', '', '', 4),
+(6, 'Mombasa Aviation College', '', '', 5),
+(7, 'Government Training Institute Mombasa', '', '', 7),
+(8, 'NYS Mombasa', '', '', 8),
+(9, 'Baraton University of East Africa', '', '', 9),
+(10, 'Baraton Teachers’ Training College', '', '', 10),
+(11, 'Kitale Technical Training Institute', '', '', 11),
+(12, 'University of Eldoret', '', '', 12),
+(13, 'Rift Valley Technical Training Institute', '', '', 21),
+(14, 'Alphax College', '', '', 14),
+(15, 'Eldoret Polytechnic', '', '', 15),
+(16, 'Kabarak University', '', '', 28),
+(17, 'Dairy Training Institute Naivasha', '', '', 17),
+(18, 'Machakos University College', '', '', 18),
+(19, 'Nakuru MTC', '', '', 19),
+(20, 'Comboni Polytechnic', '', '', 20),
+(21, 'Rift Valley Technical Training Institute', '', '', 13),
+(22, 'Kenya Industrial Training Institute', '', '', 22),
+(23, 'Nyandarua Institute of Science & Technology', '', '', 24),
+(24, 'Maasai Mara University', '', '', 25),
+(25, 'Shabab Campus', '', '', 23),
+(26, 'Kikuyu Campus', '', '', 23),
+(27, 'Ngara Campus', '', '', 26),
+(28, 'City Square Campus', '', '', 26),
+(29, 'Nyahururu Campus', '', '', 27),
+(30, 'Kabete', '', '', 27),
+(31, 'Kabarak TTC', '', '', 28),
+(32, 'Kagumo Teachers College', '', '', 29),
+(33, 'Kimathi University', '', '', 30),
+(34, 'Nyeri Technical Training Institute', '', '', 31),
+(35, 'Tumutumu School of Nursing', '', '', 32),
+(36, 'Chuka University', '', '', 33),
+(37, 'Mathenge Technical Training Institute', '', '', 34),
+(38, 'Rware College of Accountancy', '', '', 35),
+(40, 'Othaya Teachers College', '', '', 36),
+(41, 'Ark School of Professionals', '', '', 37),
+(42, 'Kamwenja TTC', '', '', 38),
+(43, 'Meru University', '', '', 39),
+(44, 'Main Campus', '', '', 40),
+(45, 'Outspan Medical School', '', '', 41),
+(46, 'Chogoria School of Nursing', '', '', 42),
+(47, 'Embu University College', '', '', 43),
+(48, 'Embu College of Technology', '', '', 44),
+(49, 'Bukura Agricultural College', '', '', 45),
+(50, 'Kisumu Polytechnic', '', '', 46),
+(51, 'Gusii Institute of Technology', '', '', 47),
+(52, 'Sigalagala Polytechnic', '', '', 48),
+(53, 'St Mary’s School of Clinical Medicine Mumias', '', '', 49),
+(54, 'Main Campus', '', '', 50),
+(55, 'Moi Institute of Technology - Rongo', '', '', 51),
+(56, 'Kibabii Diploma Teachers Training College', '', '', 52),
+(57, 'Jaramogi Oginga Odinga University of Science and T', '', '', 53),
+(58, 'Rongo University College', '', '', 54),
+(59, 'Kibabii University College', '', '', 55),
+(60, 'Sangalo Technical Training Institute', '', '', 56),
+(61, 'Kiambu Institute of Science & Technology', '', '', 57),
+(62, 'Kenya Technical Teachers College', '', '', 58),
+(63, 'Kenya Utalii College', '', '', 59),
+(64, 'Kenya Institute of Special Education', '', '', 62),
+(65, 'South Eastern University College', '', '', 63),
+(66, 'St. Paul’s University', '', '', 64),
+(67, 'Technical University of Kenya', '', '', 65),
+(68, 'Cooperative University College', '', '', 66),
+(69, 'Kabete Technical Training Institute', '', '', 67),
+(70, 'Tangaza College', '', '', 68),
+(71, 'Kenya School of Law', '', '', 69),
+(72, 'Multi Media University', '', '', 70),
+(73, 'Main Campus', '', '', 71),
+(74, 'Kapkatet Campus', '', '', 71),
+(75, 'Main Campus', '', '', 72),
+(76, 'Webuye Campus', '', '', 72),
+(77, 'Njoro Campus', '', '', 73),
+(78, 'Nakuru Town Campus', '', '', 73),
+(79, 'Medical School', '', '', 73),
+(80, 'Great Lakes University', '', '', 74),
+(81, 'West Campus', '', '', 75),
+(82, 'Main Campus', '', '', 75),
+(83, 'Town Campus', '', '', 75),
+(84, 'Annex Campus', '', '', 75),
+(85, 'Kitale Campus', '', '', 75),
+(86, 'Pioneer Campus', '', '', 75),
+(87, 'Karatina Campus', '', '', 75),
+(88, 'Kericho Town Campus', '', '', 75),
+(89, 'Odero Okang’o Campus', '', '', 75),
+(90, 'City Campus', '', '', 75),
+(91, 'Mombasa', '', '', 76),
+(92, 'Portreitz', '', '', 76),
+(93, 'Msambweni', '', '', 76),
+(94, 'Kilifi', '', '', 76),
+(95, 'Eldoret', '', '', 76),
+(96, 'Kapsowar', '', '', 76),
+(97, 'Nyeri', '', '', 76),
+(98, 'Kisumu', '', '', 76),
+(99, 'Kakamega', '', '', 76),
+(100, 'Siaya', '', '', 76),
+(101, 'Kisii', '', '', 76),
+(102, 'Webuye', '', '', 76),
+(103, 'Kapkatet', '', '', 76),
+(104, 'Mumias', '', '', 76),
+(105, 'Kitui', '', '', 76),
+(106, 'School of Nutrition', '', '', 76),
+(107, 'Machakos', '', '', 76),
+(108, 'Maanza', '', '', 76),
+(109, 'Main Campus', '', '', 77),
+(110, 'Main Campus', '', '', 78),
+(111, 'Mombasa Campus', '', '', 79),
+(112, 'Athi River Campus', '', '', 79),
+(113, 'Valley Road Campus', '', '', 79),
+(114, 'Mombasa Campus', '', '', 80),
+(115, 'Nyeri Campus', '', '', 80),
+(116, 'Main Campus', '', '', 80),
+(117, 'Ruiru Campus', '', '', 80),
+(118, 'Kitui Campus', '', '', 80),
+(119, 'Parklands Campus', '', '', 80),
+(120, 'Mombasa Campus', '', '', 81),
+(121, 'Nakuru', '', '', 81),
+(122, 'Main Campus', '', '', 81),
+(123, 'Nairobi Campus', '', '', 81),
+(124, 'Taita Taveta Campus', '', '', 82),
+(125, 'Main Campus', '', '', 82),
+(126, 'Karen Campus', '', '', 82),
+(127, 'Eldoret Campus', '', '', 83),
+(128, 'Kitale Campus', '', '', 83),
+(129, 'Nakuru Town Campus', '', '', 83),
+(130, 'City Campus', '', '', 83),
+(131, 'Main Campus', '', '', 84),
+(132, 'Nyahururu Campus', '', '', 84),
+(133, 'Nakuru Town Campus', '', '', 84),
+(134, 'Mombasa Campus', '', '', 85),
+(135, 'Lower Kabete Campus', '', '', 85),
+(136, 'Parklands Campus', '', '', 85),
+(137, 'Main Campus', '', '', 85),
+(138, 'Chiromo Campus', '', '', 85),
+(139, 'Kikuyu Campus', '', '', 85),
+(140, 'Kenya Science Campus', '', '', 85),
+(141, 'Medical School Campus', '', '', 85),
+(142, 'Upper Kabete Campus', '', '', 85),
+(143, 'Kisumu Campus', '', '', 86),
+(146, ' None', '', '', 87);
 
 -- --------------------------------------------------------
 
@@ -223,7 +396,7 @@ CREATE TABLE IF NOT EXISTS `university` (
   `website` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`uid`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=87 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=88 ;
 
 --
 -- Dumping data for table `university`
@@ -313,7 +486,8 @@ INSERT INTO `university` (`uid`, `name`, `initials`, `website`) VALUES
 (83, 'Mt. Kenya University', 'MKU', NULL),
 (84, 'Laikipia University', '', NULL),
 (85, 'University of Nairobi', 'UoN', NULL),
-(86, 'KCA University', '', NULL);
+(86, 'KCA University', '', NULL),
+(87, ' None', '', NULL);
 
 --
 -- Constraints for dumped tables
