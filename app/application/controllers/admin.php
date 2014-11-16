@@ -64,9 +64,10 @@ class Admin extends CI_Controller {
 	}
 
 	private function is_logged_in(){
-		if(!$this->session->userdata('logged_in')){
+		if(!$this->session->userdata('logged_in') ||
+			!$this->session->userdata('is_admin')){
 			$this->session->sess_destroy();
-			redirect('home/login');
+			redirect('home/alogin');
 		}
 	}
 }

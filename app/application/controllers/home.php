@@ -111,6 +111,7 @@ class Home extends CI_Controller {
 				$admin = $this->admin_model->get_admin($this->input->post("email"));
 				$this->session->set_userdata($admin);
 				$this->session->set_userdata("logged_in",TRUE);
+				$this->session->set_userdata("is_admin",TRUE);
 				
 				redirect("admin");
 			}else{
