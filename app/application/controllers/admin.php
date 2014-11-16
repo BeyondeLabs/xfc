@@ -47,7 +47,7 @@ class Admin extends CI_Controller {
 						array(
 							'field'=>'website',
 							'label'=>'Website',
-							'rules'=>'pre_url'
+							'rules'=>'prep_url'
 						)
 					);
 				$this->form_validation->set_rules($rules);

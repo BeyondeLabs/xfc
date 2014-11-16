@@ -16,13 +16,13 @@
 					if($row->initials != "") echo " - ($row->initials)";
 					echo "<ul>";
 					if($row->cu_website != ""){
-						echo "<li>".anchor($row->cu_website,$row->cu)."</li>";
+						echo "<li>".anchor($row->cu_website,$row->cu,"target='_blank'")."</li>";
 					}else{
 						echo "<li>$row->cu </li>";
 					}
 				}else{
 					if($row->cu_website != ""){
-						echo "<li>".anchor($row->cu_website,$row->cu)."</li>";
+						echo "<li>".anchor($row->cu_website,$row->cu,"target='_blank'")."</li>";
 					}else{
 						echo "<li>$row->cu </li>";
 					}
