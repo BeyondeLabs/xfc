@@ -5,6 +5,7 @@
 
 body {
   padding-top: 70px;
+  color: #555;
 }
 
 /*buttons*/
@@ -74,6 +75,45 @@ body {
 
 
 /*end of forms */
+
+/*Headings */
+.title{
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.title span{
+	font-weight: normal;
+	border-left: solid 1px #aaa;
+	padding: .3em;
+	font-family: garamond,georgia,times;
+	font-size: .9em;
+	font-style: italic;
+	color: #888;
+}
+
+/*Champ profile */
+.profile{
+
+}
+
+.profile p{
+	border-bottom: dotted 1px #aaa;
+	padding: 5px 3px;
+}
+
+.profile span.left{
+	font-weight: bold;
+	width: 30%;
+}
+
+.profile span.right{
+	width: 65%;
+	float: right;
+}
+
+/*end of Champ profile*/
+
 
 
 /*others - uncategorized */

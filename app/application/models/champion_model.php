@@ -43,4 +43,26 @@ class Champion_model extends CI_Model{
 
 		return $this->db->insert("champion",$champ);
 	}
+
+	function get_champ_profile($email){
+		$sql = "SELECT *,
+				cu.name as cu_name,
+				university.name as uni_name,
+				champion.email as champ_email,
+				affiliation_type.name as aff_type
+				FROM champion
+				LEFT JOIN cu ON champion.cuid = cu.cuid
+				LEFT JOIN university ON cu.uid = university.uid
+				LEFT JOIN affiliation_type ON champion.atid = affiliation_type.atid
+				WHERE champion.email = '$email'";
+
+		$result = $this->db->query($sql);
+
+		if($result->num_rows > 0){
+			$result = $result->result();
+			return $result[0];
+		}else{
+			return array("No result");
+		}
+	}
 }

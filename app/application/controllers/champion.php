@@ -29,6 +29,8 @@ class Champion extends CI_Controller {
 
 	public function profile(){
 		$this->data['main'] = "champion/profile";
+		$this->data['profile'] = $this->champion_model->get_champ_profile
+									($this->session->userdata("email"));
 		$this->_load_view();
 	}
 }
