@@ -6,6 +6,7 @@ class Admin extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model("admin_model");
+		$this->load->model("cu_model");
 		$this->is_logged_in();
 	}
 
@@ -23,10 +24,10 @@ class Admin extends CI_Controller {
 		if($action=="add"){
 			if($mode=="form"){
 				$this->data['main'] = "admin/cu";
-				$this->data['cu'] = $this->admin_model->get_cu_list();
+				$this->data['cu'] = $this->cu_model->get_cu_list();
 				//includes both universities and colleges
-				$this->data['uni'] = $this->admin_model->get_uni_list_array();
-				$this->data['uni_cu'] = $this->admin_model->get_uni_cu();
+				$this->data['uni'] = $this->cu_model->get_uni_list_array();
+				$this->data['uni_cu'] = $this->cu_model->get_uni_cu();
 				$this->_load_view();
 			}
 			if($mode=="submit"){
@@ -53,7 +54,7 @@ class Admin extends CI_Controller {
 				$this->form_validation->set_rules($rules);
 
 				if($this->form_validation->run()){
-					$this->admin_model->add_cu();
+					$this->cu_model->add_cu();
 					redirect("admin/cu");
 				}else{
 					$this->cu();
