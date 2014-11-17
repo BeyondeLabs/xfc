@@ -33,4 +33,83 @@ class Champion extends CI_Controller {
 									($this->session->userdata("email"));
 		$this->_load_view();
 	}
+
+	public function commitment($mode="view"){
+		//check first if made a commitment, if not, take to
+		//commitment form
+		if($mode=="view"){
+			$cid = $this->session->userdata("cid");
+			if(!$this->champion_model->made_commitment($cid)){
+				redirect("champion/commitment/form");
+			}
+
+			$this->data['main'] = "champion/commitment_view";
+			$cid = $this->session->userdata("cid");
+			$this->data['cd'] = $this->champion_model->get_commitment_details($cid);
+			$this->_load_view();
+		}
+
+		if($mode=="form"){
+			//if already commited
+			$this->_has_committed($this->session->userdata("cid"));
+
+			$this->data['main'] = "champion/commitment_form";
+			$this->data['commitment_type'] = $this->champion_model->get_commitment_type();
+			$this->_load_view();
+		}
+
+		if($mode=="submit"){
+			//if already commited
+			$this->_has_committed($this->session->userdata("cid"));
+
+			$this->load->library("form_validation");
+
+			if($this->input->post("amount")==0){
+				$rule = array(
+						'field'=>'other_amount',
+						'label'=>'Specified Amount',
+						'rules'=>'required|greater_than[99]'
+					);
+			}else{
+				$rule = array(
+						'field'=>'other_amount',
+						'label'=>'Specified Amount',
+						'rules'=>'less_than[1]|greater_than[-1]'
+					);
+			}
+
+			$rules = array(
+				$rule,
+				array(
+					'field'=>'date_from',
+					'label'=>'Start Date',
+					'rules'=>'required'
+					),
+				array(
+					'field'=>'date_to',
+					'label'=>'End Date',
+					'rules'=>'none'
+					),
+				array(
+					'field'=>'lifetime',
+					'label'=>'Lifetime',
+					'rules'=>'none'
+					)
+				);
+
+			$this->form_validation->set_rules($rules);
+			if($this->form_validation->run()){
+				$this->champion_model->save_commitment();
+				redirect("champion/commitment");
+			}else{
+				$this->commitment("form");
+			}
+		}
+	}
+
+	private function _has_committed($cid){
+		if($this->champion_model->made_commitment($cid)){
+			redirect("champion/commitment/view");
+		}
+	}
 }

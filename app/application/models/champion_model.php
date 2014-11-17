@@ -65,4 +65,47 @@ class Champion_model extends CI_Model{
 			return array("No result");
 		}
 	}
+
+	function made_commitment($cid){
+		$this->db->where("cid",$cid);
+		$result = $this->db->get("commitment");
+		if($result->num_rows > 0){
+			return true;
+		}
+		return false;
+	}
+
+	function get_commitment_type(){
+		return $this->db->get("commitment_type");
+	}
+
+	function save_commitment(){
+		$amount = $this->input->post("amount");
+		$other_amount = $this->input->post("other_amount");
+		if($amount == 0) $amount = $other_amount;
+
+		$commitment = array(
+			"cid" => $this->session->userdata("cid"),
+			"ctid" => $this->input->post("ctid"),
+			"date_from" => $this->input->post("date_from"),
+			"date_to" => $this->input->post("date_to"),
+			"lifetime" => $this->input->post("lifetime"),
+			"amount" => $amount
+			);
+
+		return $this->db->insert("commitment",$commitment);
+	}
+
+	function get_commitment_details($cid){
+		$sql = "SELECT *
+				FROM commitment c
+				LEFT JOIN commitment_type ct ON c.ctid = ct.ctid
+				WHERE c.cid = $cid";
+		$result = $this->db->query($sql);
+		if($result->num_rows > 0){
+			$result = $result->result();
+			return $result[0];
+		}
+		return false;
+	}
 }

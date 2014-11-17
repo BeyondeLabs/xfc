@@ -53,9 +53,10 @@ body {
 	border-bottom: solid 2px #449D44;
 }
 
-.form label{
+.form label, .form span{
 	color: #aaa;
 	font-weight: normal;
+	font-size: 12px;
 }
 
 .form label span.right{

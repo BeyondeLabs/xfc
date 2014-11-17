@@ -93,3 +93,7 @@ CREATE TABLE other_contribution(
 	foreign key(occid) references other_contribution_cat(occid),
 	foreign key(cid) references champion (cid)
 );
+
+
+ALTER TABLE `commitment_type` ADD PRIMARY KEY ( `ctid` );
+ALTER TABLE `commitment_type` CHANGE `ctid` `ctid` INT( 11 ) NOT NULL AUTO_INCREMENT ;
