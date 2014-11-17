@@ -53,6 +53,7 @@ class Champion extends CI_Controller {
 			//if already commited
 			$this->_has_committed($this->session->userdata("cid"));
 
+			$this->data['date_picker'] = TRUE;
 			$this->data['main'] = "champion/commitment_form";
 			$this->data['commitment_type'] = $this->champion_model->get_commitment_type();
 			$this->_load_view();
@@ -107,6 +108,7 @@ class Champion extends CI_Controller {
 		}
 
 		if($mode=="edit"){
+			$this->data['date_picker'] = TRUE;
 			$this->data['main'] = "champion/commitment_form_edit";
 			$this->data['commitment_type'] = $this->champion_model->get_commitment_type();
 			$cid = $this->session->userdata("cid");

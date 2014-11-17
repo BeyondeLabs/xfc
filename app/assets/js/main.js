@@ -4,5 +4,9 @@ $(document).ready(
 		$("input").attr("autocomplete","off"); //didn't work for Chrome!
 
 		$(".form input[type=text]:first").focus();
+
+		$('.date-picker').datepicker(
+			{format:'yyyy-mm-dd'}
+			);
 	}
 );

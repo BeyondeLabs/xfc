@@ -11,6 +11,11 @@
     <title>FOCUS Champions &bull; Disciple the nations</title>
     <link href="<?php echo base_url();?>assets/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo base_url();?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <?php
+    if(isset($date_picker)):
+    ?>
+    <link href="<?php echo base_url();?>assets/css/datepicker.css" rel="stylesheet">
+    <?php endif; ?>
     <link href="<?php echo base_url();?>assets/css/main.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
