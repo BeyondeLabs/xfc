@@ -29,7 +29,7 @@ Commitment Form
 		echo form_open("champion/commitment/submit","class='form'");
 		echo form_dropdown("supporter",array("0"=>"No","1"=>"Yes"),"","class='half'");
 		echo form_dropdown("ctid",$_commitment_type,"2","class='half'");
-		echo form_label("Already a Focus supporter? <span class='right'>Commitment Type</span>","first_name");
+		echo form_label("Already a Focus supporter? <span class='right'>Commitment Type</span>","ctid");
 		if(isset($_POST["amount"])){
 			$_amount = $this->input->post("amount");
 		}else{
@@ -37,7 +37,7 @@ Commitment Form
 		}
 		echo form_dropdown("amount",$amount,$_amount,"class='half'");
 		echo form_input("other_amount",set_value("other_amount"),"class='half'");
-		echo form_label("Choose Amount (KES) <span class='right'>If Other, specify Amount (KES)</span>","first_name");
+		echo form_label("Choose Amount (KES) <span class='right'>If Other, specify Amount (KES)</span>","amount");
 		echo form_input("date_from",set_value("date_from"), "class='half'");
 		echo form_input("date_to",set_value("date_to"),"class='half'");
 		echo form_label("Start Date <span class='right'>End Date</span>","date_to");

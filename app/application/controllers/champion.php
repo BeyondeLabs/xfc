@@ -105,6 +105,49 @@ class Champion extends CI_Controller {
 				$this->commitment("form");
 			}
 		}
+
+		if($mode=="edit"){
+			$this->data['main'] = "champion/commitment_form_edit";
+			$this->data['commitment_type'] = $this->champion_model->get_commitment_type();
+			$cid = $this->session->userdata("cid");
+			$this->data['cd'] = $this->champion_model->get_commitment_details($cid);
+			$this->_load_view();
+		}
+
+		if($mode=="update"){
+			$this->load->library("form_validation");
+
+			$rules = array(
+				array(
+					'field'=>'amount',
+					'label'=>'Amount',
+					'rules'=>'required|greater_than[99]'
+					),
+				array(
+					'field'=>'date_from',
+					'label'=>'Start Date',
+					'rules'=>'required'
+					),
+				array(
+					'field'=>'date_to',
+					'label'=>'End Date',
+					'rules'=>'none'
+					),
+				array(
+					'field'=>'lifetime',
+					'label'=>'Lifetime',
+					'rules'=>'none'
+					)
+				);
+
+			$this->form_validation->set_rules($rules);
+			if($this->form_validation->run()){
+				$this->champion_model->update_commitment();
+				redirect("champion/commitment");
+			}else{
+				$this->commitment("edit");
+			}
+		}
 	}
 
 	private function _has_committed($cid){
