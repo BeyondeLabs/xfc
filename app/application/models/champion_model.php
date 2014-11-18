@@ -110,8 +110,8 @@ class Champion_model extends CI_Model{
 
 	function get_commitment_details($cid){
 		$sql = "SELECT *,
-				date_format(date_from, '%M %e, %Y') as date_from,
-				date_format(date_to, '%M %e, %Y') as date_to
+				date_format(date_from,'%M %e, %Y') as date_from,
+				date_format(date_to,'%M %e, %Y') as date_to
 				FROM commitment c
 				LEFT JOIN commitment_type ct ON c.ctid = ct.ctid
 				WHERE c.cid = $cid";
