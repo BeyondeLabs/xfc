@@ -38,7 +38,7 @@ Commitment Form
 		echo form_dropdown("amount",$amount,$_amount,"class='half'");
 		echo form_input("other_amount",set_value("other_amount"),"class='half'");
 		echo form_label("Choose Amount (KES) <span class='right'>If Other, specify Amount (KES)</span>","amount");
-		echo form_input("date_from",set_value("date_from"), "class='half'");
+		echo form_input("date_from",set_value("date_from"), "class='half date-picker'");
 		echo form_input("date_to",set_value("date_to"),"class='half date-picker'");
 		echo form_label("Start Date <span class='right'>End Date</span>","date_to date-picker");
 		echo "<br/>".form_checkbox("lifetime","1",set_value("lifetime"))." <span>Lifetime Supporter</span> <br/>"; 

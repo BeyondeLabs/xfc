@@ -70,9 +70,9 @@ class Champion_model extends CI_Model{
 		$this->db->where("cid",$cid);
 		$result = $this->db->get("commitment");
 		if($result->num_rows > 0){
-			return true;
+			return TRUE;
 		}
-		return false;
+		return FALSE;
 	}
 
 	function get_commitment_type(){

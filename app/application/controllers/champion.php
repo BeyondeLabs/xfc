@@ -28,6 +28,10 @@ class Champion extends CI_Controller {
 	}
 
 	public function profile(){
+		$cid = $this->session->userdata("cid");
+		if(!$this->champion_model->made_commitment($cid)){
+			redirect("champion/commitment/form");
+		}
 		$this->data['main'] = "champion/profile";
 		$this->data['profile'] = $this->champion_model->get_champ_profile
 									($this->session->userdata("email"));

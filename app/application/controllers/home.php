@@ -58,7 +58,7 @@ class Home extends CI_Controller {
 					array(
 						'field'=>'phone',
 						'label'=>'Phone Number',
-						'rules'=>'required'
+						'rules'=>'required|is_unique[champion.phone]'
 					),
 					array(
 						'field'=>'password',
