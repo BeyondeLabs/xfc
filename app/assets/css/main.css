@@ -218,6 +218,11 @@ h1,h2,h3,h4,h5,h6{
 	color: #E08E31;
 }
 
+.landing .btn-success{
+	background: #E08E31;
+	border-color: #E08E31;
+}
+
 /*end of others */
 
 
