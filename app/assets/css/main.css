@@ -8,6 +8,12 @@ body {
   color: #555;
 }
 
+/*headings*/
+
+h1,h2,h3,h4,h5,h6{
+	color: #3D67A6;
+}
+
 /*buttons*/
 .btn{
 	border-radius: 0;
@@ -42,7 +48,7 @@ body {
 .form select{
 	padding:5px;
 	border: none;
-	border-bottom: solid 2px #aaa;
+	border-bottom: solid 2px #dedede;
 	outline: none;
 	font-weight: bold;
 	color: #888;
@@ -50,7 +56,7 @@ body {
 
 .form input[type=text]:focus,
 .form input[type=password]:focus{
-	border-bottom: solid 2px #449D44;
+	border-bottom: solid 2px #3D67A6;
 }
 
 .form label, .form span{
@@ -73,6 +79,18 @@ body {
 	border-bottom: solid 1px #aaa;
 	padding: 5px;
 }
+
+/*ref: http://css-tricks.com/snippets/css/style-placeholder-text/ */
+::-webkit-input-placeholder,
+:-moz-placeholder,/* Firefox 18- */
+::-moz-placeholder, /* Firefox 19+ */
+:-ms-input-placeholder
+{
+   font-weight: normal; /*not working, fix later*/
+   color: #263F67;
+}
+
+
 
 
 /*end of forms */
@@ -120,7 +138,7 @@ body {
 /*others - uncategorized */
 .highlight{
 	font-weight: bold;
-	color: #449D44;
+	color: #3D67A6;
 }
 
 .description{
@@ -129,11 +147,11 @@ body {
 
 .navbar-header .navbar-brand{
 	font-weight: bold;
-	color: #449D44;
+	color: #3D67A6;
 }
 
 .navbar-header .navbar-brand:hover{
-	color: #449D44;
+	color: #3D67A6;
 }
 
 .cu-list{

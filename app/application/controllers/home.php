@@ -39,38 +39,8 @@ class Home extends CI_Controller {
 			#process submitted form
 			$this->load->library("form_validation");
 
-			$rules = array(
-					array(
-						'field'=>'first_name',
-						'label'=>'First Name',
-						'rules'=>'required'
-					),
-					array(
-						'field'=>'last_name',
-						'label'=>'Last Name',
-						'rules'=>'required'
-					),
-					array(
-						'field'=>'email',
-						'label'=>'Email',
-						'rules'=>'required|valid_email|is_unique[champion.email]'
-					),
-					array(
-						'field'=>'phone',
-						'label'=>'Phone Number',
-						'rules'=>'required|is_unique[champion.phone]'
-					),
-					array(
-						'field'=>'password',
-						'label'=>'Password',
-						'rules'=>'required|matches[password_confirm]'
-					),
-					array(
-						'field'=>'password_confirm',
-						'label'=>'Password Confirm',
-						'rules'=> 'required'
-					)
-				);
+			$this->load->model("general_model");
+			$rules = $this->general_model->validation_rules("champion");
 			$this->form_validation->set_rules($rules);
 
 			if($this->form_validation->run()){

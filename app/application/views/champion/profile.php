@@ -44,19 +44,22 @@
 			</p>
 			<p><span class="left">Blog/Website</span>
 				<span class="right">
-					<?php echo $profile->url; ?>
+					<?php echo anchor($profile->url,"","target='_blank'"); ?>
 				</span>
 			</p>
 			<p><span class="left">Facebook</span>
 				<span class="right">
-					<?php echo $profile->url_fb; ?>
+					<?php echo anchor($profile->url_fb,"","target='_blank'"); ?>
 				</span>
 			</p>
 			<p><span class="left">Twitter</span>
 				<span class="right">
-					<?php echo $profile->url_tw; ?>
+					<?php echo anchor($profile->url_tw,"","target='_blank'"); ?>
 				</span>
 			</p>
+
+			<?php echo anchor("champion/profile/edit","Edit Profile",
+					"class='btn btn-success'"); ?>
 
 		</div>
 	</div>

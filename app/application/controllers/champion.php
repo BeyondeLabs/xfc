@@ -27,15 +27,44 @@ class Champion extends CI_Controller {
 		$this->_load_view();
 	}
 
-	public function profile(){
-		$cid = $this->session->userdata("cid");
-		if(!$this->champion_model->made_commitment($cid)){
-			redirect("champion/commitment/form");
+	public function profile($mode="view"){
+		if($mode=="view"){
+			$cid = $this->session->userdata("cid");
+			if(!$this->champion_model->made_commitment($cid)){
+				redirect("champion/commitment/form");
+			}
+			$this->data['main'] = "champion/profile";
+			$this->data['profile'] = $this->champion_model->get_champ_profile
+										($this->session->userdata("email"));
+			$this->_load_view();
 		}
-		$this->data['main'] = "champion/profile";
-		$this->data['profile'] = $this->champion_model->get_champ_profile
-									($this->session->userdata("email"));
-		$this->_load_view();
+		if($mode=="edit"){
+			$this->load->model("cu_model");
+			$this->data['uni_cu'] = $this->cu_model->get_uni_cu();
+			// affiliation types
+			$this->data['aff_type'] = $this->cu_model->get_aff_type();
+			$this->data['main'] = "champion/profile_edit";
+			$this->data['profile'] = $this->champion_model->get_champ_profile
+										($this->session->userdata("email"));
+			$this->_load_view();
+		}
+
+		if($mode=="update"){
+			#process submitted form
+			$this->load->library("form_validation");
+
+			$this->load->model("general_model");
+			$rules = $this->general_model->validation_rules("champion_edit");
+			$this->form_validation->set_rules($rules);
+
+			if($this->form_validation->run()){
+				$cid = $this->session->userdata("cid");
+				$this->champion_model->update_profile($cid);
+				redirect("champion/profile");
+			}else{
+				$this->profile("edit");
+			}
+		}
 	}
 
 	public function commitment($mode="view"){

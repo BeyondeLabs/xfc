@@ -66,6 +66,27 @@ class Champion_model extends CI_Model{
 		}
 	}
 
+	function update_profile($cid){
+		$this->db->where("cid",$cid);
+		$champ = array(
+			"cuid" => $this->input->post("cuid"),
+			"atid" => $this->input->post("atid"),
+			"grad_year" => $this->input->post("grad_year"),
+			"first_name" => $this->input->post("first_name"),
+			"last_name" => $this->input->post("last_name"),
+			"gender" => $this->input->post("gender"),
+			"email" => $this->input->post("email"),
+			"phone" => $this->input->post("phone"),
+			"phone_alt" => $this->input->post("phone_alt"),
+			"location" => $this->input->post("location"),
+			"url" => $this->input->post("url"),
+			"url_fb" => $this->input->post("url_fb"),
+			"url_tw" => $this->input->post("url_tw")
+			);
+
+		return $this->db->update("champion",$champ);
+	}
+
 	function made_commitment($cid){
 		$this->db->where("cid",$cid);
 		$result = $this->db->get("commitment");
