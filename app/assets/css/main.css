@@ -223,6 +223,16 @@ h1,h2,h3,h4,h5,h6{
 	border-color: #E08E31;
 }
 
+span.beta{
+	background: #aaa;
+	color: #fefefe;
+	padding: 1px 5px;
+	border-radius: 7px;
+	margin-left: -20px;
+	font-size: 10px;
+	margin-right: 10px;
+}
+
 /*end of others */
 
 

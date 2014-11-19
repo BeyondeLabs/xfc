@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="<?php echo base_url();?>favicon.ico">
 
-    <title>FOCUS Champions &bull; Disciple the nations</title>
+    <title>FOCUS Champions &#187; Support FOCUS in reaching the nations</title>
     <link href="<?php echo base_url();?>assets/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo base_url();?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <?php
@@ -36,7 +36,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">FOCUS Champions</a>
+          <a class="navbar-brand" href="#">FOCUS Champions</a> <span class="beta">beta</span>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
