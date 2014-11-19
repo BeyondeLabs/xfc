@@ -33,8 +33,17 @@ h1,h2,h3,h4,h5,h6{
 .form input[type=text],
 .form input[type=password],
 .form label,
+.form textarea,
 .form select{
 	width:90%;
+}
+
+.form textarea{
+	height: 100px;
+	padding: 5px;
+	font-family: sans-serif;
+	font-size: 14px;
+	border: solid 2px #dedede;
 }
 
 .form input[type=text].half,

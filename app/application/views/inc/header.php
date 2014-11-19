@@ -42,6 +42,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><?php echo anchor("home","Home"); ?></li>
             <li><a href="#about">About</a></li>
+            <li><?php echo anchor("home/feedback","Feedback"); ?></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown active">
@@ -79,3 +80,12 @@
     </div>
 
     <div class="container content">
+
+      <!-- message area -->
+
+      <?php
+      $msg = $this->session->flashdata("msg");
+      if($msg != ""){
+        echo '<div class="alert alert-success" role="alert">'.$msg.'</div>';
+      }
+      ?>

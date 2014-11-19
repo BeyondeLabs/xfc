@@ -5,6 +5,18 @@ class General_model extends CI_Model{
 		parent::__construct();
 	}
 
+	function add_feedback(){
+		$feedback = array(
+			"feedback" => $this->input->post("feedback"),
+			"cid" => $this->input->post("cid"),
+			"first_name" => $this->input->post("first_name"),
+			"last_name" => $this->input->post("last_name"),
+			"email" => $this->input->post("email")
+			);
+
+		return $this->db->insert("feedback",$feedback);
+	}
+
 	function validation_rules($type){
 		if($type=="champion"){
 			$rules = array(
@@ -85,6 +97,33 @@ class General_model extends CI_Model{
 						'field'=>'url_tw',
 						'label'=>'Twitter link',
 						'rules'=> 'prep_url'
+					)
+				);
+
+			return $rules;
+		}
+
+		if($type=="feedback"){
+			$rules = array(
+					array(
+						'field'=>'first_name',
+						'label'=>'First Name',
+						'rules'=>'required'
+					),
+					array(
+						'field'=>'last_name',
+						'label'=>'Last Name',
+						'rules'=>'required'
+					),
+					array(
+						'field'=>'email',
+						'label'=>'Email',
+						'rules'=>'required|valid_email'
+					),
+					array(
+						'field'=>'feedback',
+						'label'=>'Feedback',
+						'rules'=>'xss_clean'
 					)
 				);
 

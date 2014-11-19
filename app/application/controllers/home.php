@@ -7,6 +7,7 @@ class Home extends CI_Controller {
 		parent::__construct();
 		$this->load->model("champion_model");
 		$this->load->model("cu_model");
+		$this->load->model("general_model");
 	}
 
 	private function is_logged_in(){
@@ -40,7 +41,6 @@ class Home extends CI_Controller {
 			#process submitted form
 			$this->load->library("form_validation");
 
-			$this->load->model("general_model");
 			$rules = $this->general_model->validation_rules("champion");
 			$this->form_validation->set_rules($rules);
 
@@ -106,5 +106,38 @@ class Home extends CI_Controller {
 	public function logout(){
 		$this->session->sess_destroy();
 		redirect("home");
+	}
+
+	public function feedback($mode="form"){
+		if($mode=="form"){
+			$this->data['main'] = "home/feedback_form";
+			$this->_load_view();
+		}
+
+		if($mode=="submit"){
+			$this->load->library("form_validation");
+			if(!$this->is_logged_in()){
+				$rules = $this->general_model->validation_rules("feedback");
+			}else{
+				$rules = array(
+					array(
+						'field'=>'feedback',
+						'label'=>'Feedback',
+						'rules'=>'xss_clean'
+					)
+					);
+			}
+			
+			$this->form_validation->set_rules($rules);
+
+			if($this->form_validation->run()){
+				$this->general_model->add_feedback();
+				$this->session->set_flashdata("msg",
+					"Thanks for your feedback");
+				redirect("home");
+			}else{
+				$this->feedback();
+			}
+		}
 	}
 }

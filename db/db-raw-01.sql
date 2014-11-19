@@ -101,3 +101,10 @@ ALTER TABLE `commitment_type` CHANGE `ctid` `ctid` INT( 11 ) NOT NULL AUTO_INCRE
 ALTER TABLE `commitment` ADD `amount` DECIMAL NOT NULL;
 
 ALTER TABLE `commitment` ADD `current_supporter` INT NOT NULL;
+
+ALTER TABLE `commitment`
+  ADD CONSTRAINT `commit_ibfk_1` FOREIGN KEY (`cid`) REFERENCES `champion` (`cid`);
+
+ALTER TABLE `champion` ADD `date_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+ALTER TABLE `commitment` ADD `date_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
