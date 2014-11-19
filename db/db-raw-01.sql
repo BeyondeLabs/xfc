@@ -97,3 +97,7 @@ CREATE TABLE other_contribution(
 
 ALTER TABLE `commitment_type` ADD PRIMARY KEY ( `ctid` );
 ALTER TABLE `commitment_type` CHANGE `ctid` `ctid` INT( 11 ) NOT NULL AUTO_INCREMENT ;
+
+ALTER TABLE `commitment` ADD `amount` DECIMAL NOT NULL;
+
+ALTER TABLE `commitment` ADD `current_supporter` INT NOT NULL;
