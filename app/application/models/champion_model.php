@@ -143,4 +143,9 @@ class Champion_model extends CI_Model{
 		}
 		return false;
 	}
+
+	function get_champs(){
+		//total number of champions
+		return $this->db->get("champion")->num_rows;
+	}
 }

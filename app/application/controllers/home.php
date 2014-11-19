@@ -19,6 +19,7 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
+		$this->data['champs'] = $this->champion_model->get_champs();
 		if($this->is_logged_in()){
 			$this->data['main'] = "home/index_auth";
 		}else{

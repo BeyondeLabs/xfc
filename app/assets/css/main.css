@@ -164,6 +164,59 @@ h1,h2,h3,h4,h5,h6{
 	margin-left: 0px;
 }
 
+/*landing-page*/
+
+/*do responsive one for mobile, later */
+
+.landing{
+	background: url(../img/cross1.jpg) 0 100px no-repeat fixed;
+	min-height: 400px;
+	padding: 20px;
+	/*text-align: center;*/
+}
+
+.landing h1{
+	padding-top: 20px;
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.landing h1 sub{
+	font-size: 25px;
+	font-weight: normal;
+}
+
+.landing a{
+	margin-right: 10px;
+}
+
+.landing p{
+	font-weight: bold;
+	color: #aaa;
+}
+
+.landing p.stats{
+	margin-top: 10px;
+	color: #E08E31;
+}
+
+.landing em{
+	border-bottom: solid 3px #FFA81E;
+	font-style: normal;
+}
+
+.btn{
+	transition: 1s;
+}
+
+.btn-normal{
+	border: solid 2px #3D67A6;
+}
+
+.landing .btn-normal:hover{
+	border: solid 2px #E08E31;
+	color: #E08E31;
+}
 
 /*end of others */
 
