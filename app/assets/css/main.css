@@ -8,6 +8,10 @@ body {
   color: #555;
 }
 
+.container.content{
+	min-height: 400px;
+}
+
 /*headings*/
 
 h1,h2,h3,h4,h5,h6{
@@ -233,9 +237,12 @@ span.beta{
 	margin-right: 10px;
 }
 
+.footer{
+	color: #aaa;
+	padding: 20px 5px;
+	border-top: dotted 1px #cecece;
+	text-align: center;
+}
+
 /*end of others */
-
-
-
-
 
