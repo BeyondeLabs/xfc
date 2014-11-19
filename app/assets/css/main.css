@@ -224,6 +224,7 @@ h1,h2,h3,h4,h5,h6{
 
 .btn-normal{
 	border: solid 2px #3D67A6;
+	color: #3D67A6;
 }
 
 .landing .btn-normal:hover{
