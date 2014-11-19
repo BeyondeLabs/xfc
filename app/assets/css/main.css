@@ -238,6 +238,7 @@ span.beta{
 }
 
 .footer{
+	margin-top: 20px;
 	color: #aaa;
 	padding: 20px 5px;
 	border-top: dotted 1px #cecece;
