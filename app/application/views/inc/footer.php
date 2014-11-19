@@ -1,7 +1,7 @@
 
 </div>
 <div class="footer">
-	&copy; 2014 FOCUS Kenya &bull; Engineered with <i class="fa fa-heart"></i> at 
+	&copy; 2014 <a href="http://www.focuskenya.org" target="_blank">FOCUS Kenya</a> &bull; Engineered with <i class="fa fa-heart"></i> at 
 	<a href="http://labs.beyon.de/" target="_blank">Beyonde Labs</a>.
 </div>
 

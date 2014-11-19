@@ -94,6 +94,16 @@ CREATE TABLE other_contribution(
 	foreign key(cid) references champion (cid)
 );
 
+CREATE TABLE feedback(
+	fid int primary key auto_increment,
+	cid int,
+	first_name varchar(50),
+	last_name varchar(50),
+	email varchar(50),
+	feedback text,
+	date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 
 ALTER TABLE `commitment_type` ADD PRIMARY KEY ( `ctid` );
 ALTER TABLE `commitment_type` CHANGE `ctid` `ctid` INT( 11 ) NOT NULL AUTO_INCREMENT ;
