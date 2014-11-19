@@ -123,7 +123,7 @@ class General_model extends CI_Model{
 					array(
 						'field'=>'feedback',
 						'label'=>'Feedback',
-						'rules'=>'xss_clean'
+						'rules'=>'required'
 					)
 				);
 

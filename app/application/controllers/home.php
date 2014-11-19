@@ -123,7 +123,7 @@ class Home extends CI_Controller {
 					array(
 						'field'=>'feedback',
 						'label'=>'Feedback',
-						'rules'=>'xss_clean'
+						'rules'=>'required'
 					)
 					);
 			}
