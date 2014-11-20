@@ -152,10 +152,14 @@ class Champion_model extends CI_Model{
 	function get_champs_list(){
 		$sql = "SELECT *,
 				champion.email as champ_email,
+				at.name as at_name,
 				cu.name as cu_name,
 				cu.website as cu_website,
-				uni.name as uni_name
+				uni.name as uni_name,
+				ct.name as ct_name
 				FROM champion
+				LEFT JOIN commitment ON champion.cid = commitment.cid
+				LEFT JOIN commitment_type ct ON ct.ctid = commitment.ctid
 				LEFT JOIN affiliation_type at ON champion.atid = at.atid
 				LEFT JOIN cu ON champion.cuid = cu.cuid
 				LEFT JOIN university uni ON uni.uid = cu.uid";

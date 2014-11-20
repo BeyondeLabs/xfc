@@ -146,37 +146,6 @@ h1,h2,h3,h4,h5,h6{
 
 /*end of Champ profile*/
 
-
-
-/*others - uncategorized */
-.highlight{
-	font-weight: bold;
-	color: #3D67A6;
-}
-
-.description{
-	color: #888;
-}
-
-.navbar-header .navbar-brand{
-	font-weight: bold;
-	color: #3D67A6;
-}
-
-.navbar-header .navbar-brand:hover{
-	color: #3D67A6;
-}
-
-.cu-list{
-	height: 400px;
-	padding: 10px;
-	overflow-y: scroll;
-}
-
-.cu-list ul{
-	margin-left: 0px;
-}
-
 /*landing-page*/
 
 /*do responsive one for mobile, later */
@@ -235,6 +204,52 @@ h1,h2,h3,h4,h5,h6{
 .landing .btn-success{
 	background: #E08E31;
 	border-color: #E08E31;
+}
+
+/* end of landing */
+
+/* champion profiles */
+.c-profile{
+	border-left: solid 3px #cecece;
+	margin-bottom: 7px;
+}
+
+.c-profile h4{
+	color: #777;
+	margin: 0;
+}
+
+.c-profile .desc{
+	color: #aaa;
+}
+
+/*others - uncategorized */
+.highlight{
+	font-weight: bold;
+	color: #3D67A6;
+}
+
+.description{
+	color: #888;
+}
+
+.navbar-header .navbar-brand{
+	font-weight: bold;
+	color: #3D67A6;
+}
+
+.navbar-header .navbar-brand:hover{
+	color: #3D67A6;
+}
+
+.cu-list{
+	height: 400px;
+	padding: 10px;
+	overflow-y: scroll;
+}
+
+.cu-list ul{
+	margin-left: 0px;
 }
 
 span.beta{
