@@ -64,6 +64,16 @@ class Admin extends CI_Controller {
 		
 	}
 
+	public function champions($mode="view"){
+		if($mode=="view"){
+			//view list of champions
+			$this->load->model("champion_model");
+			$this->data['champs'] = $this->champion_model->get_champs_list();
+			$this->data['main'] = "admin/champions_view";
+			$this->_load_view();
+		}
+	}
+
 	private function is_logged_in(){
 		if(!$this->session->userdata('logged_in') ||
 			!$this->session->userdata('is_admin')){

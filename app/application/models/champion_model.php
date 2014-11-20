@@ -148,4 +148,18 @@ class Champion_model extends CI_Model{
 		//total number of champions
 		return $this->db->get("champion")->num_rows;
 	}
+
+	function get_champs_list(){
+		$sql = "SELECT *,
+				champion.email as champ_email,
+				cu.name as cu_name,
+				cu.website as cu_website,
+				uni.name as uni_name
+				FROM champion
+				LEFT JOIN affiliation_type at ON champion.atid = at.atid
+				LEFT JOIN cu ON champion.cuid = cu.cuid
+				LEFT JOIN university uni ON uni.uid = cu.uid";
+
+		return $this->db->query($sql);
+	}
 }
