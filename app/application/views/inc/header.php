@@ -53,7 +53,10 @@
                     <!-- admin menu here -->
                     <?php echo $this->session->userdata('username') ?> <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><?php echo anchor("home/logout","<i class='fa fa-sign-out'></i> Logout"); ?></li>
+                      <li><?php echo anchor("admin/champions",'<i class="fa fa-user"></i> Champions'); ?></li>
+                      <li><?php echo anchor("admin/feedback",'<i class="fa fa-comments"></i> Feedback'); ?></li>
+                      <li><?php echo anchor("admin/cu",'<i class="fa fa-mortar-board"></i> CUs'); ?></li>
+                      <li><?php echo anchor("home/logout","<i class='fa fa-sign-out'></i> Logout"); ?></li>
                     </ul>
                   <?php else: ?>
                     <?php echo $this->session->userdata('first_name')." ".
