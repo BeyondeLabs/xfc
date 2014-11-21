@@ -17,6 +17,16 @@ class General_model extends CI_Model{
 		return $this->db->insert("feedback",$feedback);
 	}
 
+	function get_feedback(){
+		$sql = "SELECT *,
+				date_format(feedback.date_time,'%M %e, %Y') as date_posted,
+				feedback.first_name as f_first_name,
+				feedback.last_name as f_last_name
+				FROM feedback
+				LEFT JOIN champion ON feedback.cid = champion.cid";
+		return $this->db->query($sql);
+	}
+
 	function validation_rules($type){
 		if($type=="champion"){
 			$rules = array(

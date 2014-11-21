@@ -74,6 +74,15 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function feedback($mode="view"){
+		if($mode=="view"){
+			$this->load->model("general_model");
+			$this->data['feedback'] = $this->general_model->get_feedback();
+			$this->data['main'] = "admin/feedback";
+			$this->_load_view();
+		}
+	}
+
 	private function is_logged_in(){
 		if(!$this->session->userdata('logged_in') ||
 			!$this->session->userdata('is_admin')){

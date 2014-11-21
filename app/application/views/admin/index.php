@@ -7,5 +7,6 @@
 <h4>Quick Menu</h4>
 <ul>
 	<li><?php echo anchor("admin/champions","Champions"); ?></li>
+	<li><?php echo anchor("admin/feedback","Feedback"); ?></li>
 	<li><?php echo anchor("admin/cu","Manage CU List"); ?></li>
 </ul>

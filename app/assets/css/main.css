@@ -15,7 +15,7 @@ body {
 /*headings*/
 
 h1,h2,h3,h4,h5,h6{
-	color: #3D67A6;
+	color: #E08E31;
 }
 
 /*buttons*/
@@ -224,6 +224,25 @@ h1,h2,h3,h4,h5,h6{
 }
 
 /*others - uncategorized */
+.grey{
+	color: #aaa;
+}
+
+.feedback{
+
+}
+
+.feedback .text{
+	color: #777;
+	border-left: solid 3px #cecece;
+	padding-left: 5px;
+}
+
+.feedback .date{
+	font-size: 11px;
+	color: #aaa;
+}
+
 .highlight{
 	font-weight: bold;
 	color: #3D67A6;
