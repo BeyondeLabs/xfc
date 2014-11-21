@@ -1,5 +1,5 @@
 <div class="title">
-	<h1><i class="fa fa-list"></i> Champions</h1>
+	<h1><i class="fa fa-user"></i> Champions</h1>
 </div>
 <div class="row">
 
