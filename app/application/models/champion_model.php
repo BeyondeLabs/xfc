@@ -152,7 +152,7 @@ class Champion_model extends CI_Model{
 	function get_champs_list(){
 		$sql = "SELECT *,
 				champion.email as champ_email,
-				date_format(date_time,'%M %e, %Y') as joined,
+				date_format(champion.date_time,'%M %e, %Y') as joined,
 				at.name as at_name,
 				cu.name as cu_name,
 				cu.website as cu_website,
