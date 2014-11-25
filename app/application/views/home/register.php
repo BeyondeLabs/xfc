@@ -52,7 +52,7 @@ for($i=date("Y"); $i>=1950; $i--){
 		echo form_label("Email","email");
 		echo form_password("password",set_value("password"),"class='half'");
 		echo form_password("password_confirm",set_value("password_confirm"),"class='half'");
-		echo form_label("Password <span class='right'>Password Confirm</span>","password");
+		echo form_label("Set new Password for this sytem <span class='right'>Password Confirm</span>","password");
 
 		echo form_submit("register","Register","class='btn btn-lg btn-success'");
 
