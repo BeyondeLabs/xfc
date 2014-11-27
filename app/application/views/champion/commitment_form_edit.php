@@ -40,7 +40,7 @@ Commitment Form
 		echo form_input("date_to",$cd->date_to,"class='half date-picker'");
 		echo form_label("Start Date <span class='right'>End Date</span>","date_to");
 		echo "<br/>".form_checkbox("lifetime","1",$cd->lifetime)." <span>Lifetime Supporter</span> <br/>"; 
-		echo form_submit("register","Register","class='btn btn-lg btn-success'");
+		echo form_submit("register","Update","class='btn btn-lg btn-success'");
 
 		?>
 
