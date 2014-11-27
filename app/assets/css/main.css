@@ -288,8 +288,9 @@ span.beta{
 }
 
 .focus{
-	border-left: solid 5px #B0D5E6;
 	padding-left: 5px;
+	background: url(../img/focus-logo.png) no-repeat;
+	padding: 8px 10px 8px 50px;
 }
 
 .footer{
