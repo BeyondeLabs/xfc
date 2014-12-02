@@ -21,13 +21,17 @@ for($i=date("Y"); $i>=1950; $i--){
 }
 
 
+
 ?>
 <div class="row">
 	<div class="col-md-6">
-		<h1>Sign Up </h1>
+		<h3>Basic Information </h3>
+
+		<?php $this->load->view("inc/progress_reg"); ?>
+
 		<div class="description">
-			Signing up as a <?php echo anchor("http://www.focuskenya.org/",
-			"FOCUS","target='blank'") ?> Champion.
+			Please provide few basic details about yourself below. The password you set 
+			here is the one you will use for logging in into the system any time.
 		</div>
 		<?php
 

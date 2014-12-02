@@ -87,6 +87,7 @@ class Champion extends CI_Controller {
 			$this->_has_committed($this->session->userdata("cid"));
 
 			$this->data['date_picker'] = TRUE;
+			$this->data['step'] = array(2,3);
 			$this->data['main'] = "champion/commitment_form";
 			$this->data['commitment_type'] = $this->champion_model->get_commitment_type();
 			$this->_load_view();
@@ -134,7 +135,14 @@ class Champion extends CI_Controller {
 			$this->form_validation->set_rules($rules);
 			if($this->form_validation->run()){
 				$this->champion_model->save_commitment();
-				redirect("champion/commitment");
+
+				$log = array(
+							"cid" => $this->session->userdata("cid"),
+							"type" => "register",
+							"value_int" => 2
+						);
+				$this->champion_model->champion_log($log);
+				redirect("champion/step/complete");
 			}else{
 				$this->commitment("form");
 			}
@@ -188,6 +196,19 @@ class Champion extends CI_Controller {
 	private function _has_committed($cid){
 		if($this->champion_model->made_commitment($cid)){
 			redirect("champion/commitment/view");
+		}
+	}
+
+	public function step($step="commitment"){
+		if($step == "commitment"){
+			//make commitment
+			$this->commitment("form");
+		}
+		if($step == "complete"){
+			//finish registration
+			$this->data['main'] = "champion/reg_complete";
+			$this->data['step'] = array(3,3);
+			$this->_load_view();
 		}
 	}
 }

@@ -118,3 +118,13 @@ ALTER TABLE `commitment`
 ALTER TABLE `champion` ADD `date_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
 
 ALTER TABLE `commitment` ADD `date_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+CREATE TABLE champion_log(
+	clid int primary key auto_increment,
+	type varchar(20),
+	value_int int,
+	value_text varchar(200),
+	date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	cid int,
+	foreign key(cid) references champion(cid)
+);

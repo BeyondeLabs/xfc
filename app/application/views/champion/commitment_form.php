@@ -22,6 +22,9 @@ Commitment Form
 
 <div class="row">
 	<div class="col-md-6">
+
+		<?php $this->load->view("inc/progress_reg"); ?>
+		
 		<?php
 
 		echo validation_errors('<div class="alert alert-danger" role="alert">','</div>');

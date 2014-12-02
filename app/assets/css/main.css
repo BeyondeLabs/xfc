@@ -287,6 +287,17 @@ span.beta{
 	display: none;
 }
 
+i.complete{
+	font-size: 2em;
+	float:left;
+	margin: 5px 3px;
+	color: #5cb85c;
+}
+
+.orange{
+	color: #E08E31;
+}
+
 .focus{
 	padding-left: 5px;
 	background: url(../img/focus-logo.png) no-repeat;

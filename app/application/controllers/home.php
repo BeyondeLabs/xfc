@@ -39,6 +39,7 @@ class Home extends CI_Controller {
 			$this->data['uni_cu'] = $this->cu_model->get_uni_cu();
 			// affiliation types
 			$this->data['aff_type'] = $this->cu_model->get_aff_type();
+			$this->data['step'] = array(1,3);
 			$this->data['main'] = "home/register";
 			$this->_load_view();
 		}
@@ -56,7 +57,15 @@ class Home extends CI_Controller {
 					$this->session->set_userdata($user);
 					$this->session->set_userdata("logged_in",TRUE);
 
-					redirect("champion/profile");
+					//log step 1 completed
+					$log = array(
+							"cid" => $this->session->userdata("cid"),
+							"type" => "register",
+							"value_int" => 1
+						);
+					$this->champion_model->champion_log($log);
+
+					redirect("champion/step/commitment");
 				}else{
 					#almost impossible to get here?
 				}

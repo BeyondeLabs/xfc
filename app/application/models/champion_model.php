@@ -13,6 +13,15 @@ class Champion_model extends CI_Model{
 			);
 		$result = $this->db->get("champion");
 		if($result->num_rows == 1){
+			//log
+			$result = $result->result();
+			$result = $result[0];
+			$log = array(
+				"cid"=> $result->cid,
+				"type"=>"login",
+				"value_text"=>"success"
+				);
+			$this->champion_log($log);
 			return TRUE;
 		}
 		return FALSE;
@@ -166,5 +175,9 @@ class Champion_model extends CI_Model{
 				LEFT JOIN university uni ON uni.uid = cu.uid";
 
 		return $this->db->query($sql);
+	}
+
+	function champion_log($log){
+		return $this->db->insert("champion_log",$log);
 	}
 }
