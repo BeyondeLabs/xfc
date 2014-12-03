@@ -58,8 +58,45 @@
 				</span>
 			</p>
 
-			<?php echo anchor("champion/profile/edit","Edit Profile",
-					"class='btn btn-success'"); ?>
+			<?php echo anchor("champion/profile/edit",
+					"<i class='fa fa-pencil'></i> Edit Profile",
+					"class='btn btn-default'"); ?>
+
+		</div>
+	</div>
+
+	<div class="col-md-6">
+		<div class="profile">
+			<p><span class="left">Type</span>
+				<span class="right">
+					<?php echo $cd->name; ?>
+				</span>
+			</p>
+			<p><span class="left">Amount</span>
+				<span class="right">
+					<?php echo "KES. ".number_format($cd->amount,2); ?>
+				</span>
+			</p>
+			<p><span class="left">Starting</span>
+				<span class="right">
+					<?php echo $cd->date_from; ?>
+				</span>
+			</p>
+			<p><span class="left">Ending</span>
+				<span class="right">
+					<?php
+						if($cd->lifetime == 1){
+							echo "Lifetime Supporter";
+						}else{
+							echo $cd->date_to;
+						}
+					?>
+				</span>
+			</p>
+
+			<?php echo anchor("champion/commitment/edit",
+				 	"<i class='fa fa-pencil'></i> Edit Commitment",
+					"class='btn btn-default'"); ?>
 
 		</div>
 	</div>

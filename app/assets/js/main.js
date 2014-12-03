@@ -6,7 +6,9 @@ $(document).ready(
 		$(".form input[type=text]:first").focus();
 
 		$('.date-picker').datepicker(
-			{format:'yyyy-mm-dd'}
+			{
+				format:'yyyy-mm-dd'
+			}
 			);
 	}
 );

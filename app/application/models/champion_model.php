@@ -153,6 +153,18 @@ class Champion_model extends CI_Model{
 		return false;
 	}
 
+	function get_commitment_details2($cid){
+		$sql = "SELECT *
+				FROM commitment c
+				WHERE c.cid = $cid";
+		$result = $this->db->query($sql);
+		if($result->num_rows > 0){
+			$result = $result->result();
+			return $result[0];
+		}
+		return false;
+	}
+
 	function get_champs(){
 		//total number of champions
 		return $this->db->get("champion")->num_rows;

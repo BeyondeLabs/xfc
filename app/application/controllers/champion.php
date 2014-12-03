@@ -34,6 +34,7 @@ class Champion extends CI_Controller {
 				redirect("champion/commitment/form");
 			}
 			$this->data['main'] = "champion/profile";
+			$this->data['cd'] = $this->champion_model->get_commitment_details($cid);
 			$this->data['profile'] = $this->champion_model->get_champ_profile
 										($this->session->userdata("email"));
 			$this->_load_view();
@@ -153,7 +154,7 @@ class Champion extends CI_Controller {
 			$this->data['main'] = "champion/commitment_form_edit";
 			$this->data['commitment_type'] = $this->champion_model->get_commitment_type();
 			$cid = $this->session->userdata("cid");
-			$this->data['cd'] = $this->champion_model->get_commitment_details($cid);
+			$this->data['cd'] = $this->champion_model->get_commitment_details2($cid);
 			$this->_load_view();
 		}
 
@@ -186,7 +187,7 @@ class Champion extends CI_Controller {
 			$this->form_validation->set_rules($rules);
 			if($this->form_validation->run()){
 				$this->champion_model->update_commitment();
-				redirect("champion/commitment");
+				redirect("champion/profile");
 			}else{
 				$this->commitment("edit");
 			}

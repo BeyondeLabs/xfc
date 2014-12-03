@@ -9,9 +9,14 @@ foreach($commitment_type->result() as $row){
 $amount = array();
 
 $amount["250"] = 250;
-foreach(range(500,5000,500) as $i){
+$amount["500"] = 500;
+foreach(range(1000,5000,1000) as $i){
 	$amount[$i] = number_format($i);
 }
+$amount["20000"] = 20000;
+$amount["50000"] = 50000;
+$amount["100000"] = 100000;
+
 $amount["0"] = "Other";
 
 ?>
