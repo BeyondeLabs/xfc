@@ -7,6 +7,7 @@
 <div class="row">
 	<div class="col-md-6">
 		<div class="profile">
+			<h4>Personal Information</h4>
 			<p><span class="left">Gender</span>
 				<span class="right">
 					<?php echo $profile->gender; ?>
@@ -59,7 +60,7 @@
 			</p>
 
 			<?php echo anchor("champion/profile/edit",
-					"<i class='fa fa-pencil'></i> Edit Profile",
+					"<i class='fa fa-pencil'></i> Edit Personal Information",
 					"class='btn btn-default'"); ?>
 
 		</div>
@@ -67,6 +68,7 @@
 
 	<div class="col-md-6">
 		<div class="profile">
+			<h4><i class="fa fa-heart-o"></i> Commitment</h4>
 			<p><span class="left">Type</span>
 				<span class="right">
 					<?php echo $cd->name; ?>
@@ -101,4 +103,28 @@
 		</div>
 	</div>
 
+</div>
+
+<div class="row">
+	<div class="col-md-6 work">
+		<h4><i class="fa fa-briefcase"></i> Work Information</h4>
+		<?php
+		foreach($org->result() as $row){
+			if($row->date_to == ""){
+				$date_to = "Date";
+			}else{
+				$date_to = $row->date_to;
+			}
+			echo "<div class='col-md-6'>";
+			echo "<p class='co'> $row->name </p>";
+			echo "<p><em>$row->designation</em> </p>";
+			echo "<p> $row->date_from - $date_to </p>";
+			echo "</div>";
+		}
+
+		?>
+		<?php echo anchor("champion/org/add",
+				 	"<i class='fa fa-plus'></i> Add Work Information",
+					"class='btn btn-default'"); ?>
+	</div>
 </div>

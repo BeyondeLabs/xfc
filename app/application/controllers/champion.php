@@ -37,6 +37,7 @@ class Champion extends CI_Controller {
 			$this->data['cd'] = $this->champion_model->get_commitment_details($cid);
 			$this->data['profile'] = $this->champion_model->get_champ_profile
 										($this->session->userdata("email"));
+			$this->data['org'] = $this->champion_model->get_org($cid);
 			$this->_load_view();
 		}
 		if($mode=="edit"){
@@ -210,6 +211,58 @@ class Champion extends CI_Controller {
 			$this->data['main'] = "champion/reg_complete";
 			$this->data['step'] = array(3,3);
 			$this->_load_view();
+		}
+	}
+
+	public function org($mode="add"){
+		if($mode=="add"){
+			$this->data['main'] = "champion/org_add";
+			$this->data['date_picker'] = TRUE;
+			$this->_load_view();
+		}
+		if($mode=="submit"){
+			$rules = array(
+				array(
+					'field'=>'name',
+					'label'=>'Orgarnization',
+					'rules'=>'required'
+					),
+				array(
+					'field'=>'url',
+					'label'=>'Website',
+					'rules'=>'prep_url'
+					),
+				array(
+					'field'=>'designation',
+					'label'=>'Designation',
+					'rules'=>'required'
+					),
+				array(
+					'field'=>'date_from',
+					'label'=>'Start Date',
+					'rules'=>'required'
+					),
+				array(
+					'field'=>'date_to',
+					'label'=>'End Date',
+					'rules'=>'none'
+					),
+				array(
+					'field'=>'current',
+					'label'=>'current',
+					'rules'=>'none'
+					)
+				);
+
+			$this->load->library("form_validation");
+			$this->form_validation->set_rules($rules);
+			if($this->form_validation->run()){
+				$cid = $this->session->userdata("cid");
+				$this->champion_model->add_org($cid);
+				redirect("champion/profile");
+			}else{
+				$this->org("add");
+			}
 		}
 	}
 }

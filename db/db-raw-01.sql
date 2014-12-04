@@ -128,3 +128,5 @@ CREATE TABLE champion_log(
 	cid int,
 	foreign key(cid) references champion(cid)
 );
+
+ALTER TABLE `organization` ADD `current` INT NOT NULL ;

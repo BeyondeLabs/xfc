@@ -192,4 +192,27 @@ class Champion_model extends CI_Model{
 	function champion_log($log){
 		return $this->db->insert("champion_log",$log);
 	}
+
+	function add_org($cid){
+		$org = array(
+			"name" => $this->input->post("name"),
+			"url" => $this->input->post("url"),
+			"designation" => $this->input->post("designation"),
+			"date_from" => $this->input->post("date_from"),
+			"date_to" => $this->input->post("date_to"),
+			"cid" => $cid,
+			"current" => $this->input->post("current")
+			);
+
+		return $this->db->insert("organization",$org);
+	}
+
+	function get_org($cid){
+		$sql = "SELECT *,
+				date_format(date_from,'%b %Y') as date_from,
+				date_format(date_to,'%b %Y') as date_to
+				FROM organization
+				WHERE cid = $cid";
+		return $this->db->query($sql);
+	}
 }
