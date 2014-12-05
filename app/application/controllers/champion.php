@@ -265,4 +265,48 @@ class Champion extends CI_Controller {
 			}
 		}
 	}
+
+	public function invite($mode="form"){
+		$cid = $this->session->userdata("cid");
+		if($mode=="form"){
+			$this->data['main'] = "champion/invite";
+			$this->data['invite'] = $this->champion_model->get_invite($cid);
+			$this->_load_view();
+		}
+
+		if($mode=="submit"){
+			$rules = array(
+				array(
+					'field'=>'first_name',
+					'label'=>'First Name',
+					'rules'=>'required'
+					),
+				array(
+					'field'=>'last_name',
+					'label'=>'Last Name',
+					'rules'=>'required'
+					),
+				array(
+					'field'=>'email',
+					'label'=>'Email',
+					'rules'=>'required|valid_email|is_unique[invite.email]|is_unique[champion.email]'
+					),
+				array(
+					'field'=>'phone',
+					'label'=>'Phone',
+					'rules'=>'numeric'
+					)
+				);
+
+			$this->load->library("form_validation");
+			$this->form_validation->set_rules($rules);
+			$this->form_validation->set_message("is_unique","Already invited by someone else");
+			if($this->form_validation->run()){
+				$this->champion_model->invite($cid);
+				redirect("champion/invite");
+			}else{
+				$this->invite("form");
+			}
+		}
+	}
 }

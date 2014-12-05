@@ -6,19 +6,6 @@ foreach($commitment_type->result() as $row){
 	$_commitment_type[$row->ctid] = $row->name;
 }
 
-$amount = array();
-
-$amount["250"] = 250;
-$amount["500"] = 500;
-foreach(range(1000,5000,1000) as $i){
-	$amount[$i] = number_format($i);
-}
-$amount["20000"] = 20000;
-$amount["50000"] = 50000;
-$amount["100000"] = 100000;
-
-$amount["0"] = "Other";
-
 ?>
 <h3 class="title">
 <i class="fa fa-user"></i> 

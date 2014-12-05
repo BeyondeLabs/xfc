@@ -215,4 +215,21 @@ class Champion_model extends CI_Model{
 				WHERE cid = $cid";
 		return $this->db->query($sql);
 	}
+
+	function invite($cid){
+		$invite = array(
+			"cid_from" => $cid,
+			"email" => $this->input->post("email"),
+			"phone" => $this->input->post("phone"),
+			"first_name" => $this->input->post("first_name"),
+			"last_name" => $this->input->post("last_name")
+			);
+
+		return $this->db->insert("invite",$invite);
+	}
+
+	function get_invite($cid){
+		$this->db->where("cid_from",$cid);
+		return $this->db->get("invite");
+	}
 }

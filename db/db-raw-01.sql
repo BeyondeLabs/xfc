@@ -130,3 +130,9 @@ CREATE TABLE champion_log(
 );
 
 ALTER TABLE `organization` ADD `current` INT NOT NULL ;
+
+ALTER TABLE  `invite` ADD  `first_name` VARCHAR( 50 ) NOT NULL AFTER  `name`;
+
+ALTER TABLE  `invite` ADD  `last_name` VARCHAR( 50 ) NOT NULL AFTER  `first_name`;
+
+ALTER TABLE  `invite` DROP  `name` ;
