@@ -80,6 +80,9 @@ class Home extends CI_Controller {
 	}
 
 	public function login($mode="form"){
+		if($this->session->userdata("logged_in")){
+			$this->logout();
+		}
 		if($mode=="form"){
 			$this->data['main'] = "home/login";
 			$this->_load_view();

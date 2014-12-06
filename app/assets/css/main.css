@@ -151,9 +151,9 @@ h1,h2,h3,h4,h5,h6{
 /*do responsive one for mobile, later */
 
 .landing{
-	background: url(../img/cross1.jpg) 0 100px no-repeat fixed;
-	min-height: 400px;
-	padding: 20px;
+	background: url(../img/cross1.jpg) 0 0px no-repeat;
+	min-height: 340px;
+	padding: 10px 20px;
 	/*text-align: center;*/
 }
 
