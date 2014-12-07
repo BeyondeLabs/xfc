@@ -103,6 +103,18 @@
 		</div>
 	</div>
 
+	<div class="col-md-6">
+		<h4><i class="fa fa-thumbs-o-up"></i> Invites</h4>
+		<div class="progress">
+			<div class="progress-bar progress-bar-success" style="width: <?php echo($invite->num_rows/20 * 100) ?>%;">
+
+  			</div>
+		</div>
+		<p>You've invited <?php echo $invite->num_rows; ?> people, out of a 
+			target of 20.</p>
+		<?php echo anchor("champion/invite", "Invite More","class='btn btn-default'"); ?>
+	</div>
+
 </div>
 
 <div class="row">

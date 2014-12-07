@@ -38,6 +38,7 @@ class Champion extends CI_Controller {
 			$this->data['profile'] = $this->champion_model->get_champ_profile
 										($this->session->userdata("email"));
 			$this->data['org'] = $this->champion_model->get_org($cid);
+			$this->data['invite'] = $this->champion_model->get_invite($cid);
 			$this->_load_view();
 		}
 		if($mode=="edit"){
