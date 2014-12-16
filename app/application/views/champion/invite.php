@@ -16,8 +16,8 @@ Invite a Champion
 		echo form_label("First Name <span class='right'>Last Name</span>","first_name");
 		echo form_input("email",set_value("email"));
 		echo form_label("Email","email");
-		echo form_input("phone",set_value("phone"));
-		echo form_label("Phone","phone");
+		// echo form_input("phone",set_value("phone"));
+		// echo form_label("Phone","phone");
 		echo form_submit("invite","Invite","class='btn btn-lg btn-success'");
 
 		?>

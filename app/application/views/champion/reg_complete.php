@@ -11,10 +11,10 @@ Registration Completed
 		<i class="fa fa-check-circle complete"></i> Thank you <strong><?php echo $this->session->userdata("first_name") ?></strong> for
 		registering as a champion. You can go to your profile to make any 
 		further edits and confirm your details.<br/><br/>
+		<?php echo anchor("champion/invite","<i class='fa fa-thumbs-o-up'></i> Invite Someone",
+			"class='btn btn-warning'"); ?>
 
-		<?php echo anchor("champion/profile","Go to My Profile",
-			"class='btn btn-success'"); ?>
-		</div>
+			<?php echo " &nbsp; ".anchor("champion/profile","Skip <i class='fa fa-angle-double-right'></i> "); ?>
 	</div>
 
 </div>

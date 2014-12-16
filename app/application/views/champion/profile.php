@@ -148,7 +148,14 @@
 
   			</div>
 		</div>
-		<p>You've invited <?php echo $invite->num_rows; ?> people, out of a 
+		<p>You've invited <?php echo $invite->num_rows; ?> 
+			<?php
+			if($invite->num_rows == 1){
+				echo "person";
+			}else{
+				echo "people";
+			}
+			?>, out of a 
 			target of 20.</p>
 	</div>
 

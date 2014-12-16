@@ -10,8 +10,16 @@
     <script src="<?php echo base_url();?>assets/js/jquery-2.1.1.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap.min.js"></script>
     <?php if(isset($date_picker)):?>
-    <script> var _date_picker = true; </script>
     <script src="<?php echo base_url(); ?>assets/js/bootstrap-datepicker.js"></script>
+
+    <script>
+      $('.date-picker').datepicker(
+        {
+          format:'yyyy-mm-dd'
+        }
+      );
+    </script>
+    
 	<?php endif; ?>
     <script src="<?php echo base_url(); ?>assets/js/main.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
