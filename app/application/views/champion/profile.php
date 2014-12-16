@@ -109,6 +109,13 @@
 					?>
 				</span>
 			</p>
+			<p><span class="left">Payment Mode</span>
+				<span class="right">
+					<?php
+						echo $cd->payment_mode;
+					?>
+				</span>
+			</p>
 
 			<?php else: ?>
 				<div style="padding-left:21px;">

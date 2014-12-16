@@ -108,19 +108,6 @@ class Champion_model extends CI_Model{
 		return FALSE;
 	}
 
-	function will_commit_later($cid){
-		//see if said will commit later
-		//or the commitment date has passed
-		$sql = "SELECT *
-				FROM commit_later
-				WHERE cid = $cid AND reminder_date >= NOW()";
-		$result = $this->db->query($sql);
-		if($result->num_rows >0){
-			return TRUE;
-		}
-		return FALSE;
-	}
-
 	function get_commitment_type(){
 		return $this->db->get("commitment_type");
 	}
@@ -136,7 +123,8 @@ class Champion_model extends CI_Model{
 			"date_from" => $this->input->post("date_from"),
 			"date_to" => $this->input->post("date_to"),
 			"lifetime" => $this->input->post("lifetime"),
-			"amount" => $amount
+			"amount" => $amount,
+			"payment_mode" =>  $this->input->post("payment_mode")
 			);
 
 		return $this->db->insert("commitment",$commitment);
@@ -148,7 +136,8 @@ class Champion_model extends CI_Model{
 			"date_from" => $this->input->post("date_from"),
 			"date_to" => $this->input->post("date_to"),
 			"lifetime" => $this->input->post("lifetime"),
-			"amount" => $this->input->post("amount")
+			"amount" => $this->input->post("amount"),
+			"payment_mode" =>  $this->input->post("payment_mode")
 			);
 
 		return $this->db->update("commitment",$commitment);
@@ -181,6 +170,19 @@ class Champion_model extends CI_Model{
 		return false;
 	}
 
+	function will_commit_later($cid){
+		//see if said will commit later
+		//or the commitment date has passed
+		$sql = "SELECT *
+				FROM commit_later
+				WHERE cid = $cid AND reminder_date >= NOW()";
+		$result = $this->db->query($sql);
+		if($result->num_rows >0){
+			return TRUE;
+		}
+		return FALSE;
+	}
+
 	function commit_later($cid){
 		$commit_later = array(
 			"cid" => $cid,
@@ -192,7 +194,8 @@ class Champion_model extends CI_Model{
 
 	function get_commit_later($cid){
 		$sql = "SELECT date_format(reminder_date,'%M %e, %Y') as reminder_date
-				FROM commit_later";
+				FROM commit_later
+				WHERE cid = $cid";
 		return $this->db->query($sql);
 	}
 

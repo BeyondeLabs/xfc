@@ -6,6 +6,13 @@ foreach($commitment_type->result() as $row){
 	$_commitment_type[$row->ctid] = $row->name;
 }
 
+$airtel = 0; $mpesa = 0; $so = 0;
+
+$pm = $cd->payment_mode;
+if($pm == "Airtel") $airtel = 1;
+if($pm == "MPesa") $mpesa = 1;
+if($pm == "SO") $so = 1;
+
 ?>
 <h3 class="title">
 <i class="fa fa-user"></i> 
@@ -32,6 +39,11 @@ Commitment Form
 		echo form_input("date_to",$cd->date_to,"class='half date-picker'");
 		echo form_label("Start Date <span class='right'>End Date</span>","date_to");
 		echo "<label>"."<span class='right'>".form_checkbox("lifetime","1",$cd->lifetime)." Lifetime Supporter</span></label>"; 
+		echo "<div><strong class='grey'>Choose Payment Mode:</strong> ";
+		echo form_radio("payment_mode","MPesa",$mpesa)." M-Pesa ";
+		echo form_radio("payment_mode","Airtel",$airtel)." Airtel Money ";
+		echo form_radio("payment_mode","SO",$so)." Standing Orders ";
+		echo "</div>";
 		echo form_submit("register","Update","class='btn btn-lg btn-success'");
 
 		?>

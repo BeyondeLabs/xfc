@@ -20,6 +20,23 @@ $amount["100000"] = 100000;
 
 $amount["0"] = "Other";
 
+//payment modes
+$mpesa = 0; $airtel = 0; $so = 0;
+
+if(isset($_POST['commit'])){
+	$payment_mode = $this->input->post("payment_mode");
+	if($payment_mode == "MPesa"){
+		$mpesa = 1;
+	}
+	if($payment_mode == "Airtel"){
+		$airtel = 1;
+	}
+	if($payment_mode == "SO"){
+		$so = 1;
+	}
+}
+
+
 ?>
 <h3 class="title">
 <i class="fa fa-user"></i> 
@@ -39,7 +56,7 @@ Commitment Form
 
 		echo validation_errors('<div class="alert alert-danger" role="alert">','</div>');
 
-		echo form_open("champion/commitment/submit/2","class='form'");
+		echo form_open("champion/commitment/submit/$mode2","class='form'");
 		echo form_dropdown("ctid",$_commitment_type,"2");
 		echo form_label("Commitment Type","ctid");
 		if(isset($_POST["amount"])){
@@ -54,7 +71,13 @@ Commitment Form
 		echo form_input("date_to",set_value("date_to"),"class='half date-picker'");
 		echo form_label("Start Date <span class='right'>End Date</span>","date_to date-picker");
 		echo "<label>"."<span class='right'>".form_checkbox("lifetime","1",set_value("lifetime"))." Lifetime Supporter</span></label>"; 
-		echo form_submit("register","Commit","class='btn btn-lg btn-success'");
+
+		echo "<div><strong class='grey'>Choose Payment Mode:</strong> ";
+		echo form_radio("payment_mode","MPesa",$mpesa)." M-Pesa ";
+		echo form_radio("payment_mode","Airtel",$airtel)." Airtel Money ";
+		echo form_radio("payment_mode","SO",$so)." Standing Orders ";
+		echo "</div>";
+		echo form_submit("commit","Commit","class='btn btn-lg btn-success'");
 
 		if($mode2==1){
 			echo anchor("champion/commitment/later","<i class='fa fa-clock-o'></i> Commit Later");

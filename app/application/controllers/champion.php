@@ -36,8 +36,8 @@ class Champion extends CI_Controller {
 
 		if($mode=="view"){
 			
-			if($this->champion_model->made_commitment($this->data['cid']) &&
-				$this->champion_model->will_commit_later($cid)){
+			if(!$this->champion_model->made_commitment($this->data['cid']) &&
+				!$this->champion_model->will_commit_later($this->data['cid'])){
 				redirect("champion/commitment/form");
 			}
 			$this->data['main'] = "champion/profile";
