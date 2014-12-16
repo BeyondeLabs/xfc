@@ -154,3 +154,6 @@ ADD UNIQUE  `cid` (  `cid` );
 ALTER TABLE  `focuschamps`.`commitment` DROP INDEX  `commit_ibfk_1` ,
 ADD UNIQUE  `commit_ibfk_1` (  `cid` );
 
+ALTER TABLE  `champion` ADD  `title` VARCHAR( 20 ) NOT NULL AFTER  `grad_year`;
+
+ALTER TABLE  `champion` ADD  `marital_status` VARCHAR( 20 ) NOT NULL AFTER  `gender`;

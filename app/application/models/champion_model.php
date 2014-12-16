@@ -43,9 +43,11 @@ class Champion_model extends CI_Model{
 			"cuid" => $this->input->post("cuid"),
 			"atid" => $this->input->post("atid"),
 			"grad_year" => $this->input->post("grad_year"),
+			"title" => $this->input->post("title"),
 			"first_name" => $this->input->post("first_name"),
 			"last_name" => $this->input->post("last_name"),
 			"gender" => $this->input->post("gender"),
+			"marital_status" => $this->input->post("marital_status"),
 			"email" => $this->input->post("email"),
 			"phone" => $this->input->post("phone"),
 			"password" => md5(md5($this->input->post("password"))) //double md5()

@@ -20,6 +20,20 @@ for($i=date("Y"); $i>=1950; $i--){
 	$_year[$i] = $i;
 }
 
+if(isset($_POST['register'])){
+	//preserve the submitted drop-downs
+	$_marital_status = $this->input->post("marital_status");
+	$_title = $this->input->post("title");
+	$_cuid = $this->input->post("cuid");
+	$_atid = $this->input->post("atid");
+	$_gender = $this->input->post("gender");
+}else{
+	$_marital_status = "";
+	$_title = "";
+	$cuid = 137;
+	$_gender = "";
+}
+
 
 
 ?>
@@ -41,10 +55,19 @@ for($i=date("Y"); $i>=1950; $i--){
 		echo form_input("first_name",set_value("first_name"),"class='half'");
 		echo form_input("last_name",set_value("last_name"),"class='half'");
 		echo form_label("First Name <span class='right'>Last Name</span>","first_name");
+		echo form_dropdown("title",
+			array(
+				"Mr." => "Mr.","Ms."=>"Ms.","Mrs."=>"Mrs.",
+				"Prof."=>"Prof.","Dr."=>"Dr."
+				),$_title, "class='half'");
+		echo form_dropdown("marital_status",
+			array("Single"=>"Single","Married"=>"Married","Other"=>"Other"),
+				$_marital_status,"class='half'");
+		echo form_label("Title <span class='right'>Marital Status</span>","first_name");
 		if($in_cu == 1){
-			echo form_dropdown("cuid",$_uni_cu,137);
+			echo form_dropdown("cuid",$_uni_cu,$_cuid);
 			echo form_label("Christian Union","cuid");
-			echo form_dropdown("atid",$_aff_type,1, "class='half'");
+			echo form_dropdown("atid",$_aff_type,$_atid, "class='half'");
 			echo form_dropdown("grad_year",$_year,"","class='half'");
 			echo form_label("Affiliation <span class='right'>Year of Graduation</span>","atid");
 		}else{
@@ -57,12 +80,12 @@ for($i=date("Y"); $i>=1950; $i--){
 		}
 		echo form_input("phone",set_value("phone"),"class='half'");
 		echo form_dropdown("gender", 
-			array("Male"=>"Male","Female"=>"Female"),"",
+			array("Male"=>"Male","Female"=>"Female"),$_gender,
 			"class='half'");
 		echo form_label("Phone Number <span class='right'>Gender</span>","phone");
 
 		echo form_input("email",set_value("email"));
-		echo form_label("Email","email");
+		echo form_label("Email (Will be used for logging in)","email");
 		echo form_password("password",set_value("password"),"class='half'");
 		echo form_password("password_confirm",set_value("password_confirm"),"class='half'");
 		echo form_label("Set new Password for this sytem <span class='right'>Password Confirm</span>","password");
