@@ -104,6 +104,20 @@ h1,h2,h3,h4,h5,h6{
 }
 
 
+.form a{
+	padding: .3em 0;
+	margin: 0 1em;
+	display: inline-block;
+	font-weight: bold;
+	border-bottom: solid 2px #aaa;
+	text-decoration: none;
+}
+
+.form a:hover{
+	text-decoration: none;
+	border-bottom: solid 2px #E08E31;
+}
+
 
 
 /*end of forms */
@@ -222,6 +236,10 @@ h1,h2,h3,h4,h5,h6{
 
 .c-profile .desc{
 	color: #aaa;
+}
+
+.profile .col-md-6{
+	margin-top: 7px;
 }
 
 /*others - uncategorized */

@@ -84,7 +84,12 @@
       </div>
     </div>
 
-    <div class="container content">
+    <?php
+    if(!isset($css_class)) $css_class="none";
+    if(!isset($css_id)) $css_id = "none";
+    ?>
+
+    <div class="container content <?php echo $css_class; ?>" id="<?php echo $css_id; ?>">
 
       <!-- message area -->
 

@@ -106,6 +106,19 @@ class Champion_model extends CI_Model{
 		return FALSE;
 	}
 
+	function will_commit_later($cid){
+		//see if said will commit later
+		//or the commitment date has passed
+		$sql = "SELECT *
+				FROM commit_later
+				WHERE cid = $cid AND reminder_date >= NOW()";
+		$result = $this->db->query($sql);
+		if($result->num_rows >0){
+			return TRUE;
+		}
+		return FALSE;
+	}
+
 	function get_commitment_type(){
 		return $this->db->get("commitment_type");
 	}
@@ -164,6 +177,21 @@ class Champion_model extends CI_Model{
 			return $result[0];
 		}
 		return false;
+	}
+
+	function commit_later($cid){
+		$commit_later = array(
+			"cid" => $cid,
+			"reminder_date" => $this->input->post("reminder_date")
+			);
+
+		return $this->db->insert("commit_later",$commit_later);
+	}
+
+	function get_commit_later($cid){
+		$sql = "SELECT date_format(reminder_date,'%M %e, %Y') as reminder_date
+				FROM commit_later";
+		return $this->db->query($sql);
 	}
 
 	function get_champs(){

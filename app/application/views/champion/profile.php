@@ -69,6 +69,8 @@
 	<div class="col-md-6">
 		<div class="profile">
 			<h4><i class="fa fa-heart-o"></i> Commitment</h4>
+			<?php
+			 if($cd): ?>
 			<p><span class="left">Type</span>
 				<span class="right">
 					<?php echo $cd->name; ?>
@@ -99,6 +101,18 @@
 			<?php echo anchor("champion/commitment/edit",
 				 	"<i class='fa fa-pencil'></i> Edit Commitment",
 					"class='btn btn-default'"); ?>
+
+			<?php else: ?>
+				<div>
+					<i class="fa fa-clock-o"></i> To be reminded on 
+					<strong><?php $cl = $cl->result(); echo $cl[0]->reminder_date; ?></strong><br/>
+
+				<?php echo anchor("champion/commitment/form",
+				 	"<i class='fa fa-check-circle'></i> Commit Now",
+					"class='btn btn-default'"); ?>
+
+				</div>
+			<?php endif; ?>
 
 		</div>
 	</div>

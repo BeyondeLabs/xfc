@@ -138,3 +138,19 @@ ALTER TABLE  `invite` ADD  `last_name` VARCHAR( 50 ) NOT NULL AFTER  `first_name
 ALTER TABLE  `invite` DROP  `name` ;
 
 ALTER TABLE  `champion` ADD  `in_cu` INT NOT NULL DEFAULT  '1';
+
+CREATE TABLE commit_later(
+	clid int primary key auto_increment,
+	cid int,
+	reminder_date date,
+	reminded int,
+	date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	foreign key(cid) references champion(cid)
+);
+
+ALTER TABLE  `focuschamps`.`commit_later` DROP INDEX  `cid` ,
+ADD UNIQUE  `cid` (  `cid` );
+
+ALTER TABLE  `focuschamps`.`commitment` DROP INDEX  `commit_ibfk_1` ,
+ADD UNIQUE  `commit_ibfk_1` (  `cid` );
+

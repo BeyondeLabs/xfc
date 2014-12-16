@@ -36,9 +36,8 @@ Commitment Form
 		echo validation_errors('<div class="alert alert-danger" role="alert">','</div>');
 
 		echo form_open("champion/commitment/submit","class='form'");
-		echo form_dropdown("supporter",array("0"=>"No","1"=>"Yes"),"","class='half'");
-		echo form_dropdown("ctid",$_commitment_type,"2","class='half'");
-		echo form_label("Already giving to FOCUS financially? <span class='right'>Commitment Type</span>","ctid");
+		echo form_dropdown("ctid",$_commitment_type,"2");
+		echo form_label("Commitment Type","ctid");
 		if(isset($_POST["amount"])){
 			$_amount = $this->input->post("amount");
 		}else{
@@ -52,6 +51,10 @@ Commitment Form
 		echo form_label("Start Date <span class='right'>End Date</span>","date_to date-picker");
 		echo "<label>"."<span class='right'>".form_checkbox("lifetime","1",set_value("lifetime"))." Lifetime Supporter</span></label>"; 
 		echo form_submit("register","Commit","class='btn btn-lg btn-success'");
+
+		echo anchor("champion/commitment/later","<i class='fa fa-clock-o'></i> Commit Later");
+
+		echo form_close();
 		?>
 
 	</div>

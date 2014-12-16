@@ -8,6 +8,7 @@ class Champion extends CI_Controller {
 		// $this->load->model("cu_model");
 		$this->load->model("champion_model");
 		$this->is_logged_in();
+		$this->data['cid'] = $this->session->userdata("cid");
 	}
 
 	private function is_logged_in(){
@@ -28,17 +29,22 @@ class Champion extends CI_Controller {
 	}
 
 	public function profile($mode="view"){
+		$this->data['css_class'] = "profile";
+		$this->data['css_id'] = "profile";
+
 		if($mode=="view"){
-			$cid = $this->session->userdata("cid");
-			if(!$this->champion_model->made_commitment($cid)){
+			
+			if($this->champion_model->made_commitment($this->data['cid']) &&
+				$this->champion_model->will_commit_later($cid)){
 				redirect("champion/commitment/form");
 			}
 			$this->data['main'] = "champion/profile";
-			$this->data['cd'] = $this->champion_model->get_commitment_details($cid);
+			$this->data['cd'] = $this->champion_model->get_commitment_details($this->data['cid']);
 			$this->data['profile'] = $this->champion_model->get_champ_profile
 										($this->session->userdata("email"));
-			$this->data['org'] = $this->champion_model->get_org($cid);
-			$this->data['invite'] = $this->champion_model->get_invite($cid);
+			$this->data['org'] = $this->champion_model->get_org($this->data['cid']);
+			$this->data['invite'] = $this->champion_model->get_invite($this->data['cid']);
+			$this->data['cl'] = $this->champion_model->get_commit_later($this->data['cid']);
 			$this->_load_view();
 		}
 		if($mode=="edit"){
@@ -61,8 +67,8 @@ class Champion extends CI_Controller {
 			$this->form_validation->set_rules($rules);
 
 			if($this->form_validation->run()){
-				$cid = $this->session->userdata("cid");
-				$this->champion_model->update_profile($cid);
+				
+				$this->champion_model->update_profile($this->data['cid']);
 				redirect("champion/profile");
 			}else{
 				$this->profile("edit");
@@ -74,14 +80,12 @@ class Champion extends CI_Controller {
 		//check first if made a commitment, if not, take to
 		//commitment form
 		if($mode=="view"){
-			$cid = $this->session->userdata("cid");
-			if(!$this->champion_model->made_commitment($cid)){
+			if(!$this->champion_model->made_commitment($this->data['cid'])){
 				redirect("champion/commitment/form");
 			}
 
 			$this->data['main'] = "champion/commitment_view";
-			$cid = $this->session->userdata("cid");
-			$this->data['cd'] = $this->champion_model->get_commitment_details($cid);
+			$this->data['cd'] = $this->champion_model->get_commitment_details($this->data['cid']);
 			$this->_load_view();
 		}
 
@@ -155,8 +159,7 @@ class Champion extends CI_Controller {
 			$this->data['date_picker'] = TRUE;
 			$this->data['main'] = "champion/commitment_form_edit";
 			$this->data['commitment_type'] = $this->champion_model->get_commitment_type();
-			$cid = $this->session->userdata("cid");
-			$this->data['cd'] = $this->champion_model->get_commitment_details2($cid);
+			$this->data['cd'] = $this->champion_model->get_commitment_details2($this->data['cid']);
 			$this->_load_view();
 		}
 
@@ -194,10 +197,30 @@ class Champion extends CI_Controller {
 				$this->commitment("edit");
 			}
 		}
+
+		if($mode=="later"){
+			//view CL (commit later) form
+			$this->data['step'] = array(2,3);
+			$this->data['date_picker'] = TRUE;
+			$this->data['main'] = "champion/commit_later";
+			$this->_load_view();
+		}
+
+		if($mode=="laterc"){
+			//submit CL form
+			$this->load->library("form_validation");
+			$this->form_validation->set_rules('reminder_date','Reminder Date','required');
+			if($this->form_validation->run()){
+				$this->champion_model->commit_later($this->data['cid']);
+				redirect("champion/profile");
+			}else{
+				$this->commitment("later");
+			}
+		}
 	}
 
 	private function _has_committed($cid){
-		if($this->champion_model->made_commitment($cid)){
+		if($this->champion_model->made_commitment($this->data['cid'])){
 			redirect("champion/commitment/view");
 		}
 	}
@@ -258,8 +281,7 @@ class Champion extends CI_Controller {
 			$this->load->library("form_validation");
 			$this->form_validation->set_rules($rules);
 			if($this->form_validation->run()){
-				$cid = $this->session->userdata("cid");
-				$this->champion_model->add_org($cid);
+				$this->champion_model->add_org($this->data['cid']);
 				redirect("champion/profile");
 			}else{
 				$this->org("add");
@@ -268,10 +290,10 @@ class Champion extends CI_Controller {
 	}
 
 	public function invite($mode="form"){
-		$cid = $this->session->userdata("cid");
+		
 		if($mode=="form"){
 			$this->data['main'] = "champion/invite";
-			$this->data['invite'] = $this->champion_model->get_invite($cid);
+			$this->data['invite'] = $this->champion_model->get_invite($this->data['cid']);
 			$this->_load_view();
 		}
 
@@ -303,7 +325,7 @@ class Champion extends CI_Controller {
 			$this->form_validation->set_rules($rules);
 			$this->form_validation->set_message("is_unique","Already invited by someone else");
 			if($this->form_validation->run()){
-				$this->champion_model->invite($cid);
+				$this->champion_model->invite($this->data['cid']);
 				redirect("champion/invite");
 			}else{
 				$this->invite("form");

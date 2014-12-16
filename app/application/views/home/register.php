@@ -50,7 +50,7 @@ for($i=date("Y"); $i>=1950; $i--){
 		}else{
 			echo form_hidden(
 				array(
-					"cuid"=>87, //none
+					"cuid"=>146, //none
 					"atid"=>1
 					)
 			);	
