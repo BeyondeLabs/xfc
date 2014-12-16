@@ -39,6 +39,7 @@ class Champion_model extends CI_Model{
 
 	function register_champ(){
 		$champ = array(
+			"in_cu" => $this->input->post("in_cu"),
 			"cuid" => $this->input->post("cuid"),
 			"atid" => $this->input->post("atid"),
 			"grad_year" => $this->input->post("grad_year"),

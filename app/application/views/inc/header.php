@@ -74,6 +74,7 @@
             <?php } else{ ?>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-arrow-circle-o-right"></i> Guest <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
+                    <li><?php echo anchor("home/pre","<i class='fa fa-user'></i> Register"); ?></li>
                     <li><?php echo anchor("home/login","<i class='fa fa-heart'></i> Login"); ?></li>
                 </ul>
             <?php } ?>

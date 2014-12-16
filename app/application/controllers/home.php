@@ -34,11 +34,19 @@ class Home extends CI_Controller {
 		$this->_load_view();
 	}
 
-	public function register($mode="form"){
+	public function pre(){
+		//preamble before registration
+		$this->data['main'] = "home/register_pre";
+		$this->_load_view();
+	}
+
+	public function register($mode="form", $cu=1){
 		if($mode=="form"){
 			$this->data['uni_cu'] = $this->cu_model->get_uni_cu();
 			// affiliation types
 			$this->data['aff_type'] = $this->cu_model->get_aff_type();
+			if($cu != 1) $cu = 0;
+			$this->data['in_cu'] = $cu;
 			$this->data['step'] = array(1,3);
 			$this->data['main'] = "home/register";
 			$this->_load_view();

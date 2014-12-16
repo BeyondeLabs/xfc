@@ -136,3 +136,5 @@ ALTER TABLE  `invite` ADD  `first_name` VARCHAR( 50 ) NOT NULL AFTER  `name`;
 ALTER TABLE  `invite` ADD  `last_name` VARCHAR( 50 ) NOT NULL AFTER  `first_name`;
 
 ALTER TABLE  `invite` DROP  `name` ;
+
+ALTER TABLE  `champion` ADD  `in_cu` INT NOT NULL DEFAULT  '1';

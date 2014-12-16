@@ -178,9 +178,9 @@ h1,h2,h3,h4,h5,h6{
 	color: #aaa;
 }
 
-.landing p.stats{
-	margin-top: 10px;
+.landing .stats{
 	color: #E08E31;
+	font-weight: bold;
 }
 
 .landing em{
