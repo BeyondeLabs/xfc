@@ -27,6 +27,8 @@ class Home extends CI_Controller {
 		
 		$this->data['champs'] = $this->champion_model->get_champs();
 		if($this->is_logged_in()){
+			//redirect for now
+			redirect("champion/profile");
 			$this->data['main'] = "home/index_auth";
 		}else{
 			$this->data['main'] = "home/index";

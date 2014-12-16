@@ -242,6 +242,14 @@ h1,h2,h3,h4,h5,h6{
 	margin-top: 7px;
 }
 
+.profile h4 a{
+	float: right;
+}
+
+.profile h4{
+	line-height: 1.7em;
+}
+
 /*others - uncategorized */
 .grey{
 	color: #aaa;

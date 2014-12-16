@@ -24,6 +24,8 @@ class Champion extends CI_Controller {
 
 	public function index()
 	{
+		//redirect for now
+		redirect("champion/profile");
 		$this->data['main'] = "champion/index";
 		$this->_load_view();
 	}
@@ -82,7 +84,12 @@ class Champion extends CI_Controller {
 		$this->data['mode2'] = $mode2;
 
 		if($mode=="view"){
-			if(!$this->champion_model->made_commitment($this->data['cid'])){
+			if($this->champion_model->made_commitment($this->data['cid']) ||
+				 $this->champion_model->will_commit_later($this->data['cid'])){
+				redirect("champion/commitment/form/2");
+			}
+
+			if($this->champion_model->made_commitment($this->data['cid'])){
 				redirect("champion/commitment/form");
 			}
 
