@@ -53,17 +53,23 @@
 			</p>
 			<p><span class="left">Blog/Website</span>
 				<span class="right">
-					<?php echo anchor($profile->url,"","target='_blank'"); ?>
+					<?php
+					if($profile->url != "")
+					echo anchor($profile->url,"","target='_blank'"); ?>
 				</span>
 			</p>
 			<p><span class="left">Facebook</span>
 				<span class="right">
-					<?php echo anchor($profile->url_fb,"","target='_blank'"); ?>
+					<?php 
+					if($profile->url_fb != "")
+					echo anchor($profile->url_fb,"","target='_blank'"); ?>
 				</span>
 			</p>
 			<p><span class="left">Twitter</span>
 				<span class="right">
-					<?php echo anchor($profile->url_tw,"","target='_blank'"); ?>
+					<?php 
+					if($profile->url_tw != "")
+					echo anchor($profile->url_tw,"","target='_blank'"); ?>
 				</span>
 			</p>
 
