@@ -221,7 +221,7 @@ class Champion extends CI_Controller {
 			$this->form_validation->set_rules('reminder_date','Reminder Date','required');
 			if($this->form_validation->run()){
 				$this->champion_model->commit_later($this->data['cid']);
-				redirect("champion/profile");
+				redirect("champion/step/complete");
 			}else{
 				$this->commitment("later");
 			}

@@ -1,7 +1,7 @@
 <h3 class="title">
 <i class="fa fa-user"></i> 
 <?php echo $profile->first_name." ".$profile->last_name ?>
- <span>Profile Details</span>
+ <span>Your Profile</span>
 </h3>
 
 <div class="row">
@@ -144,7 +144,7 @@
 		"class='btn btn-default'"); ?>
 		</h4>
 		<div class="progress">
-			<div class="progress-bar progress-bar-success" style="width: <?php echo($invite->num_rows/20 * 100) ?>%;">
+			<div class="progress-bar progress-bar-primary" style="width: <?php echo($invite->num_rows/20 * 100) ?>%;">
 
   			</div>
 		</div>

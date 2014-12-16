@@ -30,7 +30,8 @@ if(isset($_POST['register'])){
 }else{
 	$_marital_status = "";
 	$_title = "";
-	$cuid = 137;
+	$_cuid = 137;
+	$_atid = "";
 	$_gender = "";
 }
 

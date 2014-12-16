@@ -19,7 +19,7 @@ Invite a Champion
 		// echo form_input("phone",set_value("phone"));
 		// echo form_label("Phone","phone");
 		echo form_submit("invite","Invite","class='btn btn-lg btn-success'");
-
+		echo anchor("champion/profile","Done");
 		?>
 
 	</div>
