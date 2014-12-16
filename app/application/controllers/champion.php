@@ -76,9 +76,11 @@ class Champion extends CI_Controller {
 		}
 	}
 
-	public function commitment($mode="view"){
+	public function commitment($mode="view", $mode2=1){
 		//check first if made a commitment, if not, take to
 		//commitment form
+		$this->data['mode2'] = $mode2;
+
 		if($mode=="view"){
 			if(!$this->champion_model->made_commitment($this->data['cid'])){
 				redirect("champion/commitment/form");
@@ -151,7 +153,7 @@ class Champion extends CI_Controller {
 				$this->champion_model->champion_log($log);
 				redirect("champion/step/complete");
 			}else{
-				$this->commitment("form");
+				$this->commitment("form",$mode2);
 			}
 		}
 

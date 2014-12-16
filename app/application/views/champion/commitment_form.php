@@ -29,13 +29,17 @@ Commitment Form
 <div class="row">
 	<div class="col-md-6">
 
-		<?php $this->load->view("inc/progress_reg"); ?>
+		<?php 
+		if($mode2 == 1){
+			$this->load->view("inc/progress_reg");
+		}
+		 ?>
 		
 		<?php
 
 		echo validation_errors('<div class="alert alert-danger" role="alert">','</div>');
 
-		echo form_open("champion/commitment/submit","class='form'");
+		echo form_open("champion/commitment/submit/2","class='form'");
 		echo form_dropdown("ctid",$_commitment_type,"2");
 		echo form_label("Commitment Type","ctid");
 		if(isset($_POST["amount"])){
@@ -52,7 +56,9 @@ Commitment Form
 		echo "<label>"."<span class='right'>".form_checkbox("lifetime","1",set_value("lifetime"))." Lifetime Supporter</span></label>"; 
 		echo form_submit("register","Commit","class='btn btn-lg btn-success'");
 
-		echo anchor("champion/commitment/later","<i class='fa fa-clock-o'></i> Commit Later");
+		if($mode2==1){
+			echo anchor("champion/commitment/later","<i class='fa fa-clock-o'></i> Commit Later");
+		}
 
 		echo form_close();
 		?>

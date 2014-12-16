@@ -107,7 +107,7 @@
 					<i class="fa fa-clock-o"></i> To be reminded on 
 					<strong><?php $cl = $cl->result(); echo $cl[0]->reminder_date; ?></strong><br/>
 
-				<?php echo anchor("champion/commitment/form",
+				<?php echo anchor("champion/commitment/form/2",
 				 	"<i class='fa fa-check-circle'></i> Commit Now",
 					"class='btn btn-default'"); ?>
 
