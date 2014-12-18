@@ -15,7 +15,7 @@ body {
 /*headings*/
 
 h1,h2,h3,h4,h5,h6{
-	color: #E08E31;
+	color: rgb(240,79,37);
 }
 
 /*buttons*/
@@ -69,7 +69,7 @@ h1,h2,h3,h4,h5,h6{
 
 .form input[type=text]:focus,
 .form input[type=password]:focus{
-	border-bottom: solid 2px #3D67A6;
+	border-bottom: solid 2px rgb(37,64,143);
 }
 
 .form label, .form span{
@@ -115,7 +115,7 @@ h1,h2,h3,h4,h5,h6{
 
 .form a:hover{
 	text-decoration: none;
-	border-bottom: solid 2px #E08E31;
+	border-bottom: solid 2px rgb(240,79,37);
 }
 
 
@@ -180,7 +180,7 @@ h1,h2,h3,h4,h5,h6{
 .landing h1 sub{
 	font-size: 25px;
 	font-weight: normal;
-	color: #3D67A6;
+	color: rgb(37,64,143);
 }
 
 .landing a{
@@ -193,12 +193,12 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .landing .stats{
-	color: #E08E31;
+	color: rgb(240,79,37);
 	font-weight: bold;
 }
 
 .landing em{
-	border-bottom: solid 3px #FFA81E;
+	border-bottom: solid 3px rgb(240,79,37);
 	font-style: normal;
 }
 
@@ -207,18 +207,18 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .btn-normal{
-	border: solid 2px #3D67A6;
-	color: #3D67A6;
+	border: solid 2px rgb(37,64,143);
+	color: rgb(37,64,143);
 }
 
 .landing .btn-normal:hover{
-	border: solid 2px #E08E31;
-	color: #E08E31;
+	border: solid 2px rgb(240,79,37);
+	color: rgb(240,79,37);
 }
 
 .landing .btn-success{
-	background: #E08E31;
-	border-color: #E08E31;
+	background: rgb(240,79,37);
+	border-color: rgb(240,79,37);
 }
 
 /* end of landing */
@@ -272,7 +272,7 @@ h1,h2,h3,h4,h5,h6{
 
 .highlight{
 	font-weight: bold;
-	color: #3D67A6;
+	color: rgb(37,64,143);
 }
 
 .description{
@@ -281,11 +281,11 @@ h1,h2,h3,h4,h5,h6{
 
 .navbar-header .navbar-brand{
 	font-weight: bold;
-	color: #3D67A6;
+	color: rgb(37,64,143);
 }
 
 .navbar-header .navbar-brand:hover{
-	color: #3D67A6;
+	color: rgb(37,64,143);
 }
 
 .cu-list{
@@ -321,7 +321,7 @@ i.complete{
 }
 
 .orange{
-	color: #E08E31;
+	color: rgb(240,79,37);
 }
 
 .focus{
