@@ -167,4 +167,10 @@ class Home extends CI_Controller {
 			}
 		}
 	}
+
+	public function email(){
+		//testing email
+		$this->load->model("email_model");
+		$this->email_model->send_test();
+	}
 }
