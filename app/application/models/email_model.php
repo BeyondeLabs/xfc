@@ -47,15 +47,17 @@ class Email_model extends CI_Model{
 	}
 
 	function send_test(){
+		$msg = 
+"Hello,
+This is a test email.
+Rgds, FC Team";
 		$this->send(
 			"prof@nandaa.com",
 			"Test Email",
-			"Hello,
-			This is a test email.
-			Rgds, FC Team",
+			$msg,
 			FALSE
 			);
-		$this->email->print_debugger();
+		echo $this->email->print_debugger();
 	}
 
 

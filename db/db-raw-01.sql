@@ -160,3 +160,10 @@ ALTER TABLE  `champion` ADD  `marital_status` VARCHAR( 20 ) NOT NULL AFTER  `gen
 
 ALTER TABLE  `commitment` ADD  `payment_mode` VARCHAR( 30 ) NOT NULL;
 
+CREATE TABLE email_template(
+	etid int primary key auto_increment,
+	name varchar(20),
+	html text,
+	datetime TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
