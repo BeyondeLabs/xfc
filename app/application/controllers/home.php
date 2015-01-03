@@ -68,6 +68,7 @@ class Home extends CI_Controller {
 					$subject = "Welcome to FOCUS Champions";
 					$msg = "<p>Hello $name,<br/>
 					Thank you for signing up as a FOCUS Champion.<br/>
+					<br/>
 					Yours faithfully, <br/>
 					<br/>
 					<strong>FOCUS Champions Team</strong>";
