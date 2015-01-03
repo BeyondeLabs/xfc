@@ -10,6 +10,9 @@ class Email_model extends CI_Model{
 	}
 
 	function init(){
+		//config html email
+		$_config['mailtype'] = "html";
+		$this->email->initialize($_config);
 		$this->data['from_email'] = "info@champions.focuskenya.org";
 		$this->data['from_name'] = "FOCUS Champions";
 		$this->data['bcc'] = "profnandaa@gmail.com"; //for debugging
@@ -32,7 +35,9 @@ class Email_model extends CI_Model{
 		$this->email->subject($subject);
 		if($html){
 			//html email, merge $msg with template
-			//using preg_match
+			//using str_replace
+			$temp = $this->get_template();
+			$msg = str_replace("{body}", $msg, $temp);
 			$this->email->message($msg);
 		}else{
 			//plain email
@@ -43,19 +48,26 @@ class Email_model extends CI_Model{
 	}
 
 	function get_template($name="default"){
-
+		$this->db->where("name",$name);
+		$result = $this->db->get("email_template");
+		if($result->num_rows > 0){
+			$result = $result->result();
+			return $result[0]->html;
+		}
+		return FALSE;
 	}
 
 	function send_test(){
-		$msg = 
-"Hello,
-This is a test email.
-Rgds, FC Team";
+		$msg = "<p>Hello,<br/>
+				This is a test email.<br/>
+				<br/>
+				Regards,<br/>
+				<strong>FC Team</strong></p>";
 		$this->send(
 			"prof@nandaa.com",
 			"Test Email",
 			$msg,
-			FALSE
+			TRUE
 			);
 		echo $this->email->print_debugger();
 	}
