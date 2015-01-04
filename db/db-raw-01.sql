@@ -167,3 +167,11 @@ CREATE TABLE email_template(
 	datetime TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE email_message(
+	emid int primary key auto_increment,
+	name varchar(20),
+	html text,
+	datetime TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+ALTER TABLE `email_message` ADD UNIQUE(`name`);

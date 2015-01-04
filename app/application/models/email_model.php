@@ -57,6 +57,16 @@ class Email_model extends CI_Model{
 		return FALSE;
 	}
 
+	function get_msg($name=""){
+		$this->db->where("name",$name);
+		$result = $this->db->get("email_message");
+		if($result->num_rows > 0){
+			$result = $result->result();
+			return $result[0]->html;
+		}
+		return FALSE;
+	}
+
 	function send_test(){
 		$msg = "<p>Hello,<br/>
 				This is a test email.<br/>

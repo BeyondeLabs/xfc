@@ -63,17 +63,15 @@ class Home extends CI_Controller {
 			if($this->form_validation->run()){
 				if($this->champion_model->register_champ()){
 					#email user, later will add verification code
+					$this->load->model("email_model");
+
 					$name = $this->input->post("first_name");
 					$to_email = $this->input->post("email");
 					$subject = "Welcome to FOCUS Champions";
-					$msg = "<p>Hello $name,<br/>
-					Thank you for signing up as a FOCUS Champion.<br/>
-					<br/>
-					Yours faithfully, <br/>
-					<br/>
-					<strong>FOCUS Champions Team</strong>";
 
-					$this->load->model("email_model");
+					$msg = $this->email_model->get_msg("welcome");
+					$msg = str_replace("{name}", $name, $msg);
+
 					$this->email_model->send($to_email,$subject,$msg);
 
 					#auto-login user
