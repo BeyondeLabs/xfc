@@ -1,6 +1,6 @@
 <?php
 
-$bytes = openssl_random_pseudo_bytes(10, $cstrong);
+$bytes = openssl_random_pseudo_bytes(rand(2,10), $cstrong); // 
 var_dump($bytes);
 echo "<pre>$cstrong</pre>";
 
