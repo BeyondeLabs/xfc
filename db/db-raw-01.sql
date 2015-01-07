@@ -177,3 +177,5 @@ CREATE TABLE email_message(
 ALTER TABLE `email_message` ADD UNIQUE(`name`);
 
 ALTER TABLE `invite` ADD `check` VARCHAR( 50 ) NOT NULL ;
+
+ALTER TABLE `invite` ADD `cstrong` BOOLEAN NOT NULL ;
