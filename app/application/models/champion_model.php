@@ -53,7 +53,21 @@ class Champion_model extends CI_Model{
 			"password" => md5(md5($this->input->post("password"))) //double md5()
 			);
 
-		return $this->db->insert("champion",$champ);
+		$this->db->insert("champion",$champ);
+
+		//get the cid
+		$sql = "SELECT max(cid) as cid FROM champion";
+		$result = $this->db->query($sql);
+		$result = $result->result();
+		$cid_to = $result[0]->cid;
+
+		//update invite table where applicable
+		$this->db->where("email",$this->input->post("email"));
+		$invite = array(
+			"cid_to" => $cid_to
+			);
+		
+		return $this->db->update("invite",$invite);
 	}
 
 	function get_champ_profile($email){
