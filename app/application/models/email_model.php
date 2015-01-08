@@ -44,7 +44,11 @@ class Email_model extends CI_Model{
 			$this->email->message($msg);
 		}
 
+		// var_dump($msg); die();
+		
 		$this->email->send();
+
+		// echo $this->email->print_debugger(); die();
 	}
 
 	function get_template($name="default"){

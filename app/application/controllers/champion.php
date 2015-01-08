@@ -332,9 +332,26 @@ class Champion extends CI_Controller {
 
 			$this->load->library("form_validation");
 			$this->form_validation->set_rules($rules);
-			$this->form_validation->set_message("is_unique","Already invited by someone else");
+			$this->form_validation->set_message("is_unique","Already invited");
 			if($this->form_validation->run()){
-				$this->champion_model->invite($this->data['cid']);
+				$invite = $this->champion_model->invite($this->data['cid']);
+				//email invite
+				$iid = $invite['iid'];
+				$check = $invite['check'];
+				$invite_link = anchor("home/invited/$iid/$check");
+
+				$invitee = $this->input->post("first_name");
+				$inviter = $this->session->userdata("first_name")." ".$this->session->userdata("last_name");
+				$msg = $this->email_model->get_msg("invite");
+				$msg = str_replace("{invitee}", $invitee, $msg);
+				$msg = str_replace("{inviter}", $inviter, $msg);
+				$msg = str_replace("{invite_link}", $invite_link, $msg);
+
+				$to_email = $this->input->post("email");
+				$subject = "Invited to FOCUS Champions"; //add subject to be pulled from DB
+
+				$this->email_model->send($to_email,$subject,$msg);
+
 				redirect("champion/invite");
 			}else{
 				$this->invite("form");

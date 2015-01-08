@@ -179,3 +179,8 @@ ALTER TABLE `email_message` ADD UNIQUE(`name`);
 ALTER TABLE `invite` ADD `check` VARCHAR( 50 ) NOT NULL ;
 
 ALTER TABLE `invite` ADD `cstrong` BOOLEAN NOT NULL ;
+
+ALTER TABLE `invite` CHANGE `responded` `response_datetime` DATETIME NULL DEFAULT NULL ;
+
+ALTER TABLE `invite` CHANGE `date_time` `date_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ;
+

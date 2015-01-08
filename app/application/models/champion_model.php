@@ -259,11 +259,48 @@ class Champion_model extends CI_Model{
 			"last_name" => $this->input->post("last_name")
 			);
 
-		return $this->db->insert("invite",$invite);
+		$this->db->insert("invite",$invite);
+		//get the iid for the invite
+		$sql = "SELECT max(iid) as iid FROM invite";
+		$result = $this->db->query($sql);
+		$result = $result->result();
+		$iid = $result[0]->iid;
+
+		$check = bin2hex(openssl_random_pseudo_bytes(rand(2,10), $cstrong));
+		//save in DB for counter-checking
+		$invite = array(
+			"check" => $check,
+			"cstrong"=> $cstrong
+			);
+		$this->db->where("iid",$iid);
+		$this->db->update("invite",$invite);
+
+		return array("iid"=>$iid,
+					"check"=>$check);
 	}
 
 	function get_invite($cid){
 		$this->db->where("cid_from",$cid);
 		return $this->db->get("invite");
+	}
+
+	function invited($iid,$check){
+		$this->db->where(array(
+			"iid"=>$iid,
+			"check"=>$check
+			));
+
+		$result = $this->db->get("invite");
+		if($result->num_rows > 0){
+			//add response date/time
+			$invite = array(
+				"response_datetime" => date('Y-m-d H:i:s')
+				);
+			$this->db->where("iid",$iid);
+			$this->db->update("invite",$invite);
+
+			return TRUE;
+		}
+		return FALSE;
 	}
 }

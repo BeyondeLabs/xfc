@@ -185,4 +185,14 @@ class Home extends CI_Controller {
 		$this->load->model("email_model");
 		$this->email_model->send_test();
 	}
+
+	public function invited($iid,$check){
+		//logout whoever logged in
+		$this->session->sess_destroy();
+
+		//iid --> invite ID, $check --> hash
+		$this->champion_model->invited($iid,$check);
+
+		redirect("home/pre");
+	}
 }

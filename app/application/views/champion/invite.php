@@ -28,7 +28,7 @@ Invite a Champion
 		<?php
 			foreach($invite->result() as $row){
 				echo "<li>$row->first_name $row->last_name";
-				if($row->responded == 1){
+				if($row->response_datetime != ""){
 					echo " <i class='fa fa-check-circle'></i>";
 				}
 				echo "</li>";
