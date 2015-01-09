@@ -218,6 +218,11 @@ class Champion_model extends CI_Model{
 		return $this->db->get("champion")->num_rows;
 	}
 
+	function get_champs_invited(){
+		//total number of invited champions
+		return $this->db->get("invite")->num_rows;
+	}
+
 	function get_champs_list(){
 		$sql = "SELECT *,
 				champion.email as champ_email,
