@@ -184,3 +184,5 @@ ALTER TABLE `invite` CHANGE `responded` `response_datetime` DATETIME NULL DEFAUL
 
 ALTER TABLE `invite` CHANGE `date_time` `date_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ;
 
+ALTER TABLE `email_message` ADD `subject` VARCHAR( 200 ) NOT NULL DEFAULT 'FOCUS Champions' AFTER `name` ;
+

@@ -67,10 +67,11 @@ class Home extends CI_Controller {
 
 					$name = $this->input->post("first_name");
 					$to_email = $this->input->post("email");
-					$subject = "Welcome to FOCUS Champions";
 
-					$msg = $this->email_model->get_msg("welcome");
+					$_msg = $this->email_model->get_msg("welcome");
+					$msg = $_msg['html'];
 					$msg = str_replace("{name}", $name, $msg);
+					$subject = $_msg['subject'];
 
 					$this->email_model->send($to_email,$subject,$msg);
 

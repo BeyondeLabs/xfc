@@ -66,7 +66,10 @@ class Email_model extends CI_Model{
 		$result = $this->db->get("email_message");
 		if($result->num_rows > 0){
 			$result = $result->result();
-			return $result[0]->html;
+			return array(
+				"html"=>$result[0]->html,
+				"subject"=>$result[0]->subject
+				);
 		}
 		return FALSE;
 	}
