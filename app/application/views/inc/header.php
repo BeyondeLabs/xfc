@@ -43,6 +43,7 @@
             <li class="active"><?php echo anchor("home","Home"); ?></li>
             <li><a href="#about">About</a></li>
             <li><?php echo anchor("home/feedback","Feedback"); ?></li>
+            <li><?php echo anchor("home/contact","Contact Us"); ?></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown active-inverse">

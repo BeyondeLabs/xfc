@@ -182,6 +182,11 @@ class Home extends CI_Controller {
 		}
 	}
 
+	public function contact(){
+		$this->data['main'] = "home/contact";
+		$this->_load_view();
+	}
+
 	public function email(){
 		//testing email
 		$this->load->model("email_model");
