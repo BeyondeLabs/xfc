@@ -22,8 +22,7 @@
 								<tr>
 									<td style="padding:5px 2px;">
 									<p style="font-size: 11px; line-height: 15px; font-family: Helvetica, Arial, sans-serif; color: #999999; margin: 0px 0px 10px 0">
-									FOCUS Champions &bull; A project of <a style="color: #336699; text-decoration: none" href="http://champions.focuskenya.org" target="_blank">Fellowship of Christian Unions (FOCUS) Kenya</a><br>
-									See our <a style="color: #336699; text-decoration: none" href="#" target="_blank">Privacy Policy</a> and <a style="color: #336699; text-decoration: none" href="#" target="_blank">Terms &amp; Conditions</a>.</p>
+									FOCUS Champions &bull; A project of <a style="font-weight:bold; color: #336699; text-decoration: none" href="http://champions.focuskenya.org" target="_blank">Fellowship of Christian Unions (FOCUS) Kenya</a>, a Kenyan Registered Charity. No. <strong>2012092/1423</strong>.</p>
 
 									</td>
 								</tr>
