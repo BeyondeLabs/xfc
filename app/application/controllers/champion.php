@@ -119,13 +119,13 @@ class Champion extends CI_Controller {
 				$rule = array(
 						'field'=>'other_amount',
 						'label'=>'Specified Amount',
-						'rules'=>'required|greater_than[99]'
+						'rules'=>'required|greater_than[199]'
 					);
 			}else{
 				$rule = array(
 						'field'=>'other_amount',
 						'label'=>'Specified Amount',
-						'rules'=>'less_than[1]|greater_than[-1]'
+						'rules'=>'greater_than[199]'
 					);
 			}
 
@@ -179,7 +179,7 @@ class Champion extends CI_Controller {
 				array(
 					'field'=>'amount',
 					'label'=>'Amount',
-					'rules'=>'required|greater_than[99]'
+					'rules'=>'required|greater_than[199]'
 					),
 				array(
 					'field'=>'date_from',
