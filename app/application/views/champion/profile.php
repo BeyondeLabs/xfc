@@ -122,6 +122,21 @@
 					?>
 				</span>
 			</p>
+			<p class="large"><span class="left">Payment Instructions</span>
+				<span class="right">
+					<?php
+					if($cd->payment_mode == "MPesa"){
+						echo "Business Number: <strong>412 412</strong>, <br/>Account Name: <strong>Champions</strong>.";
+					}
+					if($cd->payment_mode == "Airtel"){
+						echo "Send to Number: <strong>0733 614 340</strong>.";
+					}
+					if($cd->payment_mode == "SO"){
+						echo "Barclays Bank A/c: <strong>0948 2074 00</strong>, <br/>Swift Code: <strong>BARCKENX</strong>.";
+					}
+					?>
+				</span>
+			</p>
 
 			<?php else: ?>
 				<div style="padding-left:21px;">

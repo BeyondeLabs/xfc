@@ -161,6 +161,10 @@ h1,h2,h3,h4,h5,h6{
 	padding: 5px 3px;
 }
 
+.profile p.large{
+	min-height: 4em;
+}
+
 .profile span.left{
 	font-weight: bold;
 	width: 30%;
