@@ -195,6 +195,6 @@ class Home extends CI_Controller {
 		//iid --> invite ID, $check --> hash
 		$this->champion_model->invited($iid,$check);
 
-		redirect("home/pre");
+		redirect("home");
 	}
 }

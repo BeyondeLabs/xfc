@@ -9,7 +9,7 @@
 <?php echo anchor("home/pre","Join Now","class='btn btn-lg btn-success'"); ?>
 <?php echo anchor("#","Tell me more","class='btn btn-lg btn-normal'"); ?>
 
-<span class="stats"><i class="fa fa-line-chart"></i> <?php echo $champs; ?> supporters joined so far </span> / 
+<span class="stats"><i class="fa fa-line-chart"></i> <?php echo $champs; ?> Champions joined so far </span> / 
 <?php echo $invited; ?> Invited
 
 </div>
