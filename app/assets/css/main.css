@@ -8,6 +8,14 @@
 
 */
 
+.red{
+	color:#f04f25;
+}
+
+.blue{
+	color:#25408f;
+}
+
 body {
   padding-top: 70px;
   color: #555;
@@ -329,11 +337,25 @@ i.complete{
 	color: rgb(240,79,37);
 }
 
+.strong{
+	font-weight: bold;
+}
+
+li.active-inverse{
+	background: #f04f25;
+	color: #fefefe;
+}
+
+li.active-inverse a{
+	color: #fefefe !important; /*bad practive! */
+}
+
 .focus{
 	padding-left: 5px;
 	background: url(../img/focus-logo.png) no-repeat;
 	padding: 8px 10px 8px 50px;
 }
+
 
 .footer{
 	margin-top: 20px;

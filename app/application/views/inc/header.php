@@ -45,7 +45,7 @@
             <li><?php echo anchor("home/feedback","Feedback"); ?></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown active">
+            <li class="dropdown active-inverse">
             <?php if($this->session->userdata('logged_in')){ ?>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-arrow-circle-right"></i> 
                   <?php if($this->session->userdata('is_admin')): ?>
@@ -72,10 +72,9 @@
                   <?php endif; ?>
 
             <?php } else{ ?>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-arrow-circle-o-right"></i> Guest <span class="caret"></span></a>
+              
+              <?php echo anchor("home/login","<i class='fa fa-lock'></i> Login</span>","class='strong'"); ?>
                 <ul class="dropdown-menu" role="menu">
-                    <li><?php echo anchor("home/pre","<i class='fa fa-user'></i> Register"); ?></li>
-                    <li><?php echo anchor("home/login","<i class='fa fa-heart'></i> Login"); ?></li>
                 </ul>
             <?php } ?>
             </li>
