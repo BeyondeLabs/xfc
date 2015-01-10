@@ -22,5 +22,6 @@
 	umbrella body that links and Networks Christian Unions in institutions 
 	of higher learning and associates' involvement in Church and Society. 
 </p>
+<p>FOCUS Kenya is a Kenyan Registered Charity &mdash; No. <strong>2012092/1423</strong></p>
 </div>
 
