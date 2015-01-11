@@ -159,7 +159,7 @@
 		"class='btn btn-default'"); ?>
 		</h4>
 		<div class="progress">
-			<div class="progress-bar progress-bar-primary" style="width: <?php echo($invite->num_rows/20 * 100) ?>%;">
+			<div class="progress-bar progress-bar-success" style="width: <?php echo($invite->num_rows/20 * 100) ?>%;">
 
   			</div>
 		</div>
