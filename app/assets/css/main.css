@@ -377,8 +377,8 @@ li.active-inverse{
 	color: #fefefe;
 }
 
-li.active-inverse a{
-	color: #fefefe !important; /*bad practive! */
+li.active-inverse a.white{
+	color: #fefefe;
 }
 
 .focus{

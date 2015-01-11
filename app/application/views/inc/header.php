@@ -48,7 +48,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown active-inverse">
             <?php if($this->session->userdata('logged_in')){ ?>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-arrow-circle-right"></i> 
+              <a href="#" class="dropdown-toggle white" data-toggle="dropdown"><i class="fa fa-arrow-circle-right"></i> 
                   <?php if($this->session->userdata('is_admin')): ?>
         
                     <!-- admin menu here -->
