@@ -9,7 +9,7 @@
 		<div class="profile">
 			<h4>Personal Information 
 				<?php echo anchor("champion/profile/edit",
-					"<i class='fa fa-pencil'></i> Edit",
+					"<i class='fa fa-pencil'></i> Update Profile",
 					"class='btn btn-default'"); ?></h4>
 			<p><span class="left">Gender</span>
 				<span class="right">
@@ -82,7 +82,7 @@
 					<?php 
 					if($cd){
 						echo anchor("champion/commitment/edit",
-					 	"<i class='fa fa-pencil'></i> Edit",
+					 	"<i class='fa fa-pencil'></i> Update",
 						"class='btn btn-default'"); 
 					}
 					?>
@@ -171,7 +171,7 @@
 				echo "people";
 			}
 			?>, out of a 
-			target of 20.</p>
+			target of 20 &mdash; <?php echo anchor("champion/invite","View List"); ?></p>
 	</div>
 
 </div>
