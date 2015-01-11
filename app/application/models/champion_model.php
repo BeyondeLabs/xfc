@@ -303,7 +303,8 @@ class Champion_model extends CI_Model{
 				date_format(date_time,'%b %e, %Y, %l:%i %p') as date_time,
 				date_format(response_datetime,'%b %e, %Y, %l:%i %p') as response_datetime
 				FROM invite
-				WHERE cid_from = $cid";
+				WHERE cid_from = $cid
+				ORDER BY first_name ASC";
 		return $this->db->query($sql);
 	}
 
