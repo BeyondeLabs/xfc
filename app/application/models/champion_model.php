@@ -299,8 +299,12 @@ class Champion_model extends CI_Model{
 	}
 
 	function get_invite($cid){
-		$this->db->where("cid_from",$cid);
-		return $this->db->get("invite");
+		$sql = "SELECT *,
+				date_format(date_time,'%b %e, %Y, %l:%i %p') as date_time,
+				date_format(response_datetime,'%b %e, %Y, %l:%i %p') as response_datetime
+				FROM invite
+				WHERE cid_from = $cid";
+		return $this->db->query($sql);
 	}
 
 	function invited($iid,$check){

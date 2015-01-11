@@ -23,18 +23,30 @@ Invite a Champion
 		?>
 
 	</div>
-	<div class="col-md-6">
-		<ul>
-		<?php
-			foreach($invite->result() as $row){
-				echo "<li>$row->first_name $row->last_name";
-				if($row->response_datetime != ""){
-					echo " <i class='fa fa-check-circle'></i>";
+	<div class="col-md-6 no-overflow">
+		<table class="table">
+		<tr>
+			<th>#</th>
+			<th width="35%">Name</th>
+			<th width="30%">Invited</th>
+			<th width="30%">Responded</th>
+		</tr>
+			<?php
+				$count = 0;
+				foreach($invite->result() as $row){
+					$count++;
+					echo "<tr>";
+					echo "<td>$count</td>";
+					echo "<td>$row->first_name $row->last_name";
+					if($row->response_datetime != ""){
+						echo " <i class='fa blue fa-check-circle'></i>";
+					}
+					echo "</td>";
+					echo "<td>$row->date_time </td>";
+					echo "<td>$row->response_datetime </td>";
+					echo "</tr>";
 				}
-				echo "</li>";
-			}
-		?>
-		</ul>
+			?>
+		</table>
 	</div>
-
 </div>
