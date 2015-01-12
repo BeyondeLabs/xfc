@@ -33,6 +33,8 @@ class Champion extends CI_Controller {
 	public function profile($mode="view"){
 		$this->data['css_class'] = "profile";
 		$this->data['css_id'] = "profile";
+		$this->data['champs_count'] = $this->champion_model->get_champs();
+		$this->data['champs_invited'] = $this->champion_model->get_champs_invited();
 
 		if($mode=="view"){
 			

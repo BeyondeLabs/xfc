@@ -160,7 +160,6 @@
 		</h4>
 		<div class="progress">
 			<div class="progress-bar progress-bar-success" style="width: <?php echo($invite->num_rows/20 * 100) ?>%;">
-
   			</div>
 		</div>
 		<p>You've invited <?php echo $invite->num_rows; ?> 
@@ -172,6 +171,8 @@
 			}
 			?>, out of a 
 			target of 20 &mdash; <?php echo anchor("champion/invite","View List"); ?></p>
+			<p><i class="fa fa-pie-chart blue"></i> On overral, we've <strong class="blue"><?php echo $champs_count; ?> Champions</strong> joined so far, and 
+				<?php echo $champs_invited;?> invitations sent out.</p>
 	</div>
 
 </div>
