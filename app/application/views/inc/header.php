@@ -74,7 +74,7 @@
 
             <?php } else{ ?>
               
-              <?php echo anchor("home/login","<i class='fa fa-lock'></i> Login</span>","class='strong'"); ?>
+              <?php echo anchor("home/login","<i class='fa fa-lock'></i> Login</span>","class='strong white'"); ?>
                 <ul class="dropdown-menu" role="menu">
                 </ul>
             <?php } ?>
