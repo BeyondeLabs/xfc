@@ -342,21 +342,20 @@ class Champion extends CI_Controller {
 
 				$invitee = $this->input->post("first_name");
 				$inviter = $this->session->userdata("first_name")." ".$this->session->userdata("last_name");
+				$from_email = $this->session->userdata("email");
+				$from_phone = $this->session->userdata("phone");
 				$_msg = $this->email_model->get_msg("invite");
 				$msg = $_msg['html'];
 				$msg = str_replace("{invitee}", $invitee, $msg);
 				$msg = str_replace("{inviter}", $inviter, $msg);
 				$msg = str_replace("{invite_link}", $invite_link, $msg);
+				$msg = str_replace("{from_email}", $from_email, $msg);
+				$msg = str_replace("{from_phone}", $from_phone, $msg);
 
 				$to_email = $this->input->post("email");
 				$subject = $_msg['subject'];
 
-				$config = array(
-					"from_email" => $this->session->userdata("email"),
-					"from_name" => $invitee
-					);
-
-				$this->email_model->send($to_email,$subject,$msg,$config);
+				$this->email_model->send($to_email,$subject,$msg);
 
 				redirect("champion/invite");
 			}else{
