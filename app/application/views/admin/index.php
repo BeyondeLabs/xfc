@@ -4,9 +4,19 @@
 	resolving payments, etc.
 </div>
 
-<h4>Quick Menu</h4>
-<ul>
-	<li><?php echo anchor("admin/champions","Champions"); ?></li>
-	<li><?php echo anchor("admin/feedback","Feedback"); ?></li>
-	<li><?php echo anchor("admin/cu","Manage CU List"); ?></li>
+<div class="row">
+<div class="col-md-3">
+<ul class="nav nav-pills nav-stacked">
+	<li class="active"><?php echo anchor("admin/champions","<i class='fa fa-user'></i> Champions"); ?></li>
+	<li><?php echo anchor("admin/feedback","<i class='fa fa-comments'></i> Feedback"); ?></li>
+	<li><?php echo anchor("admin/cu","<i class='fa fa-institution'></i> Manage CU List"); ?></li>
 </ul>
+
+</div>
+
+<div class="col-md-6">
+
+
+</div>
+
+</div>

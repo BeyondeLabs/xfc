@@ -248,6 +248,7 @@ h1,h2,h3,h4,h5,h6{
 .c-profile{
 	border-left: solid 3px #cecece;
 	margin-bottom: 7px;
+	min-height: 125px;
 }
 
 .c-profile h4{
@@ -325,6 +326,7 @@ table.table{
 
 .description{
 	color: #888;
+	margin: 10px 0;
 }
 
 .navbar-header .navbar-brand{
