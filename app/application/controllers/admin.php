@@ -6,6 +6,7 @@ class Admin extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model("admin_model");
+		$this->load->model("champion_model");
 		$this->load->model("cu_model");
 		$this->is_logged_in();
 	}
@@ -67,9 +68,17 @@ class Admin extends CI_Controller {
 	public function champions($mode="view"){
 		if($mode=="view"){
 			//view list of champions
-			$this->load->model("champion_model");
 			$this->data['champs'] = $this->champion_model->get_champs_list();
 			$this->data['main'] = "admin/champions_view";
+			$this->_load_view();
+		}
+	}
+
+	public function commitments($mode="view"){
+		if($mode=="view"){
+			$this->data['committed'] = $this->champion_model->get_champs_committed();
+			$this->data['commit_later'] = $this->champion_model->get_champs_commit_later();
+			$this->data['main'] = "admin/commitments";
 			$this->_load_view();
 		}
 	}

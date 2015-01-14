@@ -244,9 +244,18 @@ class Champion_model extends CI_Model{
 				LEFT JOIN commitment_type ct ON ct.ctid = commitment.ctid
 				LEFT JOIN affiliation_type at ON champion.atid = at.atid
 				LEFT JOIN cu ON champion.cuid = cu.cuid
-				LEFT JOIN university uni ON uni.uid = cu.uid";
+				LEFT JOIN university uni ON uni.uid = cu.uid
+				ORDER BY amount DESC";
 
 		return $this->db->query($sql);
+	}
+
+	function get_champs_committed(){
+
+	}
+
+	function get_champs_commit_later(){
+
 	}
 
 	function champion_log($log){

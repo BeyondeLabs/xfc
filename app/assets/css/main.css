@@ -5,6 +5,7 @@
 
 /*Theme colors:
 	red (#f04f25), blue (#25408f, #3A619D)
+	green: #60B044;
 
 */
 
@@ -14,6 +15,10 @@
 
 .blue{
 	color:#25408f;
+}
+
+.green{
+	color: #60B044;
 }
 
 body {
