@@ -38,7 +38,7 @@ class Champion_model extends CI_Model{
 	}
 
 	function register_champ(){
-		//clean up cases
+		//clean up cases (capitalization)
 		$first_name = $this->input->post("first_name");
 		$last_name = $this->input->post("last_name");
 		$first_name = ucfirst(strtolower($first_name));
@@ -277,7 +277,7 @@ class Champion_model extends CI_Model{
 	}
 
 	function invite($cid){
-		//clean up cases
+		//clean up cases (capitalization)
 		$first_name = $this->input->post("first_name");
 		$last_name = $this->input->post("last_name");
 		$first_name = ucfirst(strtolower($first_name));
