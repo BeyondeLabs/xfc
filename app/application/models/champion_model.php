@@ -38,14 +38,21 @@ class Champion_model extends CI_Model{
 	}
 
 	function register_champ(){
+		//clean up cases
+		$first_name = $this->input->post("first_name");
+		$last_name = $this->input->post("last_name");
+		$first_name = ucfirst(strtolower($first_name));
+		$last_name = ucfirst(strtolower($last_name));
+
+
 		$champ = array(
 			"in_cu" => $this->input->post("in_cu"),
 			"cuid" => $this->input->post("cuid"),
 			"atid" => $this->input->post("atid"),
 			"grad_year" => $this->input->post("grad_year"),
 			"title" => $this->input->post("title"),
-			"first_name" => $this->input->post("first_name"),
-			"last_name" => $this->input->post("last_name"),
+			"first_name" => $first_name,
+			"last_name" => $last_name,
 			"gender" => $this->input->post("gender"),
 			"marital_status" => $this->input->post("marital_status"),
 			"email" => $this->input->post("email"),
@@ -270,12 +277,18 @@ class Champion_model extends CI_Model{
 	}
 
 	function invite($cid){
+		//clean up cases
+		$first_name = $this->input->post("first_name");
+		$last_name = $this->input->post("last_name");
+		$first_name = ucfirst(strtolower($first_name));
+		$last_name = ucfirst(strtolower($last_name));
+
 		$invite = array(
 			"cid_from" => $cid,
 			"email" => $this->input->post("email"),
 			"phone" => $this->input->post("phone"),
-			"first_name" => $this->input->post("first_name"),
-			"last_name" => $this->input->post("last_name")
+			"first_name" => $first_name,
+			"last_name" => $last_name
 			);
 
 		$this->db->insert("invite",$invite);
