@@ -18,10 +18,13 @@ class Admin extends CI_Controller {
 	public function index()
 	{
 		$this->data['main'] = "admin/index";
+		$this->data['active'] = "dashboard";
 		$this->_load_view();
 	}
 
 	public function cu($action="add",$mode="form"){
+		$this->data['active'] = "cu";
+
 		if($action=="add"){
 			if($mode=="form"){
 				$this->data['main'] = "admin/cu";
@@ -66,6 +69,8 @@ class Admin extends CI_Controller {
 	}
 
 	public function champions($mode="view"){
+		$this->data['active'] = "champions";
+
 		if($mode=="view"){
 			//view list of champions
 			$this->data['champs'] = $this->champion_model->get_champs_list();
@@ -75,6 +80,8 @@ class Admin extends CI_Controller {
 	}
 
 	public function commitments($mode="view"){
+		$this->data['active'] = "commitments";
+
 		if($mode=="view"){
 			$this->data['committed'] = $this->champion_model->get_champs_committed();
 			$this->data['commit_later'] = $this->champion_model->get_champs_commit_later();
@@ -84,6 +91,8 @@ class Admin extends CI_Controller {
 	}
 
 	public function feedback($mode="view"){
+		$this->data['active'] = "feedback";
+		
 		if($mode=="view"){
 			$this->load->model("general_model");
 			$this->data['feedback'] = $this->general_model->get_feedback();

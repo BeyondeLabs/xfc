@@ -1,4 +1,7 @@
-<h2><i class="fa fa-thumbs-o-up"></i> Commitments</h2>
+<div class="title">
+<h1><i class="fa fa-thumbs-o-up"></i> Commitments</h1>
+</div>
+
 
 <div class="row">
 <div class="col-md-2">
@@ -6,7 +9,7 @@
 
 </div>
 
-<div class="col-md-6">
+<div class="col-md-10">
 
 
 

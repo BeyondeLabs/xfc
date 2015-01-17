@@ -3,6 +3,12 @@
 </div>
 <div class="row">
 
+<div class="col-md-2">
+	<?php $this->load->view("admin/sidebar"); ?>
+</div>
+
+<div class="col-md-10">
+
 <?php
 foreach($feedback->result() as $row):
 ?>
@@ -24,5 +30,7 @@ if($row->cid !=0 ){
 </div>
 
 <?php endforeach; ?>
+
+</div>
 
 </div>

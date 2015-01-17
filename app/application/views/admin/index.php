@@ -1,4 +1,6 @@
-<h2><i class="fa fa-list"></i> Dashboard</h2>
+<div class="title">
+<h1><i class="fa fa-pie-chart"></i> Dashboard</h1>
+</div>
 
 <div class="row">
 <div class="col-md-2">

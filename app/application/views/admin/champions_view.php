@@ -1,5 +1,5 @@
 <div class="title">
-	<h1><i class="fa fa-user"></i> Champions</h1>
+	<h1><i class="fa fa-database"></i> Champions</h1>
 </div>
 <div class="row">
 
@@ -7,7 +7,7 @@
 	<?php $this->load->view("admin/sidebar"); ?>
 </div>
 
-<div class="col-md-9">
+<div class="col-md-10">
 <?php
 foreach($champs->result() as $row):
 ?>
