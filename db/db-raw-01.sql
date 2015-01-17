@@ -186,3 +186,13 @@ ALTER TABLE `invite` CHANGE `date_time` `date_time` TIMESTAMP NULL DEFAULT CURRE
 
 ALTER TABLE `email_message` ADD `subject` VARCHAR( 200 ) NOT NULL DEFAULT 'FOCUS Champions' AFTER `name` ;
 
+CREATE TABLE password_reset(
+	prid int primary key auto_increment,
+	cid int,
+	date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	reset_datetime datetime,
+	`check` varchar(50),
+	cstrong BOOLEAN,
+	foreign key(cid) references champion(cid)
+);
+

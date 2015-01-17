@@ -365,4 +365,26 @@ class Champion extends CI_Controller {
 			}
 		}
 	}
+
+	public function reset($mode="form"){
+		//set new password
+		if($mode=="form"){
+			$this->data['main'] = "champion/reset";
+			$this->_load_view();
+		}
+
+		if($mode=="submit"){
+			$this->load->library("form_validation");
+			$this->form_validation->set_rules("password","Password","required|matches[password_confirm]");
+			$this->form_validation->set_rules("password_confirm","Confirm Password","required");
+
+			if($this->form_validation->run()){
+				$cid = $this->data['cid'];
+				$this->champion_model->password_new($cid);
+				redirect("champion");
+			}else{
+				$this->reset();
+			}
+		}
+	}
 }

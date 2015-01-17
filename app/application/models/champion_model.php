@@ -27,8 +27,15 @@ class Champion_model extends CI_Model{
 		return FALSE;
 	}
 
-	function get_champ($email){
-		$this->db->where("email",$email);
+	function get_champ($arg){
+		//$arg can be email or cid
+		if($arg > 0){
+			//$arg is cid
+			$this->db->where("cid",$arg);
+		}else{
+			//$arg is email
+			$this->db->where("email",$arg);
+		}
 		$result = $this->db->get("champion");
 		if($result->num_rows > 0){
 			$result = $result->result_array();
@@ -348,5 +355,64 @@ class Champion_model extends CI_Model{
 			return TRUE;
 		}
 		return FALSE;
+	}
+
+	function password_reset($email){
+		//get cid from email
+		$champ = $this->get_champ($email);
+
+		if($champ){
+			// var_dump($champ['cid']);die();
+			$check = bin2hex(openssl_random_pseudo_bytes(rand(2,10), $cstrong));
+
+			$password_reset = array(
+				"cid" => $champ['cid'],
+				"check" => $check,
+				"cstrong" => $cstrong
+				);
+			$this->db->insert("password_reset",$password_reset);
+
+			//send email
+			$this->load->model("email_model");
+			$_msg = $this->email_model->get_msg("password_reset");
+			$msg = $_msg['html'];
+
+			$to_email = $champ['email'];
+			$name = $champ['first_name'];
+			$reset_link = anchor("home/reset/".$champ['cid']."/".$check);
+
+			$msg = str_replace("{name}", $name, $msg);
+			$msg = str_replace("{reset_link}", $reset_link, $msg);
+			$subject = $_msg['subject'];
+
+			$this->email_model->send($to_email,$subject,$msg);
+
+			return TRUE;
+		}else{
+			return FALSE;
+		}
+
+	}
+
+	function password_reset_validate($cid,$check){
+		$this->db->where(
+			array(
+				"cid"=>$cid,
+				"check"=>$check
+				)
+			);
+		$result = $this->db->get("password_reset");
+		if($result->num_rows > 0){
+			return TRUE;
+		}
+		return FALSE;
+	}
+
+	function password_new($cid){
+		$this->db->where("cid",$cid);
+		$champ = array(
+			"password"=>md5(md5($this->input->post("password")))
+			);
+		$this->db->update("champion",$champ);
 	}
 }

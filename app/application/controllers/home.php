@@ -202,4 +202,45 @@ class Home extends CI_Controller {
 
 		redirect("home");
 	}
+
+	public function reset($mode="form",$arg=""){
+		if($mode=="form"){
+			$this->data['main'] = "home/reset";
+			$this->_load_view();
+		}
+
+		if($mode=="submit"){
+			$this->load->library("form_validation");
+			$this->form_validation->set_rules("email","Email","required|valid_email");
+
+			if($this->form_validation->run()){
+				$email = $this->input->post("email");
+				if($this->champion_model->password_reset($email)){
+					$this->session->set_flashdata("success","An email has been sent to you with the reset instructions");
+				}else{
+					$this->session->set_flashdata("error","Please put the correct email");
+				}
+				redirect("home/reset");
+			}else{
+				$this->reset();
+			}
+		}
+
+		if($mode > 0){
+			//reset link clicked on from the email
+			$check = $arg;
+			$cid = $mode;
+			if($check != ""){
+				if($this->champion_model->password_reset_validate($cid,$check)){
+					//auto-login and redirect to set-new-password section
+					$user = $this->champion_model->get_champ($cid);
+					$this->session->set_userdata($user);
+					$this->session->set_userdata("logged_in",TRUE);
+					redirect("champion/reset");
+				}
+			}else{
+				redirect("home");
+			}
+		}
+	}
 }
