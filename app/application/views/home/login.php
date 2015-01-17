@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-6">
-		<h2><i class='fa fa-lock'></i> Admin Login</h2>
+		<h2><i class='fa fa-lock'></i> Login</h2>
 	<?php
 
 		echo validation_errors('<div class="alert alert-danger" role="alert">','</div>');
