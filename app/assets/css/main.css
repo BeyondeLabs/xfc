@@ -254,11 +254,21 @@ h1,h2,h3,h4,h5,h6{
 	border-left: solid 3px #cecece;
 	margin-bottom: 7px;
 	min-height: 125px;
+	transition: 1s;
+}
+
+.c-profile:hover{
+	border-left: solid 3px #f04f25;
+}
+
+.c-profile:hover h4{
+	color: #3A619D;
 }
 
 .c-profile h4{
-	color: #777;
+	color: #888;
 	margin: 0;
+	font-weight: bold;
 }
 
 .c-profile .desc{
