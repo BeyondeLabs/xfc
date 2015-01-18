@@ -4,6 +4,9 @@
 	<?php
 
 		echo validation_errors('<div class="alert alert-danger" role="alert">','</div>');
+		if($this->session->flashdata("error") != ""){
+			echo "<div class='alert alert-danger' roles='alert'>".$this->session->flashdata("error")."</div>";
+		}
 
 		echo form_open("home/login/submit","class='form'");
 		echo form_input("email",set_value("email"));

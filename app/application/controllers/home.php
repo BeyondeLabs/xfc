@@ -119,7 +119,8 @@ class Home extends CI_Controller {
 				
 				redirect("champion/profile");
 			}else{
-				redirect("home/login");
+				$this->session->set_flashdata("error","Wrong email/password");
+				$this->login();
 			}
 		}
 	}
