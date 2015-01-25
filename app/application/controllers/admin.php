@@ -80,12 +80,16 @@ class Admin extends CI_Controller {
 	}
 
 	public function commitments($mode="view"){
-		$this->data['active'] = "commitments";
-
 		if($mode=="view"){
-			$this->data['committed'] = $this->champion_model->get_champs_committed();
-			$this->data['commit_later'] = $this->champion_model->get_champs_commit_later();
+			$this->data['active'] = "commitments";
+			$this->data['cm'] = $this->champion_model->get_champs_committed();
 			$this->data['main'] = "admin/commitments";
+			$this->_load_view();
+		}
+		if($mode=="later"){
+			$this->data['active'] = "later";
+			$this->data['cl'] = $this->champion_model->get_champs_commit_later();
+			$this->data['main'] = "admin/commit_later";
 			$this->_load_view();
 		}
 	}

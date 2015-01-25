@@ -258,11 +258,27 @@ class Champion_model extends CI_Model{
 	}
 
 	function get_champs_committed(){
+		$sql = "SELECT *,
+				date_format(date_from,'%M %e, %Y') as date_from,
+				date_format(date_to,'%M %e, %Y') as date_to,
+				date_format(commit_date,'%M %e, %Y') as commit_date,
+				date_format(champion.date_time,'%M %e, %Y') as reg_date
+				FROM commitment c
+				LEFT JOIN commitment_type ct ON ct.ctid = c.ctid
+				LEFT JOIN champion ON c.cid = champion.cid
+				";
+		return $this->db->query($sql);
 
 	}
 
 	function get_champs_commit_later(){
-
+		$sql = "SELECT *,
+				date_format(cl.date_time,'%M %e, %Y') as date_time,
+				date_format(reminder_date,'%M %e, %Y') as reminder_date
+				FROM commit_later cl
+				LEFT JOIN champion ON cl.cid = champion.cid
+				";
+		return $this->db->query($sql);
 	}
 
 	function champion_log($log){

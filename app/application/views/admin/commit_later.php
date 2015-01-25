@@ -1,5 +1,5 @@
 <div class="title">
-<h1><i class="fa fa-thumbs-o-up"></i> Commitments</h1>
+<h1><i class="fa fa-clock-o"></i> Commit Later</h1>
 </div>
 
 
@@ -10,33 +10,29 @@
 </div>
 
 <div class="col-md-10">
+
 <table class="table">
 <tr>
 	<th width="2%">#</th>
 	<th width="25%">Name</th>
-	<th width="15%">Amount</th>
-	<th width="15%">Type </th>
-	<th>Period</th>
+	<th width="25%">Date</th>
+	<th>Reminder Date </th>
 </tr>
 <?php
 $count = 0;
-foreach($cm->result() as $row){
+foreach($cl->result() as $row){
 	$count++;
 	echo "<tr>";
 	echo "<td>$count </td>";
 	echo "<td>$row->first_name $row->last_name </td>";
-	echo "<td>$row->amount </td>";
-	echo "<td>$row->name </td>";
-	if($row->lifetime == 0){
-		echo "<td>$row->date_from - $row->date_to </td>";
-	}else{
-		echo "<td>Lifetime</td>";
-	}
+	echo "<td>$row->date_time </td>";
+	echo "<td>$row->reminder_date </td>";
 	echo "</tr>";
 }
 ?>
 
 </table>
+
 
 </div>
 

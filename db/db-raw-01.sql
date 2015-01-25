@@ -196,3 +196,5 @@ CREATE TABLE password_reset(
 	foreign key(cid) references champion(cid)
 );
 
+ALTER TABLE `commitment` ADD `commit_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+
