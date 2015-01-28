@@ -158,7 +158,9 @@ class Champion_model extends CI_Model{
 		return $this->db->insert("commitment",$commitment);
 	}
 
-	function update_commitment(){
+	function update_commitment($cid){
+		$this->db->where("cid",$cid);
+		
 		$commitment = array(
 			"ctid" => $this->input->post("ctid"),
 			"date_from" => $this->input->post("date_from"),

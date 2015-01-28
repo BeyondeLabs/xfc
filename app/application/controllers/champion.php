@@ -202,7 +202,7 @@ class Champion extends CI_Controller {
 
 			$this->form_validation->set_rules($rules);
 			if($this->form_validation->run()){
-				$this->champion_model->update_commitment();
+				$this->champion_model->update_commitment($this->data['cid']);
 				redirect("champion/profile");
 			}else{
 				$this->commitment("edit");
