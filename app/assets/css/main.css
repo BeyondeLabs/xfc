@@ -26,7 +26,7 @@ body {
   color: #555;
 }
 
-a{
+.cotent a{
 	transition: 1s;
 }
 
@@ -352,6 +352,11 @@ table.table{
 
 .navbar-header .navbar-brand:hover{
 	color: rgb(37,64,143);
+}
+
+.dropdown-menu > li > a:hover{
+	background: #f04f25;
+	color: #fefefe;
 }
 
 .cu-list{
