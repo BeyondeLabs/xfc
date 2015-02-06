@@ -430,19 +430,19 @@ li.active-inverse a.white:hover{
 /*formating scroll-bars src: http://bit.ly/1xX6WQH*/
 
 ::-webkit-scrollbar {
-      width: 15px;
+      width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-      background-color: #b46868;
+      background-color: #aaa;
 } /* the new scrollbar will have a flat appearance with the set background color */
  
 ::-webkit-scrollbar-thumb {
-      background-color: rgba(0, 0, 0, 0.2);
+      background-color: #888
 } /* this will style the thumb, ignoring the track */
  
 ::-webkit-scrollbar-button {
-      background-color: #7c2929;
+      background-color: #888;
 } /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
  
 ::-webkit-scrollbar-corner {
@@ -451,7 +451,7 @@ li.active-inverse a.white:hover{
 
 /*for IE*/
 body {
-    scrollbar-face-color: #b46868;
+    scrollbar-face-color: #888;
 }
 
 /*end of others */
