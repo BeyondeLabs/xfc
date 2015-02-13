@@ -12,7 +12,7 @@
 <div class="col-md-10">
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-  View Emails
+  <i class="fa fa-at"></i> View Emails
 </button>
 
 
@@ -23,6 +23,7 @@
 	<th width="15%">Amount</th>
 	<th width="15%">Type </th>
 	<th>Period</th>
+	<th></th>
 </tr>
 <?php
 $count = 0;
@@ -36,8 +37,9 @@ foreach($cm->result() as $row){
 	if($row->lifetime == 0){
 		echo "<td>$row->date_from - $row->date_to </td>";
 	}else{
-		echo "<td>Lifetime</td>";
+		echo "<td>$row->date_from - Lifetime</td>";
 	}
+
 	echo "</tr>";
 }
 ?>
