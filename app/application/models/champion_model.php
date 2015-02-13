@@ -481,6 +481,16 @@ Kindly click on this link to fill in your commitment form again - {link} </p>
 		$result = $this->db->get("commitment_reset");
 
 		if($result->num_rows > 0){
+			//update
+			$this->db->where(array(
+				"cid" => $cid,
+				"check" => $check
+			));
+			$commitment_reset = array(
+				"reset"=>1
+				);
+			$this->db->update("commitment_reset",$commitment_reset);
+
 			return TRUE;
 		}
 		return FALSE;
