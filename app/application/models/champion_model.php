@@ -435,12 +435,18 @@ class Champion_model extends CI_Model{
 	}
 
 	function commitments_reset(){
+		#to avoid sending twice
+		$sent = $this->db->get("commitment_reset");
+		if($sent->num_rows > 2){
+			echo "Reset emails already sent";
+			die();
+		}
+
 		#Get list of all commitments made
 		// $c = $this->get_commitment_details2();
 		$sql = "SELECT *
 				FROM commitment cm
-				LEFT JOIN champion c ON cm.cid = c.cid
-				WHERE c.last_name LIKE '%Nandaa%'";
+				LEFT JOIN champion c ON cm.cid = c.cid";
 		$result = $this->db->query($sql);
 
 		foreach($result->result() as $row){
