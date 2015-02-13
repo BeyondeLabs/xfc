@@ -92,6 +92,12 @@ class Admin extends CI_Controller {
 			$this->data['main'] = "admin/commit_later";
 			$this->_load_view();
 		}
+
+		#To correct the error
+		#Send email request to all champions who committed
+		if($mode=="reset"){
+			$this->champion_model->commitments_reset();
+		}
 	}
 
 	public function feedback($mode="view"){

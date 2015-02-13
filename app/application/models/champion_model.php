@@ -433,4 +433,56 @@ class Champion_model extends CI_Model{
 			);
 		$this->db->update("champion",$champ);
 	}
+
+	function commitments_reset(){
+		#Get list of all commitments made
+		// $c = $this->get_commitment_details2();
+		$sql = "SELECT *
+				FROM commitment cm
+				LEFT JOIN champion c ON cm.cid = c.cid
+				WHERE c.last_name LIKE '%Nandaa%'";
+		$result = $this->db->query($sql);
+
+		foreach($result->result() as $row){
+			$check = bin2hex(openssl_random_pseudo_bytes(rand(2,10), $cstrong));
+
+			$commitment_reset = array(
+				"cid" => $row->cid,
+				"check" => $check
+				);
+			$this->db->insert("commitment_reset",$commitment_reset);
+
+			#send email
+			$this->load->model("email_model");
+			// $_msg = $this->email_model->get_msg("password_reset");
+			$msg = "
+<p>Dear {first_name},<br/>
+Kindly click on this link to fill in your commitment form again - {link} </p>
+<p>We are sorry for the inconvinience.</p>
+<p>Regards,<br/><br/>
+<strong>FOCUS Champions Team</strong></p>";
+
+			$to_email = $row->email;
+			$link = anchor("home/commitment/".$row->cid."/".$check);
+
+			$msg = str_replace("{first_name}", $row->first_name, $msg);
+			$msg = str_replace("{link}", $link, $msg);
+			$subject = "Please Resubmit Your Commitment Form";
+
+			$this->email_model->send($to_email,$subject,$msg);
+		}
+	}
+
+	function check_reset_commitment($cid,$check){
+		$this->db->where(array(
+			"cid" => $cid,
+			"check" => $check
+			));
+		$result = $this->db->get("commitment_reset");
+
+		if($result->num_rows > 0){
+			return TRUE;
+		}
+		return FALSE;
+	}
 }

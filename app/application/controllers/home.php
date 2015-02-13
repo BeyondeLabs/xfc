@@ -244,4 +244,18 @@ class Home extends CI_Controller {
 			}
 		}
 	}
+
+	public function commitment($cid,$check){
+		if($this->champion_model->check_reset_commitment($cid,$check)){
+			#auto-login user
+			$user = $this->champion_model->get_champ($cid);
+			$this->session->set_userdata($user);
+			$this->session->set_userdata("logged_in",TRUE);
+
+			#redirect to commitment form update
+			redirect("champion/commitment/edit");
+		}else{
+			redirect("home");
+		}
+	}
 }
