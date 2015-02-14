@@ -197,7 +197,22 @@ class Champion extends CI_Controller {
 		if($mode=="update"){
 			$this->load->library("form_validation");
 
+			if($this->input->post("lifetime") != 1){
+				$rule2 = array(
+					'field'=>'date_to',
+					'label'=>'End Date',
+					'rules'=>'required'
+					);
+			}else{
+				$rule2 = array(
+					'field'=>'date_to',
+					'label'=>'End Date',
+					'rules'=>'none'
+					);
+			}
+
 			$rules = array(
+				$rule2,
 				array(
 					'field'=>'amount',
 					'label'=>'Amount',
@@ -207,11 +222,6 @@ class Champion extends CI_Controller {
 					'field'=>'date_from',
 					'label'=>'Start Date',
 					'rules'=>'required'
-					),
-				array(
-					'field'=>'date_to',
-					'label'=>'End Date',
-					'rules'=>'none'
 					),
 				array(
 					'field'=>'lifetime',
