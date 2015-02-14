@@ -254,7 +254,7 @@ class Champion_model extends CI_Model{
 				LEFT JOIN affiliation_type at ON champion.atid = at.atid
 				LEFT JOIN cu ON champion.cuid = cu.cuid
 				LEFT JOIN university uni ON uni.uid = cu.uid
-				ORDER BY amount DESC";
+				ORDER BY champion.first_name ASC";
 
 		return $this->db->query($sql);
 	}
@@ -268,6 +268,7 @@ class Champion_model extends CI_Model{
 				FROM commitment c
 				LEFT JOIN commitment_type ct ON ct.ctid = c.ctid
 				LEFT JOIN champion ON c.cid = champion.cid
+				ORDER BY champion.first_name ASC
 				";
 		return $this->db->query($sql);
 
@@ -279,6 +280,7 @@ class Champion_model extends CI_Model{
 				date_format(reminder_date,'%M %e, %Y') as reminder_date
 				FROM commit_later cl
 				LEFT JOIN champion ON cl.cid = champion.cid
+				ORDER BY champion.first_name ASC
 				";
 		return $this->db->query($sql);
 	}
