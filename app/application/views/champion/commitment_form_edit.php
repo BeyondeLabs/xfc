@@ -36,7 +36,11 @@ Commitment Form
 		echo form_input("amount",$_amount);
 		echo form_label("Amount (KES)","amount");
 		echo form_input("date_from",$cd->date_from, "class='half date-picker'");
-		echo form_input("date_to",$cd->date_to,"class='half date-picker'");
+		if($cd->date_to == "0000-00-00"){
+			echo form_input("date_to","","class='half date-picker'");
+		}else{
+			echo form_input("date_to",$cd->date_to,"class='half date-picker'");
+		}
 		echo form_label("Start Date <span class='right'>End Date</span>","date_to");
 		echo "<label>"."<span class='right'>".form_checkbox("lifetime","1",$cd->lifetime)." Lifetime Supporter</span></label>"; 
 		echo "<div><strong class='grey'>Choose Payment Mode:</strong> ";
