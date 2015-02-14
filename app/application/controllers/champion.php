@@ -171,11 +171,16 @@ class Champion extends CI_Controller {
 
 				$log = array(
 							"cid" => $this->session->userdata("cid"),
-							"type" => "register",
+							"type" => "made_commitment",
 							"value_int" => 2
 						);
 				$this->champion_model->champion_log($log);
-				redirect("champion/step/complete");
+
+				if($mode2==1){
+					redirect("champion/step/complete");	
+				}else{
+					redirect("champion");
+				}
 			}else{
 				$this->commitment("form",$mode2);
 			}
