@@ -203,11 +203,20 @@ class Champion_model extends CI_Model{
 	function will_commit_later($cid){
 		//see if said will commit later
 		//or the commitment date has passed
+
+		//first check if already commited
+		$this->db->where("cid",$cid);
+		$result = $this->db->get("commitment");
+
+		if($result->num_rows > 0){
+			return FALSE;
+		}
+
 		$sql = "SELECT *
 				FROM commit_later
-				WHERE cid = $cid AND reminder_date >= NOW()";
+				WHERE cid = $cid"; //AND reminder_date >= NOW()
 		$result = $this->db->query($sql);
-		if($result->num_rows >0){
+		if($result->num_rows > 0){
 			return TRUE;
 		}
 		return FALSE;
