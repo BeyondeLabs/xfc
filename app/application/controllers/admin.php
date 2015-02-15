@@ -79,6 +79,17 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function invited($mode="view"){
+		$this->data['active'] = "invited";
+		
+		if($mode=="view"){
+			#list of invited champs
+			$this->data['invited'] = $this->champion_model->get_champs_invited_details();
+			$this->data['main'] = "admin/invited_view";
+			$this->_load_view();
+		}
+	}
+
 	public function commitments($mode="view"){
 		if($mode=="view"){
 			$this->data['active'] = "commitments";

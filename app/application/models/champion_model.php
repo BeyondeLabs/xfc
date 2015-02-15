@@ -248,6 +248,20 @@ class Champion_model extends CI_Model{
 		return $this->db->get("invite")->num_rows;
 	}
 
+	function get_champs_invited_details(){
+		// return $this->db->get("invite");
+		$sql = "SELECT concat(c.first_name,' ',c.last_name) as inviter, 
+				c.cid,i.cid_to,
+				date_format(i.response_datetime,'%M %e, %Y') as response_date,
+				date_format(i.date_time,'%M %e, %Y') as invite_date,
+				concat(i.first_name,' ',i.last_name) as invitee
+				FROM invite i
+				LEFT JOIN champion c ON i.cid_from = c.cid
+				ORDER BY inviter, invitee";
+
+		return $this->db->query($sql);
+	}
+
 	function get_champs_list(){
 		$sql = "SELECT *,
 				champion.email as champ_email,
@@ -490,6 +504,7 @@ Kindly click on this link to fill in your commitment form again - {link} </p>
 		}
 	}
 
+	#hopefully to be used only once and archived
 	function check_reset_commitment($cid,$check){
 		$this->db->where(array(
 			"cid" => $cid,
