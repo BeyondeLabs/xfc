@@ -1,7 +1,7 @@
 <h3 class="title">
 <i class="fa fa-user"></i> 
 <?php echo $profile->first_name." ".$profile->last_name ?>
- <span>Your Profile</span>
+ <span>Profile</span>
 </h3>
 
 <div class="row">
@@ -151,8 +151,6 @@
 			}
 			?>, out of a 
 			target of 20 &mdash; <?php echo anchor("champion/invite","View List"); ?></p>
-			<p><i class="fa fa-pie-chart blue"></i> On overral, we've <strong class="blue"><?php echo $champs_count; ?> Champions</strong> joined so far, and 
-				<?php echo $champs_invited;?> invitations sent out.</p>
 	</div>
 
 </div>
