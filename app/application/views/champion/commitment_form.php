@@ -56,6 +56,9 @@ Commitment Form
 
 		echo validation_errors('<div class="alert alert-danger" role="alert">','</div>');
 
+		echo anchor("champion/step/complete","<i class='fa fa-mail-forward'></i> Skip", "class='btn btn-warning'")." &mdash; if you are currently supporting FOCUS financially.";
+
+
 		echo form_open("champion/commitment/submit/$mode2","class='form'");
 		echo form_dropdown("ctid",$_commitment_type,"2");
 		echo form_label("Commitment Type","ctid");
@@ -64,6 +67,7 @@ Commitment Form
 		}else{
 			$_amount = 500;
 		}
+
 		echo form_dropdown("amount",$amount,$_amount,"class='half'");
 		echo form_input("other_amount",set_value("other_amount"),"class='half'");
 		echo form_label("Choose Amount (KES) <span class='right'>If Other, specify Amount (KES)</span>","amount");
