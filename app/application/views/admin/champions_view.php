@@ -11,8 +11,12 @@
 <?php
 foreach($champs->result() as $row):
 ?>
-<div class="col-md-4	 c-profile">
-<h4><?php echo $row->first_name." ".$row->last_name; ?></h4>
+<div class="col-md-4 c-profile">
+	<?php //var_dump($row); die(); ?>
+<h4><?php 
+	echo anchor("champion/p/".$row->cid,
+		$row->first_name." ".$row->last_name);?>
+</h4>
 <div class="desc">
 <i class="fa fa-clock-o"></i> Joined <?php echo $row->joined; ?><br/>
 <?php echo $row->cu_name." &mdash; ".$row->uni_name; ?><br/>

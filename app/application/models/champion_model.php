@@ -84,8 +84,23 @@ class Champion_model extends CI_Model{
 		return $this->db->update("invite",$invite);
 	}
 
-	function get_champ_profile($email){
-		$sql = "SELECT *,
+	function get_champ_profile($arg){
+		if($arg>0){
+			#cid
+			$sql = "SELECT *,
+				cu.name as cu_name,
+				university.name as uni_name,
+				champion.email as champ_email,
+				affiliation_type.name as aff_type,
+				champion.cid as champ_id
+				FROM champion
+				LEFT JOIN cu ON champion.cuid = cu.cuid
+				LEFT JOIN university ON cu.uid = university.uid
+				LEFT JOIN affiliation_type ON champion.atid = affiliation_type.atid
+				WHERE champion.cid = $arg";
+		}else{
+			#email
+			$sql = "SELECT *,
 				cu.name as cu_name,
 				university.name as uni_name,
 				champion.email as champ_email,
@@ -94,7 +109,8 @@ class Champion_model extends CI_Model{
 				LEFT JOIN cu ON champion.cuid = cu.cuid
 				LEFT JOIN university ON cu.uid = university.uid
 				LEFT JOIN affiliation_type ON champion.atid = affiliation_type.atid
-				WHERE champion.email = '$email'";
+				WHERE champion.email = '$arg'";
+		}
 
 		$result = $this->db->query($sql);
 
@@ -102,7 +118,7 @@ class Champion_model extends CI_Model{
 			$result = $result->result();
 			return $result[0];
 		}else{
-			return array("No result");
+			return FALSE;
 		}
 	}
 
@@ -266,6 +282,7 @@ class Champion_model extends CI_Model{
 	function get_champs_list(){
 		$sql = "SELECT *,
 				champion.email as champ_email,
+				champion.cid as cid,
 				date_format(champion.date_time,'%M %e, %Y') as joined,
 				at.name as at_name,
 				cu.name as cu_name,

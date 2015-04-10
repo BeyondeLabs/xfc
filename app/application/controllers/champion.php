@@ -30,6 +30,29 @@ class Champion extends CI_Controller {
 		$this->_load_view();
 	}
 
+	public function p($cid=21){
+		#admin-only view of the profile
+		if(!$this->session->userdata('logged_in') ||
+			!$this->session->userdata('is_admin')){
+			$this->session->sess_destroy();
+			redirect('home');
+		}
+
+		$this->data['css_class'] = "profile";
+		$this->data['css_id'] = "profile";
+		$this->data['profile'] = $this->champion_model->get_champ_profile
+										($cid);
+		// if(!$this->data['profile']) redirect("admin");
+		$this->data['champs_count'] = $this->champion_model->get_champs();
+		$this->data['champs_invited'] = $this->champion_model->get_champs_invited();
+		$this->data['main'] = "champion/profile_public";
+		$this->data['cd'] = $this->champion_model->get_commitment_details($cid);
+		$this->data['org'] = $this->champion_model->get_org($cid);
+		$this->data['invite'] = $this->champion_model->get_invite($cid);
+		$this->data['cl'] = $this->champion_model->get_commit_later($cid);
+		$this->_load_view();
+	}
+
 	public function profile($mode="view"){
 		$this->data['css_class'] = "profile";
 		$this->data['css_id'] = "profile";
@@ -51,6 +74,7 @@ class Champion extends CI_Controller {
 			$this->data['cl'] = $this->champion_model->get_commit_later($this->data['cid']);
 			$this->_load_view();
 		}
+
 		if($mode=="edit"){
 			$this->load->model("cu_model");
 			$this->data['uni_cu'] = $this->cu_model->get_uni_cu();
