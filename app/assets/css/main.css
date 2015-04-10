@@ -136,7 +136,7 @@ h1,h2,h3,h4,h5,h6{
 
 .form a{
 	padding: .3em 0;
-	margin: 0 1em;
+	margin: 0 .2em;
 	display: inline-block;
 	font-weight: bold;
 	border-bottom: solid 2px #aaa;
@@ -148,6 +148,10 @@ h1,h2,h3,h4,h5,h6{
 	border-bottom: solid 2px rgb(240,79,37);
 }
 
+.form a.btn{
+	border-bottom: none;
+	padding: .7em;
+}
 
 
 /*end of forms */
