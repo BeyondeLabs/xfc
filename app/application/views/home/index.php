@@ -7,7 +7,7 @@
 <p>Partner with FOCUS and reach students. You can start with as low as KES. 250 / month </p>
 
 <?php echo anchor("home/pre","Join Now","class='btn btn-lg btn-success'"); ?>
-<?php echo anchor("#","Tell me more","class='btn btn-lg btn-normal'"); ?>
+<?php echo anchor("home/about","Tell me more","class='btn btn-lg btn-normal'"); ?>
 
 <span class="stats"><i class="fa fa-line-chart"></i> <?php echo $champs; ?> Champions joined so far </span> / 
 <?php echo $invited; ?> Invited

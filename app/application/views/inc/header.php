@@ -40,8 +40,8 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><?php echo anchor("home","Home"); ?></li>
-            <li><a href="#about">About</a></li>
+            <li class="active-"><?php echo anchor("home","Home"); ?></li>
+            <li><?php echo anchor("home/about","About"); ?></li>
             <li><?php echo anchor("home/feedback","Feedback"); ?></li>
             <li><?php echo anchor("home/contact","Contact Us"); ?></li>
           </ul>

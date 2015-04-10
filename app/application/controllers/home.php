@@ -37,6 +37,11 @@ class Home extends CI_Controller {
 		$this->_load_view();
 	}
 
+	public function about(){
+		$this->data['main'] = "home/about";
+		$this->_load_view();
+	}
+
 	public function pre(){
 		//preamble before registration
 		$this->data['main'] = "home/register_pre";
