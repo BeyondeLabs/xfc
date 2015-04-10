@@ -14,7 +14,7 @@
 
 </div>
 
-<div class="focus">
+<div class="focus contentx">
 <p><strong>FOCUS Champions</strong> is an online resource mobilization platform for 
 	Associates supporting FOCUS, a project of <a href="http://www.focuskenya.org" target="_blank">
 	FOCUS Kenya</a>. <strong>FOCUS (Fellowship of Christian Unions)</strong>  is a movement of 
