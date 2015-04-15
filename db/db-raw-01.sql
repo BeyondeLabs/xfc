@@ -205,3 +205,8 @@ CREATE TABLE commitment_reset(
 	reset int DEFAULT 0,
 	foreign key(cid) references champion(cid)
 );
+
+CREATE TABLE test_cron(
+	tid int primary key auto_increment,
+	test varchar(50)
+);

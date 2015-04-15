@@ -263,4 +263,10 @@ class Home extends CI_Controller {
 			redirect("home");
 		}
 	}
+
+	public function cron($type="test"){
+		if($type=="test"){
+			$this->general_model->cron_test();
+		}
+	}
 }

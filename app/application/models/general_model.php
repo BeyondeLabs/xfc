@@ -140,4 +140,11 @@ class General_model extends CI_Model{
 			return $rules;
 		}
 	}
+
+	function cron_test(){
+		$test = array(
+			"test"=>"Testing cron"
+			);
+		return $this->db->insert("test_cron",$test);
+	}
 }
