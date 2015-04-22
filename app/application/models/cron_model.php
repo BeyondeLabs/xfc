@@ -25,7 +25,7 @@ class Cron_model extends CI_Model{
 
 			#send email only if not already sent 2 reminders
 			if(($row->remind == 0 && $row->diff >=14) || 
-				($row->remind == 1 && $row->diff >=28)){
+				($row->remind == 2 && $row->diff >=28)){ //modified to disable resending...
 				$iid = $row->iid;
 				$check = $row->check;
 				$invite_link = anchor("home/invited/$iid/$check");
