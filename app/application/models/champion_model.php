@@ -159,7 +159,7 @@ class Champion_model extends CI_Model{
 	function save_commitment(){
 		$amount = $this->input->post("amount");
 		$other_amount = $this->input->post("other_amount");
-		if($amount == 0) $amount = $other_amount;
+		if($other_amount > 0) $amount = $other_amount;
 
 		$commitment = array(
 			"cid" => $this->session->userdata("cid"),
@@ -298,6 +298,18 @@ class Champion_model extends CI_Model{
 				ORDER BY champion.first_name ASC";
 
 		return $this->db->query($sql);
+	}
+
+	function get_commitment_type_name($ctid){
+		$this->db->where("ctid",$ctid);
+		$result = $this->db->get("commitment_type");
+		if($result->num_rows > 0){
+			$result = $result->result();
+			$result = $result[0];
+			return $result->name;
+		}else{
+			return "<none>";
+		}
 	}
 
 	function get_champs_committed(){

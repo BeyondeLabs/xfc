@@ -195,6 +195,42 @@ class Champion extends CI_Controller {
 						);
 				$this->champion_model->champion_log($log);
 
+				#send email to champion / exec
+
+				#load email message
+				$_msg = $this->email_model->get_msg("commitment");
+				$msg = $_msg['html'];
+				$subject = $_msg['subject'];
+
+				$name = $this->session->userdata('first_name')." ".
+                                $this->session->userdata('last_name');
+                $amount = $this->input->post("amount");
+                $other_amount = $this->input->post("other_amount");
+                if($other_amount > 0) $amount = $other_amount;
+
+                $ctid = $this->input->post("ctid");
+                $type = $this->champion_model->get_commitment_type_name($ctid);
+
+                $date_from = $this->input->post("date_from");
+                $date_to = $this->input->post("date_to");
+                if($this->input->post("lifetime")==1){
+                	$date_to = "Lifetime";
+                }
+                $payment_mode = $this->input->post("payment_mode");
+
+				$msg = str_replace("{name}", $name, $msg);
+				$msg = str_replace("{amount}", $amount, $msg);
+				$msg = str_replace("{type}", $type, $msg);
+				$msg = str_replace("{start_date}", $date_from, $msg);
+				$msg = str_replace("{end_date}", $date_to, $msg);
+				$msg = str_replace("{payment_mode}", $payment_mode, $msg);
+
+				$to_email = $this->session->userdata("email");
+				$this->email_model->send($to_email,$subject,$msg);
+				//another email to staff I/C
+				$to_email = "nkimani@focuskenya.org";
+				$this->email_model->send($to_email,$subject,$msg);
+
 				if($mode2==1){
 					redirect("champion/step/complete");	
 				}else{
