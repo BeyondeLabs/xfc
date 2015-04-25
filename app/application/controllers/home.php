@@ -275,7 +275,7 @@ class Home extends CI_Controller {
 			#daily fired cron jobs
 
 			#sending invitation reminders
-			$this->cron_model->invitation_reminder();
+			// $this->cron_model->invitation_reminder();
 		}
 	}
 }
