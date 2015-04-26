@@ -8,34 +8,43 @@ class Cron_model extends CI_Model{
 	function invitation_reminder(){
 		$sql = "SELECT * , DATEDIFF( CURRENT_DATE( ) , date_time ) AS diff
 				FROM  `invite` 
-				WHERE response_datetime IS NULL
+				WHERE cid_to IS NULL
 				HAVING diff >=14";
 
 		$result = $this->db->query($sql);
 
 		#load email message
 		$_msg = $this->email_model->get_msg("invite_reminder");
-		$msg = $_msg['html'];
 		$subject = $_msg['subject'];
 
 		#send email reminders
 
-		foreach($result->result() as $row){
-			// echo $row->email."<br/>";
+		$count = 0; //count for testing
 
+		foreach($result->result() as $row){
+			$msg = $_msg['html'];
+
+			// echo $row->email."<br/>";
 			#send email only if not already sent 2 reminders
 			if(($row->remind == 0 && $row->diff >=14) || 
-				($row->remind == 2 && $row->diff >=28)){ //modified to disable resending...
+				($row->remind == 1 && $row->diff >=28)){ //modified to disable resending...
+
+				$count++; //for testing //to send 10 reminder emails per day
+
+				if($count == 11){
+					break;
+				}
+
 				$iid = $row->iid;
 				$check = $row->check;
 				$invite_link = anchor("home/invited/$iid/$check");
-
 				$invitee = $row->first_name;
 
 				$msg = str_replace("{name}", $invitee, $msg);
 				$msg = str_replace("{link}", $invite_link, $msg);
 
 				$to_email = $row->email;
+
 				$this->email_model->send($to_email,$subject,$msg);
 
 				#update table
