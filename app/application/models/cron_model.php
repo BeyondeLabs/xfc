@@ -8,8 +8,9 @@ class Cron_model extends CI_Model{
 	function invitation_reminder(){
 		$sql = "SELECT * , DATEDIFF( CURRENT_DATE( ) , date_time ) AS diff
 				FROM  `invite` 
-				WHERE cid_to IS NULL
+				WHERE cid_to IS NULL AND remind=1
 				HAVING diff >=14";
+				//added 'AND remind..' for convinience
 
 		$result = $this->db->query($sql);
 
