@@ -45,7 +45,7 @@ h1,h2,h3,h4,h5,h6{
 	color: #777;
 	line-height: 140%;
 	margin: 0;
-	text-align: justify;
+	/*text-align: justify;*/
 }
 
 /*buttons*/
@@ -430,9 +430,11 @@ li.active-inverse a.white:hover{
 }
 
 .focus{
-	padding-left: 5px;
+	/*padding-left: 5px;
 	background: url(../img/focus-logo.png) no-repeat;
-	padding: 8px 10px 8px 50px;
+	padding: 8px 10px 8px 50px;*/
+	padding-left: 10px;
+	border-left: solid 3px #cecece;
 }
 
 

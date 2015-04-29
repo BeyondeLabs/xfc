@@ -1,3 +1,6 @@
+<div class="row">
+
+<div class="col-md-8">
 
 <div class="landing">
 
@@ -14,6 +17,10 @@
 
 </div>
 
+</div>
+
+<div class="col-md-4" style="padding-top:20px;">
+
 <div class="focus contentx">
 <p><strong>FOCUS Champions</strong> is an online resource mobilization platform for 
 	Associates supporting FOCUS, a project of <a href="http://www.focuskenya.org" target="_blank">
@@ -23,5 +30,9 @@
 	of higher learning and associates' involvement in Church and Society. 
 </p>
 <p>FOCUS Kenya is a Kenyan Registered Charity &mdash; No. <strong>2012092/1423</strong></p>
+</div>
+
+</div>
+
 </div>
 
