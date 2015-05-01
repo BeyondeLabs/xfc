@@ -434,6 +434,7 @@ li.active-inverse a.white:hover{
 	background: url(../img/focus-logo.png) no-repeat;
 	padding: 8px 10px 8px 50px;*/
 	padding-left: 10px;
+	margin-top: 80px;
 	border-left: solid 3px #cecece;
 }
 
