@@ -1,5 +1,5 @@
 <h3 class="title">
-<i class="fa fa-user"></i> 
+<i class="glyphicon glyphicon-user"></i> 
 <?php echo $profile->first_name." ".$profile->last_name ?>
  <span>Your Profile</span>
 </h3>
@@ -81,6 +81,11 @@
 			<h4><i class="fa fa-heart-o"></i> Commitment
 					<?php 
 					if($cd){
+						echo anchor("champion/contribution/make",
+					 	"<i class='fa fa-heart'></i> Make Contribution",
+						"class='btn btn-success' 
+						style='margin-left:5px;'");
+
 						echo anchor("champion/commitment/edit",
 					 	"<i class='fa fa-pencil'></i> Update",
 						"class='btn btn-default'"); 
@@ -137,6 +142,13 @@
 					?>
 				</span>
 			</p>
+			<p><span class="left">Contribution Made</span>
+				<span class="right">
+					<?php
+						echo "KES. ".number_format(0,2);
+					?>
+				</span>
+			</p>
 
 			<?php else: ?>
 				<div style="padding-left:21px;">
@@ -158,11 +170,7 @@
 		<?php echo anchor("champion/invite", "<i class='fa fa-plus'></i> Invite More",
 		"class='btn btn-default'"); ?>
 		</h4>
-		<div class="progress">
-			<div class="progress-bar progress-bar-success" style="width: <?php echo($invite->num_rows/20 * 100) ?>%;">
-  			</div>
-		</div>
-		<p>You've invited <?php echo $invite->num_rows; ?> 
+		<div>You've invited <?php echo $invite->num_rows; ?> 
 			<?php
 			if($invite->num_rows == 1){
 				echo "person";
@@ -170,9 +178,16 @@
 				echo "people";
 			}
 			?>, out of a 
-			target of 20 &mdash; <?php echo anchor("champion/invite","View List"); ?></p>
-			<p><i class="fa fa-pie-chart blue"></i> On overral, we've <strong class="blue"><?php echo $champs_count; ?> Champions</strong> joined so far, and 
-				<?php echo $champs_invited;?> invitations sent out.</p>
+			target of 20 &mdash; <?php echo anchor("champion/invite","View List"); ?></div>
+
+		<div class="progress" style="height:10px;margin-top:5px;">
+			<div class="progress-bar progress-bar-success" style="width: <?php echo($invite->num_rows/20 * 100) ?>%">
+  			</div>
+		</div>
+
+		<div><i class="fa fa-pie-chart blue"></i> On overral, we've <strong class="blue"><?php echo $champs_count; ?> Champions</strong> joined so far, and 
+				<?php echo $champs_invited;?> invitations sent out.
+		</div>
 	</div>
 
 </div>

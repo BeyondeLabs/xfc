@@ -210,3 +210,37 @@ CREATE TABLE test_cron(
 	tid int primary key auto_increment,
 	test varchar(50)
 );
+
+CREATE TABLE mpesa_ipn(
+	ipnid int primary key auto_increment,
+	id int,
+	orig varchar(10),
+	dest varchar(20),
+	tstamp datetime,
+	`text` varchar(250),
+	customer_id int,
+	user varchar(20),
+	pass varchar(20),
+	routemethod_id int,
+	routemethod_name varchar(10),
+	mpesa_code varchar(20),
+	mpesa_acc varchar(20),
+	mpesa_msisdn varchar(20),
+	mpesa_trx_date varchar(20),
+	mpesa_trx_time varchar(10),
+	mpesa_amt decimal,
+	mpesa_sender varchar(20),
+	business_number varchar(20),
+	date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE contribution(
+	ctid int primary key auto_increment,
+	cid int,
+	amount decimal,
+	ipnid int,
+	method varchar(20),
+	date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	foreign key(cid) references champion(cid),
+	foreign key(ipnid) references mpesa_ipn(ipnid)
+);

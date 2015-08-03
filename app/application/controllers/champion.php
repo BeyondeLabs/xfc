@@ -472,4 +472,10 @@ class Champion extends CI_Controller {
 			}
 		}
 	}
+
+	public function contribution($mode="make") {
+		$this->data["main"] = "champion/contribution_make";
+		$this->data['cd'] = $this->champion_model->get_commitment_details($this->data['cid']);
+		$this->_load_view();
+	}
 }
