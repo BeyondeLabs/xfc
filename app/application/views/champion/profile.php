@@ -145,7 +145,9 @@
 			<p><span class="left">Contribution Made</span>
 				<span class="right">
 					<?php
-						echo "KES. ".number_format(0,2);
+						echo "KES. ".number_format($contrib_total,2);
+
+						echo " &bull; ".anchor("champion/contribution/history", "View");
 					?>
 				</span>
 			</p>

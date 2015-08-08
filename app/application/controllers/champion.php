@@ -40,11 +40,12 @@ class Champion extends CI_Controller {
 
 		$this->data['css_class'] = "profile";
 		$this->data['css_id'] = "profile";
-		$this->data['profile'] = $this->champion_model->get_champ_profile
-										($cid);
+		$this->data['profile'] = $this->champion_model
+															->get_champ_profile($cid);
 		// if(!$this->data['profile']) redirect("admin");
 		$this->data['champs_count'] = $this->champion_model->get_champs();
-		$this->data['champs_invited'] = $this->champion_model->get_champs_invited();
+		$this->data['champs_invited'] = $this->champion_model
+																				->get_champs_invited();
 		$this->data['main'] = "champion/profile_public";
 		$this->data['cd'] = $this->champion_model->get_commitment_details($cid);
 		$this->data['org'] = $this->champion_model->get_org($cid);
@@ -57,7 +58,8 @@ class Champion extends CI_Controller {
 		$this->data['css_class'] = "profile";
 		$this->data['css_id'] = "profile";
 		$this->data['champs_count'] = $this->champion_model->get_champs();
-		$this->data['champs_invited'] = $this->champion_model->get_champs_invited();
+		$this->data['champs_invited'] = $this->champion_model
+																			->get_champs_invited();
 
 		if($mode=="view"){
 			
@@ -66,12 +68,20 @@ class Champion extends CI_Controller {
 				redirect("champion/commitment/form");
 			}
 			$this->data['main'] = "champion/profile";
-			$this->data['cd'] = $this->champion_model->get_commitment_details($this->data['cid']);
+			$this->data['cd'] = $this->champion_model
+															->get_commitment_details($this->data['cid']);
 			$this->data['profile'] = $this->champion_model->get_champ_profile
 										($this->session->userdata("email"));
 			$this->data['org'] = $this->champion_model->get_org($this->data['cid']);
-			$this->data['invite'] = $this->champion_model->get_invite($this->data['cid']);
-			$this->data['cl'] = $this->champion_model->get_commit_later($this->data['cid']);
+			$this->data['invite'] = $this->champion_model
+																->get_invite($this->data['cid']);
+			$this->data['cl'] = $this->champion_model
+															->get_commit_later($this->data['cid']);
+
+			$this->load->model('contribution_model');
+			$this->data['contrib_total'] = $this->contribution_model
+																					->get_contribution_total(
+																						$this->data['cid']);
 			$this->_load_view();
 		}
 
@@ -115,7 +125,8 @@ class Champion extends CI_Controller {
 			}
 
 			$this->data['main'] = "champion/commitment_view";
-			$this->data['cd'] = $this->champion_model->get_commitment_details($this->data['cid']);
+			$this->data['cd'] = $this->champion_model
+																->get_commitment_details($this->data['cid']);
 			$this->_load_view();
 		}
 
@@ -126,7 +137,8 @@ class Champion extends CI_Controller {
 			$this->data['date_picker'] = TRUE;
 			$this->data['step'] = array(2,3);
 			$this->data['main'] = "champion/commitment_form";
-			$this->data['commitment_type'] = $this->champion_model->get_commitment_type();
+			$this->data['commitment_type'] = $this->champion_model
+																					->get_commitment_type();
 			$this->_load_view();
 		}
 
@@ -209,7 +221,8 @@ class Champion extends CI_Controller {
                 if($other_amount > 0) $amount = $other_amount;
 
                 $ctid = $this->input->post("ctid");
-                $type = $this->champion_model->get_commitment_type_name($ctid);
+                $type = $this->champion_model
+                									->get_commitment_type_name($ctid);
 
                 $date_from = $this->input->post("date_from");
                 $date_to = $this->input->post("date_to");
@@ -244,8 +257,10 @@ class Champion extends CI_Controller {
 		if($mode=="edit"){
 			$this->data['date_picker'] = TRUE;
 			$this->data['main'] = "champion/commitment_form_edit";
-			$this->data['commitment_type'] = $this->champion_model->get_commitment_type();
-			$this->data['cd'] = $this->champion_model->get_commitment_details2($this->data['cid']);
+			$this->data['commitment_type'] = $this->champion_model
+																					->get_commitment_type();
+			$this->data['cd'] = $this->champion_model
+														->get_commitment_details2($this->data['cid']);
 			$this->_load_view();
 		}
 
@@ -305,7 +320,8 @@ class Champion extends CI_Controller {
 		if($mode=="laterc"){
 			//submit CL form
 			$this->load->library("form_validation");
-			$this->form_validation->set_rules('reminder_date','Reminder Date','required');
+			$this->form_validation
+						->set_rules('reminder_date','Reminder Date','required');
 			if($this->form_validation->run()){
 				$this->champion_model->commit_later($this->data['cid']);
 				redirect("champion/step/complete");
@@ -389,7 +405,8 @@ class Champion extends CI_Controller {
 		
 		if($mode=="form"){
 			$this->data['main'] = "champion/invite";
-			$this->data['invite'] = $this->champion_model->get_invite($this->data['cid']);
+			$this->data['invite'] = $this->champion_model
+															->get_invite($this->data['cid']);
 			$this->_load_view();
 		}
 
@@ -408,7 +425,8 @@ class Champion extends CI_Controller {
 				array(
 					'field'=>'email',
 					'label'=>'Email',
-					'rules'=>'required|valid_email|is_unique[invite.email]|is_unique[champion.email]'
+					'rules'=>'required|valid_email
+						|is_unique[invite.email]|is_unique[champion.email]'
 					),
 				array(
 					'field'=>'phone',
@@ -428,7 +446,9 @@ class Champion extends CI_Controller {
 				$invite_link = anchor("home/invited/$iid/$check");
 
 				$invitee = $this->input->post("first_name");
-				$inviter = $this->session->userdata("first_name")." ".$this->session->userdata("last_name");
+				$inviter = $this->session
+										->userdata("first_name")." ".
+										$this->session->userdata("last_name");
 				$from_email = $this->session->userdata("email");
 				$from_phone = $this->session->userdata("phone");
 				$_msg = $this->email_model->get_msg("invite");
@@ -460,8 +480,11 @@ class Champion extends CI_Controller {
 
 		if($mode=="submit"){
 			$this->load->library("form_validation");
-			$this->form_validation->set_rules("password","Password","required|matches[password_confirm]");
-			$this->form_validation->set_rules("password_confirm","Confirm Password","required");
+			$this->form_validation
+							->set_rules("password","Password",
+								"required|matches[password_confirm]");
+			$this->form_validation
+							->set_rules("password_confirm","Confirm Password","required");
 
 			if($this->form_validation->run()){
 				$cid = $this->data['cid'];
@@ -474,8 +497,22 @@ class Champion extends CI_Controller {
 	}
 
 	public function contribution($mode="make") {
-		$this->data["main"] = "champion/contribution_make";
-		$this->data['cd'] = $this->champion_model->get_commitment_details($this->data['cid']);
-		$this->_load_view();
+		if($mode == "make") {
+			$this->data["main"] = "champion/contribution_make";
+			$this->data['cd'] = $this->champion_model
+													->get_commitment_details($this->data['cid']);
+			$this->_load_view();
+		}
+
+		if($mode=="history") {
+			$this->load->model("contribution_model");
+			$this->data["main"] = "champion/contribution_history";
+			$this->data["history"] = $this->contribution_model
+															->get_contribution_history($this->data['cid']);
+			$this->data['contrib_total'] = $this->contribution_model
+																					->get_contribution_total(
+																						$this->data['cid']);
+			$this->_load_view();
+		}
 	}
 }

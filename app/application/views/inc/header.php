@@ -67,7 +67,8 @@
                         <li><?php echo anchor("champion/profile","<i class='fa fa-user'></i> My Profile"); ?></a></li>
                         <li><?php echo anchor("champion/commitment","<i class='fa fa-heart-o'></i> Commitment"); ?></a></li>
                         <li><?php echo anchor("champion/invite","<i class='fa fa-thumbs-o-up'></i> Invite Someone"); ?></a></li>
-                        <!-- <li><a href="#"><i class='fa fa-gear'></i> Settings</a></li> -->
+                        <li><?php echo anchor("champion/contribution/make","<i class='fa fa-heart'></i> Make Contribution"); ?></a></li>
+                        <li><?php echo anchor("champion/contribution/history","<i class='fa fa-clock-o'></i> Contribution History"); ?></a></li>
                         <li><?php echo anchor("home/logout","<i class='fa fa-sign-out'></i> Logout"); ?></li>
                     </ul>
                   <?php endif; ?>

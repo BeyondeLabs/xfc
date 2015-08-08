@@ -19,4 +19,19 @@ class Contribution_model extends CI_Model{
 		$this->db->insert("contribution", $data);
 	}
 
+	function get_contribution_history($cid) {
+		$sql = "SELECT * , date_format(tstamp,'%M %e, %Y') as tstamp
+						FROM `contribution` c
+						LEFT JOIN mpesa_ipn m ON c.ipnid = m.ipnid
+						WHERE c.cid = ".$cid;
+		return $this->db->query($sql);
+	}
+
+	function get_contribution_total($cid) {
+		$sql = "SELECT sum(amount) as amount
+						FROM `contribution`
+						WHERE cid = ".$cid;
+		$res = $this->db->query($sql)->result();
+		return $res[0]->amount;
+	}
 }
