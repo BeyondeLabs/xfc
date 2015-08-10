@@ -280,58 +280,11 @@ class Home extends CI_Controller {
 	}
 
 	public function mpesa() {
-		//receives a post request from the MPesa IPN script
-
-		//record transaction in table
 		$this->load->model("contribution_model");
 
-		//head to rewrite just in case the IPN structure changes
-		//i.e. more data is added to it
-		$data = array(
-			"id" => $_POST["id"],
-			"orig" => $_POST["orig"],
-			"dest" => $_POST["dest"],
-			"tstamp" => $_POST["tstamp"],
-			"text" => $_POST["text"],
-			"customer_id" => $_POST["customer_id"],
-			"user" => $_POST["user"],
-			"pass" => $_POST["pass"],
-			"routemethod_id" => $_POST["routemethod_id"],
-			"routemethod_name" => $_POST["routemethod_name"],
-			"mpesa_code" => $_POST["mpesa_code"],
-			"mpesa_acc" => $_POST["mpesa_acc"],
-			"mpesa_msisdn" => $_POST["mpesa_msisdn"],
-			"mpesa_trx_date" => $_POST["mpesa_trx_date"],
-			"mpesa_trx_time" => $_POST["mpesa_trx_time"],
-			"mpesa_amt" => $_POST["mpesa_amt"],
-			"mpesa_sender" => $_POST["mpesa_sender"],
-			"business_number" => $_POST["business_number"]
-			);
-
-		//testing stub
-
-		// $data = array(
-		// 	"id" => "2345",
-		// 	"orig" => "MPESA",
-		// 	"dest" => "254702137717",
-		// 	"tstamp" => "2015-07-30 23:03:32",
-		// 	"text" => "JGU0SWAWMQ Confirmed. on 30/7/15 at 11:03 PM Ksh50.00 received from ANTHONY BARASA 254728590438.  Account Number IPN Test New Utility balance is Ksh41,614.00",
-		// 	"customer_id" => "7540",
-		// 	"user" => "default",
-		// 	"pass" => "default",
-		// 	"routemethod_id" => "2",
-		// 	"routemethod_name" => "HTTP",
-		// 	"mpesa_code" => "JGU0SWAWMQ",
-		// 	"mpesa_acc" => "champ-17",
-		// 	"mpesa_msisdn" => "254728590438",
-		// 	"mpesa_trx_date" => "30/7/15",
-		// 	"mpesa_trx_time" => "11:03 PM",
-		// 	"mpesa_amt" => "50.0",
-		// 	"mpesa_sender" => "ANTHONY BARASA",
-		// 	"business_number" => "412412"
-		// 	);
+		var_dump("working"); die();
 		
-		$ipnid = $this->contribution_model->save_mpesa_transaction($data);
+		// $ipnid = $this->contribution_model->save_mpesa_transaction($data);
 
 
 		$mpesa_acc = $_POST["mpesa_acc"];
