@@ -34,4 +34,14 @@ class Contribution_model extends CI_Model{
 		$res = $this->db->query($sql)->result();
 		return $res[0]->amount;
 	}
+
+	function get_last_mpesa_ipn(){
+		$sql = "SELECT * FROM mpesa_ipn
+						WHERE mpesa_acc LIKE 'champ%'
+						ORDER BY ipnid DESC
+						LIMIT 1";
+
+		$res = $this->db->query($sql)->result();
+		return $res[0];
+	}
 }

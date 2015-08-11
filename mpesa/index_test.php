@@ -17,11 +17,11 @@
 // print_r(PDO::getAvailableDrivers());
 
 //to load from inc file
+
 $host = "localhost";
 $dbname = "focuschampions_live";
 $user = "prof";
 $pass = "pr0f";
-
 
 try {
 	$dbh = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
@@ -65,62 +65,36 @@ $sth = $dbh->prepare($sql);
 
 $dbh = NULL;
 
-// $sth->execute($data);
+$sth->execute($data);
 
 
 $url = "http://champions.focuskenya.org/home/mpesa";
 
-//using cURL
-$curl_connection = curl_init($url);
-curl_setopt($curl_connection, CURLOPT_CONNECTTIMEOUT, 30);
-curl_setopt($curl_connection, CURLOPT_USERAGENT,
-"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)");
-curl_setopt($curl_connection, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($curl_connection, CURLOPT_SSL_VERIFYPEER, false);
-curl_setopt($curl_connection, CURLOPT_FOLLOWLOCATION, 1);
+// $url = "http://localhost/focus-champions/app/home/mpesa";
 
-
-// $post_string = http_build_query($_REQUEST);
-
-// curl_setopt($curl_connection, CURLOPT_POSTFIELDS, $post_string);
-
-$result = curl_exec($curl_connection);
-
-curl_close($curl_connection);
-
-
-// echo curl_error($curl_connection);
-
-var_dump($result); 
-
-die();
-
-
+## ROUTING
 $patterns = array(
 	"champions"=>"/^champ/"
 	);
 
 $mpesa_acc = $_REQUEST["mpesa_acc"];
 
+# (1) FOCUS Champions
+
 if(preg_match($patterns["champions"], $mpesa_acc)) {
-	//post to FOCUS Champions
-	$data = $_REQUEST;
+	
+	$url = "http://champions.focuskenya.org/home/mpesa";
 
-	$options = array(
-		"http" => array(
-			"header" => "Content-type: application/x-www-form-urlencoded\r\n",
-			"method" => "POST",
-			"content" => http_build_query($data),
-			),
-		);
+	//using cURL
+	$curl_connection = curl_init($url);
+	curl_setopt($curl_connection, CURLOPT_CONNECTTIMEOUT, 30);
+	curl_setopt($curl_connection, CURLOPT_USERAGENT,
+	"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)");
+	curl_setopt($curl_connection, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($curl_connection, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($curl_connection, CURLOPT_FOLLOWLOCATION, 1);
 
-	$context = stream_context_create($options);
-	$result = file_get_contents($url,false,$context);
+	$result = curl_exec($curl_connection);
 
-	//for debugging, should be removed later
-	var_dump($result);
+	curl_close($curl_connection);
 }
-
-//send post request to champions
-//use regex to select account_name c[C]hamp*, 
-//plus the number

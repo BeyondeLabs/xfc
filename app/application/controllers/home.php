@@ -282,15 +282,11 @@ class Home extends CI_Controller {
 	public function mpesa() {
 		$this->load->model("contribution_model");
 
-		var_dump("working"); die();
-		
+		$ipn = $this->contribution_model->get_last_mpesa_ipn();
+
 		// $ipnid = $this->contribution_model->save_mpesa_transaction($data);
 
-
-		$mpesa_acc = $_POST["mpesa_acc"];
-		// $mpesa_acc = "champ-17";
-
-		$acc = explode("-", $mpesa_acc);
+		$acc = explode("-", $ipn->mpesa_acc);
 
 		if(sizeof($acc) == 2) {
 			$cid = $acc[1]; //champion ID
@@ -298,13 +294,14 @@ class Home extends CI_Controller {
 
 			$data = array(
 				"cid" => $cid,
-				"amount" => $_POST["mpesa_amt"],
-				"ipnid" => $ipnid,
+				"amount" => $ipn->mpesa_amt,
+				"ipnid" => $ipn->ipnid,
 				"method" => "mpesa"
 				);
 
 			$this->contribution_model->save_contribution($data);
 
+			var_dump("done");
 			//send acknowledgement email
 		}
 	}
