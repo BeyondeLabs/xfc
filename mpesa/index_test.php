@@ -18,10 +18,16 @@
 
 //to load from inc file
 
+// $host = "localhost";
+// $dbname = "focuschampions_live";
+// $user = "prof";
+// $pass = "pr0f";
+
 $host = "localhost";
 $dbname = "focuschampions_live";
 $user = "prof";
 $pass = "pr0f";
+
 
 try {
 	$dbh = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
@@ -74,7 +80,7 @@ $url = "http://champions.focuskenya.org/home/mpesa";
 
 ## ROUTING
 $patterns = array(
-	"champions"=>"/^champ/"
+	"champions"=>"/^CHAMP/"
 	);
 
 $mpesa_acc = $_REQUEST["mpesa_acc"];

@@ -67,7 +67,7 @@ $sth->execute($data);
 
 ## ROUTING
 $patterns = array(
-	"champions"=>"/^champ/"
+	"champions" => "/^CHAMP/"
 	);
 
 $mpesa_acc = $_REQUEST["mpesa_acc"];
