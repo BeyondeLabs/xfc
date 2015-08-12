@@ -44,4 +44,9 @@ class Contribution_model extends CI_Model{
 		$res = $this->db->query($sql)->result();
 		return $res[0];
 	}
+
+	function mpesa_ipn_processed($ipnid) {
+		$this->db->where("ipnid",$ipnid);
+		return $this->db->update("mpesa_ipn",array("processed" => 1));
+	}
 }

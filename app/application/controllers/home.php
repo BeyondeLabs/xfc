@@ -286,23 +286,44 @@ class Home extends CI_Controller {
 
 		// $ipnid = $this->contribution_model->save_mpesa_transaction($data);
 
-		$acc = explode("-", $ipn->mpesa_acc);
+		if($ipn->processed == 0) {
+			$acc = explode("-", $ipn->mpesa_acc);
 
-		if(sizeof($acc) == 2) {
-			$cid = $acc[1]; //champion ID
+			if(sizeof($acc) == 2) {
+				$cid = $acc[1]; //champion ID
 
 
-			$data = array(
-				"cid" => $cid,
-				"amount" => $ipn->mpesa_amt,
-				"ipnid" => $ipn->ipnid,
-				"method" => "mpesa"
-				);
+				$data = array(
+					"cid" => $cid,
+					"amount" => $ipn->mpesa_amt,
+					"ipnid" => $ipn->ipnid,
+					"method" => "mpesa"
+					);
 
-			$this->contribution_model->save_contribution($data);
+				$this->contribution_model->save_contribution($data);
 
-			var_dump("done");
-			//send acknowledgement email
+				// var_dump("done");
+				//send acknowledgement email
+				$this->load->model("email_model");
+				$champ = $this->champion_model->get_champ($cid);
+				$name = $champ['first_name'];
+				$to_email = $champ['email'];
+
+				$_msg = $this->email_model->get_msg("mpesa_ack");
+				$msg = $_msg['html'];
+				$msg = str_replace("{amount}", $ipn->mpesa_amt, $msg);
+				$msg = str_replace("{name}", $name, $msg);
+
+				$subject = $_msg['subject'];
+
+				//update IPN table
+				//to avoid double sending of emails due to IPN being fired
+				//more than once; as it usually is.
+				$this->contribution_model->mpesa_ipn_processed($ipn->ipnid);
+
+				//placed at the end for easy debugging
+				$this->email_model->send($to_email,$subject,$msg);
+			}
 		}
 	}
 }
