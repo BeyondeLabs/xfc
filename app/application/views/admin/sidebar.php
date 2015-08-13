@@ -18,6 +18,7 @@ function active_class($arg,$active){
 	<li <?php active_class("dashboard",$active);?>>
 		<?php echo anchor("admin","<i class='fa fa-pie-chart'></i> Dashboard"); ?></li>
 	<li <?php active_class("champions",$active);?>><?php echo anchor("admin/champions","<i class='fa fa-database'></i> Champions"); ?></li>
+	<li <?php active_class("contribution",$active);?>><?php echo anchor("admin/contribution","<i class='fa fa-signal'></i> Contribution"); ?></li>
 	<li <?php active_class("commitments",$active);?>><?php echo anchor("admin/commitments","<i class='fa fa-thumbs-o-up'></i> Commitments"); ?></li>
 	<li <?php active_class("later",$active);?>><?php echo anchor("admin/commitments/later","<i class='fa fa-clock-o'></i> Commit Later"); ?></li>
 	<li <?php active_class("invited",$active);?>><?php echo anchor("admin/invited","<i class='fa fa-database'></i> Invited"); ?></li>

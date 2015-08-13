@@ -122,6 +122,17 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function contribution() {
+		$this->load->model("contribution_model");
+		$this->data["main"] = "admin/contribution";
+		$this->data["active"] = "contribution";
+		$this->data["contribution"] = $this->contribution_model
+																		->get_all_contribution();
+		$this->data["total_contribution"] = $this->contribution_model
+																					->get_contribution_total();
+		$this->_load_view();
+	}
+
 	private function is_logged_in(){
 		if(!$this->session->userdata('logged_in') ||
 			!$this->session->userdata('is_admin')){

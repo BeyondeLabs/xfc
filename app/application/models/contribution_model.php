@@ -27,10 +27,18 @@ class Contribution_model extends CI_Model{
 		return $this->db->query($sql);
 	}
 
-	function get_contribution_total($cid) {
-		$sql = "SELECT sum(amount) as amount
-						FROM `contribution`
-						WHERE cid = ".$cid;
+	function get_contribution_total($cid=0) {
+		if($cid == 0) {
+			//all the contribution
+			$sql = "SELECT sum(amount) as amount
+							FROM `contribution`";
+		}
+		else {
+			//for an individual
+			$sql = "SELECT sum(amount) as amount
+							FROM `contribution`
+							WHERE cid = ".$cid;
+		}
 		$res = $this->db->query($sql)->result();
 		return $res[0]->amount;
 	}
@@ -48,5 +56,18 @@ class Contribution_model extends CI_Model{
 	function mpesa_ipn_processed($ipnid) {
 		$this->db->where("ipnid",$ipnid);
 		return $this->db->update("mpesa_ipn",array("processed" => 1));
+	}
+
+	function get_all_contribution() {
+		$sql = "SELECT *, date_format(tstamp,'%M %e, %Y') as tstamp,
+						cmt.name as commitment_type  
+						FROM contribution ct
+						LEFT JOIN mpesa_ipn m ON ct.ipnid = m.ipnid
+						LEFT JOIN champion c ON ct.cid = c.cid
+						LEFT JOIN commitment cm ON c.cid = cm.cid
+						LEFT JOIN commitment_type cmt ON cm.ctid = cmt.ctid
+						ORDER BY m.ipnid DESC";
+
+		return $this->db->query($sql);
 	}
 }
