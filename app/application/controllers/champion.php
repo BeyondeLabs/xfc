@@ -166,7 +166,7 @@ class Champion extends CI_Controller {
 				$rule2 = array(
 					'field'=>'date_to',
 					'label'=>'End Date',
-					'rules'=>'required'
+					'rules'=>'required|callback_validate_end_date'
 					);
 			}else{
 				$rule2 = array(
@@ -182,7 +182,7 @@ class Champion extends CI_Controller {
 				array(
 					'field'=>'date_from',
 					'label'=>'Start Date',
-					'rules'=>'required'
+					'rules'=>'required|callback_validate_start_date'
 					),
 				array(
 					'field'=>'lifetime',
@@ -216,20 +216,22 @@ class Champion extends CI_Controller {
 
 				$name = $this->session->userdata('first_name')." ".
                                 $this->session->userdata('last_name');
-                $amount = $this->input->post("amount");
-                $other_amount = $this->input->post("other_amount");
-                if($other_amount > 0) $amount = $other_amount;
+        $amount = $this->input->post("amount");
+        $other_amount = $this->input->post("other_amount");
 
-                $ctid = $this->input->post("ctid");
-                $type = $this->champion_model
-                									->get_commitment_type_name($ctid);
+        if($other_amount > 0) $amount = $other_amount;
 
-                $date_from = $this->input->post("date_from");
-                $date_to = $this->input->post("date_to");
-                if($this->input->post("lifetime")==1){
-                	$date_to = "Lifetime";
-                }
-                $payment_mode = $this->input->post("payment_mode");
+        $ctid = $this->input->post("ctid");
+
+        $type = $this->champion_model
+        									->get_commitment_type_name($ctid);
+
+        $date_from = $this->input->post("date_from");
+        $date_to = $this->input->post("date_to");
+        if($this->input->post("lifetime")==1){
+        	$date_to = "Lifetime";
+        }
+        $payment_mode = $this->input->post("payment_mode");
 
 				$msg = str_replace("{name}", $name, $msg);
 				$msg = str_replace("{amount}", $amount, $msg);
@@ -239,6 +241,7 @@ class Champion extends CI_Controller {
 				$msg = str_replace("{payment_mode}", $payment_mode, $msg);
 
 				$to_email = $this->session->userdata("email");
+
 				$this->email_model->send($to_email,$subject,$msg);
 				//another email to staff I/C
 				$to_email = "nkimani@focuskenya.org";
@@ -271,7 +274,7 @@ class Champion extends CI_Controller {
 				$rule2 = array(
 					'field'=>'date_to',
 					'label'=>'End Date',
-					'rules'=>'required'
+					'rules'=>'required|callback_validate_end_date'
 					);
 			}else{
 				$rule2 = array(
@@ -328,6 +331,38 @@ class Champion extends CI_Controller {
 			}else{
 				$this->commitment("later");
 			}
+		}
+	}
+
+	public function validate_end_date($date) {
+		//end date should be more than start date;
+
+		$date = new DateTime($date);
+		$start_date = $this->input->post("date_from"); //hacked
+		$start_date = new DateTime($start_date);
+
+		if($date > $start_date) {
+			return TRUE;
+		}
+		else {
+			$this->form_validation->set_message('validate_end_date',
+			'The End Date must be later than Start Date');
+			return FALSE;
+		}
+	}
+
+	public function validate_start_date($date) {
+		//must be today or later than today
+		$date = new DateTime($date);
+		$today = new DateTime();
+
+		if($date >= $today) {
+			return TRUE;
+		}
+		else {
+			$this->form_validation->set_message('validate_start_date',
+			'The Start Date must be today or later than today');
+			return FALSE;
 		}
 	}
 
