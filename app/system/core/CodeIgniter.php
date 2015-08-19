@@ -375,7 +375,7 @@
  *  Send the final rendered output to the browser
  * ------------------------------------------------------
  */
-	if ($EXT->_call_hook('display_override') === FALSE)
+	if ($EXT->_call_hook('display_override') === FALSE && !defined('PHPUNIT_TEST'))
 	{
 		$OUT->_display();
 	}
