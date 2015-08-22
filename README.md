@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/BeyondeLabs/focus-champions.svg)](https://travis-ci.org/BeyondeLabs/focus-champions/)
+
 FOCUS Champions
 ===============
 
