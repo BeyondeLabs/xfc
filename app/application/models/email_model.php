@@ -44,7 +44,8 @@ class Email_model extends CI_Model{
 			$this->email->message($msg);
 		}
 
-		// var_dump($msg); die();
+		// echo $msg; die(); // chaged to echo, since xdebug was
+											// truncating the var_dump
 		
 		$this->email->send();
 
