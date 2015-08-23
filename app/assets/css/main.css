@@ -326,6 +326,10 @@ table.table{
 	background: #dedede;
 }
 
+.dataTables_wrapper {
+	margin: 5px 0;
+}
+
 /*others - uncategorized */
 .no-overflow{
 	height: 400px;

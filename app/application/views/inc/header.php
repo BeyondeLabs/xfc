@@ -16,6 +16,11 @@
     ?>
     <link href="<?php echo base_url();?>assets/css/datepicker.css" rel="stylesheet">
     <?php endif; ?>
+
+    <?php if(isset($datatables)): ?>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+    <?php endif; ?>
+
     <link href="<?php echo base_url();?>assets/css/main.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

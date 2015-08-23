@@ -16,15 +16,17 @@
 </button>
 
 
-<table class="table">
+<table class="table data">
+<thead>
 <tr>
 	<th width="2%">#</th>
 	<th width="25%">Name</th>
 	<th width="15%">Amount</th>
 	<th width="15%">Type </th>
 	<th>Period</th>
-	<th></th>
 </tr>
+</thead>
+<tbody>
 <?php
 $count = 0;
 foreach($cm->result() as $row){
@@ -43,7 +45,7 @@ foreach($cm->result() as $row){
 	echo "</tr>";
 }
 ?>
-
+</tbody>
 </table>
 
 </div>

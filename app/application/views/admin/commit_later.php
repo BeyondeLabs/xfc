@@ -11,13 +11,16 @@
 
 <div class="col-md-10">
 
-<table class="table">
+<table class="table data">
+<thead>
 <tr>
 	<th width="2%">#</th>
 	<th width="25%">Name</th>
 	<th width="25%">Date</th>
 	<th>Reminder Date </th>
 </tr>
+<thead>
+<tbody>
 <?php
 $count = 0;
 foreach($cl->result() as $row){
@@ -30,7 +33,7 @@ foreach($cl->result() as $row){
 	echo "</tr>";
 }
 ?>
-
+</tbody>
 </table>
 
 

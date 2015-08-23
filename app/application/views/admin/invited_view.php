@@ -11,7 +11,8 @@
 
 <div class="col-md-10">
 
-<table class="table">
+<table class="table data">
+<thead>
 <tr>
 	<th width="2%">#</th>
 	<th width="25%">Name</th>
@@ -20,6 +21,8 @@
 	<th width="5%">Responded</th>
 	<th width="5%">Joined</th>
 </tr>
+</thead>
+<tbody>
 <?php
 $count = 0;
 foreach($invited->result() as $row){
@@ -43,7 +46,7 @@ foreach($invited->result() as $row){
 	echo "</tr>";
 }
 ?>
-
+</tbody>
 </table>
 
 </div>

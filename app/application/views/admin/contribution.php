@@ -13,7 +13,8 @@
 
 <h4><strong>Total Amount: </strong> 
 	<?php echo number_format($total_contribution,2); ?></h4>
-<table class="table">
+<table class="table data">
+<thead>
 <tr>
 	<th width="2%">#</th>
 	<th width="15%">Name</th>
@@ -22,6 +23,8 @@
 	<th>Commitment</th>
 	<th>M-Pesa Name</th>
 </tr>
+</thead>
+<tbody>
 <?php
 $count = 0;
 foreach($contribution->result() as $row){
@@ -36,7 +39,7 @@ foreach($contribution->result() as $row){
 	echo "</tr>";
 }
 ?>
-
+</tbody>
 </table>
 
 </div>

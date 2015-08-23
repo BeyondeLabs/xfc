@@ -85,6 +85,7 @@ class Admin extends CI_Controller {
 		
 		if($mode=="view"){
 			#list of invited champs
+			$this->data["datatables"] = TRUE;
 			$this->data['invited'] = $this->champion_model->get_champs_invited_details();
 			$this->data['main'] = "admin/invited_view";
 			$this->_load_view();
@@ -93,12 +94,14 @@ class Admin extends CI_Controller {
 
 	public function commitments($mode="view"){
 		if($mode=="view"){
+			$this->data["datatables"] = TRUE;
 			$this->data['active'] = "commitments";
 			$this->data['cm'] = $this->champion_model->get_champs_committed();
 			$this->data['main'] = "admin/commitments";
 			$this->_load_view();
 		}
 		if($mode=="later"){
+			$this->data["datatables"] = TRUE;
 			$this->data['active'] = "later";
 			$this->data['cl'] = $this->champion_model->get_champs_commit_later();
 			$this->data['main'] = "admin/commit_later";
@@ -131,6 +134,7 @@ class Admin extends CI_Controller {
 																		->get_all_contribution();
 		$this->data["total_contribution"] = $this->contribution_model
 																					->get_contribution_total();
+		$this->data["datatables"] = TRUE;
 		$this->_load_view();
 	}
 
