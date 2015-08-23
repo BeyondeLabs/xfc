@@ -129,4 +129,45 @@ class Cron_model extends CI_Model{
 		//placed at the end for easy debugging
 		$this->email_model->send($to_email,$subject,$msg);
 	}
+
+	function commitment_reminder() {
+		// cron job runs daily to see who to remind
+		// to make their commitment / pledge
+		$sql = "SELECT * 
+						FROM  `commit_later` cl
+						LEFT JOIN champion c ON cl.cid = c.cid
+						WHERE reminder_date = CURDATE( )";
+		$result = $this->db->query($sql);
+
+		foreach ($result->result() as $row) {
+			// update commit_later table
+			if ($row->reminded < 1) {
+				$reminded = array("reminded" => 1);
+			}
+			else{
+				$reminded = array("reminded" => ($row->reminded + 1));
+			}
+			$this->db->where("clid", $row->clid);
+			$this->db->update("commit_later", $reminded);
+
+			$this->email_commitment_reminder($row);
+		}
+	}
+
+	function email_commitment_reminder($row) {
+		$this->load->model("email_model");
+		
+		$name = $row->first_name;
+		$to_email = $row->email;
+
+		$_msg = $this->email_model->get_msg("commit_reminder");
+		$msg = $_msg['html'];
+		$msg = str_replace("{name}", $name, $msg);
+
+		$subject = $_msg['subject'];
+
+		//placed at the end for easy debugging
+		$this->email_model->send($to_email,$subject,$msg);
+	}
+
 }

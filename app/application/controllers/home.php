@@ -270,16 +270,22 @@ class Home extends CI_Controller {
 		if ($type == "test"){
 			$this->general_model->cron_test();
 		}
-
-		if ($type == "daily"){
+		else if ($type == "daily"){
 			#daily fired cron jobs
 
 			#sending invitation reminders
 			$this->cron_model->invitation_reminder();
 		}
-
-		if ($type == "monthly") {
+		else if ($type == "commit_reminder") {
+			// make-commitment reminder
+			//plased separately for separation of concerns
+			$this->cron_model->commitment_reminder();
+		}
+		else if ($type == "monthly") {
 			$this->cron_model->contribution_reminder();
+		}
+		else {
+			// nothing
 		}
 	}
 
