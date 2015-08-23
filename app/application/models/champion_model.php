@@ -171,7 +171,12 @@ class Champion_model extends CI_Model{
 			"payment_mode" =>  $this->input->post("payment_mode")
 			);
 
-		return $this->db->insert("commitment",$commitment);
+		$this->db->insert("commitment",$commitment);
+
+		//delete from list of commit_later, if exists
+		$this->db->where("cid", $this->session->userdata("cid"));
+		$this->db->delete("commit_later");
+		return TRUE;
 	}
 
 	function update_commitment($cid){
