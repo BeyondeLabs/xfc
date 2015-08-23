@@ -244,3 +244,39 @@ CREATE TABLE contribution(
 	foreign key(cid) references champion(cid),
 	foreign key(ipnid) references mpesa_ipn(ipnid)
 );
+
+CREATE TABLE contribution_reminder(
+    rid int primary key auto_increment,
+    cmid int,
+    date_time timestamp default current_timestamp,
+    foreign key(cmid) references commitment(cmid)
+);
+
+INSERT INTO  `focuschampions_live`.`email_message` (
+`emid` ,
+`name` ,
+`subject` ,
+`html` ,
+`datetime`
+)
+VALUES (
+NULL ,  'contrib_reminder',  'Reminder for Your Contribution',  '<p>Greetings {name},<br/>
+<br/>
+Hope this finds you well in Christ. We humbly remind you about your pledged {type} contribution for FOCUS Champions.</br>
+<br/>
+To pay via <strong>M-Pesa:</strong></p>
+<ul>
+<li>Go to the M-Pesa menu > Payment Services > PayBill.</li>
+<li>For <strong>Business No.</strong> put <strong>412412</strong></li>
+<li>For <strong>Account No.</strong> put <strong>Champ-{cid}</strong> 
+	(<em>Remember to put the hyphen (-) after <strong>Champ</strong></em>)</li>
+<li>For amount, put your pledged amount which is <strong>{amount}</strong>.</li>
+</ul>
+<p>You can log in to your profile on <a href="http://champions.focuskenya.org">FOCUS Champions</a> to see your 
+contribution history. God bless you for your support.</p>
+<p>Regards, <br/><br/>
+Joseph Ngugi<br/>
+<strong>Resource Mobilization Director</strong>
+', 
+CURRENT_TIMESTAMP
+);

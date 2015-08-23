@@ -267,15 +267,19 @@ class Home extends CI_Controller {
 	public function cron($type="test"){
 		$this->load->model("cron_model");
 
-		if($type=="test"){
+		if ($type == "test"){
 			$this->general_model->cron_test();
 		}
 
-		if($type=="daily"){
+		if ($type == "daily"){
 			#daily fired cron jobs
 
 			#sending invitation reminders
 			$this->cron_model->invitation_reminder();
+		}
+
+		if ($type == "monthly") {
+			$this->cron_model->contribution_reminder();
 		}
 	}
 
