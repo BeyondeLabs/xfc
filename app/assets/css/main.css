@@ -447,6 +447,36 @@ li.active-inverse a.white:hover{
 	text-align: center;
 }
 
+/* -- Admin Section --*/
+.widgets div{
+	border: solid 1px #cecece;
+	min-height: 100px;
+	margin: 3px;
+}
+
+.widgets span.title {
+	font-size: 14px;
+	font-weight: bold;
+	color: #25408f;
+	margin: 5px 0px;
+}
+
+.widgets span {
+	text-align: center;
+	display: block;
+	clear: both;
+	line-height: 12px;
+	color: #aaa;
+}
+
+.widgets div i {
+	font-size: 250%;
+	text-align: center;
+	display: block;
+	padding: 10px 0;
+	color: #777;
+}
+
 /*formating scroll-bars src: http://bit.ly/1xX6WQH*/
 
 ::-webkit-scrollbar {
