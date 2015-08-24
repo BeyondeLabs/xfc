@@ -138,6 +138,14 @@ class Admin extends CI_Controller {
 		$this->_load_view();
 	}
 
+	public function mpesa() {
+		$this->data["main"] = "admin/mpesa_ipn";
+		$this->data["mpesa"] = $this->admin_model->get_mpesa_ipn();
+		$this->data["active"] = "mpesa";
+		$this->data["datatables"] = TRUE;
+		$this->_load_view();
+	}
+
 	private function is_logged_in(){
 		if(!$this->session->userdata('logged_in') ||
 			!$this->session->userdata('is_admin')){

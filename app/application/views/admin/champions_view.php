@@ -1,5 +1,5 @@
 <div class="title">
-	<h1><i class="fa fa-database"></i> Champions</h1>
+	<h1><i class="glyphicon glyphicon-user"></i> Champions</h1>
 </div>
 <div class="row">
 

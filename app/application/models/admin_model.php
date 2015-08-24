@@ -64,4 +64,10 @@ class Admin_model extends CI_Model{
 																					->num_rows();
 		return $reports;
 	}
+
+	function get_mpesa_ipn() {
+		$sql = "SELECT *, date_format(tstamp,'%h:%i %p %M %e, %Y') as tstamp
+						FROM mpesa_ipn";
+		return $this->db->query($sql);
+	}
 }
