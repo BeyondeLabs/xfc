@@ -150,7 +150,7 @@
 				echo "people";
 			}
 			?>, out of a 
-			target of 20 &mdash; <?php echo anchor("champion/invite","View List"); ?></p>
+			target of 20</p>
 	</div>
 
 </div>
