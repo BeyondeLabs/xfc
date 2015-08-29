@@ -131,7 +131,7 @@
 				<span class="right">
 					<?php
 					if($cd->payment_mode == "MPesa"){
-						echo "Business Number: <strong>412 412</strong>, <br/>Account Name: <strong>Champions</strong>.";
+						echo "PayBill Number: <strong>412 412</strong>, <br/>Account Name: <strong>Champ-".$cid."</strong>";
 					}
 					if($cd->payment_mode == "Airtel"){
 						echo "Send to Number: <strong>0733 614 340</strong>.";
