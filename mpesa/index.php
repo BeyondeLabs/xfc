@@ -76,7 +76,8 @@ $mpesa_acc = $_REQUEST["mpesa_acc"];
 
 if(preg_match($patterns["champions"], $mpesa_acc)) {
 	
-	$url = "http://champions.focuskenya.org/home/mpesa";
+	// $url = "http://champions.focuskenya.org/home/mpesa";
+	$url = "http://localhost/focus-champions/app/home/mpesa";
 
 	//using cURL
 	$curl_connection = curl_init($url);

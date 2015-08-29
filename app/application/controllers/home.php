@@ -333,6 +333,8 @@ class Home extends CI_Controller {
 
 				//placed at the end for easy debugging
 				$this->email_model->send($to_email,$subject,$msg);
+
+				// send SMS
 			}
 		}
 	}
