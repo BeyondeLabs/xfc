@@ -199,6 +199,7 @@ class Cron_model extends CI_Model{
 		// email to exec
 		$this->load->model("email_model");
 		$to_email = "nkimani@focuskenya.org";
+		// $to_email = "profnandaa@gmail.com";
 
 		$date = strtotime("last sunday");
 		$date = date('l, F d, Y', $date);
@@ -209,11 +210,12 @@ class Cron_model extends CI_Model{
 		$msg = str_replace("{signups}", $report['signups'], $msg);
 		$msg = str_replace("{commitment}", $report['commitment'], $msg);
 		$msg = str_replace("{contrib_count}", $report['contrib_count'], $msg);
-		$msg = str_replace("{contrib_amount}", "KES. ".$report['contrib_amount'], $msg);
+		$msg = str_replace("{contrib_amount}", "KES. ".number_format($report['contrib_amount'], 2), $msg);
 
 		$subject = $_msg['subject'];
 
 		$this->email_model->send($to_email,$subject,$msg);
+		echo "done";die();
 	}
 
 }

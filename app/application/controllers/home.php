@@ -8,7 +8,7 @@ class Home extends CI_Controller {
 		$this->load->model("champion_model");
 		$this->load->model("cu_model");
 		$this->load->model("general_model");
-		$this->load->model("sms_model");
+		// $this->load->model("sms_model");
 	}
 
 	private function is_logged_in(){
@@ -319,10 +319,6 @@ class Home extends CI_Controller {
 				$this->contribution_model->save_contribution($data);
 
 				// var_dump("done");
-				//send sms
-				
-				//$this->sms_model->send_confirmation_SMS_tumasms($ipn->mpesa_msisdn,$ipn->mpesa_amt,$ipn->mpesa_sender);
-				$this->sms_model->send_confirmation_SMS_tumasms('0720638693','50','Monicah Wambugu');
 
 				//send acknowledgement email
 				$this->load->model("email_model");
@@ -346,7 +342,10 @@ class Home extends CI_Controller {
 				
 				$this->email_model->send($to_email,$subject,$msg);
 
-				// send SMS
+				//send sms
+				
+				//$this->sms_model->send_confirmation_SMS_tumasms($ipn->mpesa_msisdn,$ipn->mpesa_amt,$ipn->mpesa_sender);
+				// $this->sms_model->send_confirmation_SMS_tumasms('0720638693','50','Monicah Wambugu');
 			}
 		}
 	}
