@@ -170,4 +170,50 @@ class Cron_model extends CI_Model{
 		$this->email_model->send($to_email,$subject,$msg);
 	}
 
+	function weekly_executive_report() {
+		// reports sent to executive every Monday morning
+
+		$report = array();
+		// sign-ups last week
+		$sql = "SELECT count(cid) as count
+						FROM `champion`
+						WHERE WEEK(date_time) = (WEEK(CURDATE())-1)";
+		$result = $this->db->query($sql)->result();
+		$report["signups"] = $result[0]->count;
+
+		// amount contributed
+		$sql = "SELECT sum(amount) AS amount, count(ctid) as count
+						FROM `contribution`
+						WHERE WEEK(date_time) = (WEEK(CURDATE())-1)";
+		$result = $this->db->query($sql)->result();
+		$report["contrib_amount"] = $result[0]->amount;
+		$report["contrib_count"] = $result[0]->count;
+
+		// commitments
+		$sql = "SELECT count(cmid) AS count
+						FROM `commitment`
+						WHERE WEEK(commit_date) = (WEEK(CURDATE())-1)";
+		$result = $this->db->query($sql)->result();
+		$report["commitment"] = $result[0]->count;
+
+		// email to exec
+		$this->load->model("email_model");
+		$to_email = "nkimani@focuskenya.org";
+
+		$date = strtotime("last sunday");
+		$date = date('l, F d, Y', $date);
+
+		$_msg = $this->email_model->get_msg("exec_report");
+		$msg = $_msg['html'];
+		$msg = str_replace("{date}", $date, $msg);
+		$msg = str_replace("{signups}", $report['signups'], $msg);
+		$msg = str_replace("{commitment}", $report['commitment'], $msg);
+		$msg = str_replace("{contrib_count}", $report['contrib_count'], $msg);
+		$msg = str_replace("{contrib_amount}", "KES. ".$report['contrib_amount'], $msg);
+
+		$subject = $_msg['subject'];
+
+		$this->email_model->send($to_email,$subject,$msg);
+	}
+
 }
