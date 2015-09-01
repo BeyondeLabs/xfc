@@ -8,7 +8,7 @@ class Home extends CI_Controller {
 		$this->load->model("champion_model");
 		$this->load->model("cu_model");
 		$this->load->model("general_model");
-		// $this->load->model("sms_model");
+		
 	}
 
 	private function is_logged_in(){
@@ -251,6 +251,8 @@ class Home extends CI_Controller {
 		}
 	}
 
+	
+
 	public function commitment($cid,$check){
 		if($this->champion_model->check_reset_commitment($cid,$check)){
 			#auto-login user
@@ -295,7 +297,9 @@ class Home extends CI_Controller {
 		}
 	}
 
-	public function mpesa() {
+
+	public function mpesa() {	
+
 		$this->load->model("contribution_model");
 
 		$ipn = $this->contribution_model->get_last_mpesa_ipn();
@@ -344,8 +348,7 @@ class Home extends CI_Controller {
 
 				//send sms
 				
-				//$this->sms_model->send_confirmation_SMS_tumasms($ipn->mpesa_msisdn,$ipn->mpesa_amt,$ipn->mpesa_sender);
-				// $this->sms_model->send_confirmation_SMS_tumasms('0720638693','50','Monicah Wambugu');
+
 			}
 		}
 	}

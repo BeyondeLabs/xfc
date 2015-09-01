@@ -7,10 +7,11 @@ class Sms_model extends CI_Model{
 
 	function send_confirmation_SMS_tumasms($number,$amount,$sender_name)
 		{
-			
-			$message = str_replace("sender",$sender_name,"amount",$amount,"Thanks sender for making your contribution worth amount Ksh.FOCUS receives it with gratitude.");
+
+			$message = str_replace("amount",$amount,(str_replace("sender",$sender_name,"Thanks sender for making your contribution worth amount Ksh.FOCUS receives it with gratitude.")));
 			# Load API class
 			require APPPATH."/gateway/tumasms.php";
+
 			# Setup API credentials
 			$api_key = '3204ecce21629bc268c3216f43e38a38'; # Check under Settings->API Keys in Tumasms
 			$api_signature = 'LVjZ/RDxhvsEC9L7Xas64whozPacLzKvRHYjfyfZkZIjVhBd9eoPz8Oy15iP8o8iuAim3QAFrT329597KSQGkeaudF6PPrI9w6gF4H9KPx4LwLyKnOo9MheQOAcRJzgvvE8nr/sW6BL6DZIlyiZ3ZzUA9EIoPWQrJYPbQTd95MI='; # Check under Manage Settings->API Keys in Tumasms
@@ -39,13 +40,15 @@ class Sms_model extends CI_Model{
 			echo $tumasms->response_xml; # Returns full xml response
 			echo $tumasms->response_json; # Returns full json response	
 			$status = $tumasms->status;
-
-			$this->save_msg($number,$message,$status)
+			$response = $tumasms->response_json;
+			$this->save_msg($number,$message,$status,$response);
+			
 		}
 		function send_confirmation_SMS_AIT($number,$amount,$sender_name)
 		{
 			
-			$message = str_replace("sender",$sender_name,"amount",$amount,"Thanks sender for making your contribution worth amount Ksh.FOCUS receives it with gratitude.");
+			$message = str_replace("amount",$amount,(str_replace("sender",$sender_name,"Thanks sender for making your contribution worth amount Ksh.FOCUS receives it with gratitude.")));
+
 			// Be sure to include the file you've just downloaded
 			require_once(APPPATH.'gateway/AfricasTalkingGateway.php');
 			// Specify your login credentials
@@ -72,7 +75,7 @@ class Sms_model extends CI_Model{
 			    echo " MessageId: " .$result->messageId;
 			    echo " Cost: "   .$result->cost."\n";
 
-			    $this->save_msg($result->number,$message,$status)
+			    $this->save_msg($result->number,$message,$status);
 			  }
 			}
 			catch ( AfricasTalkingGatewayException $e )
@@ -82,15 +85,17 @@ class Sms_model extends CI_Model{
 		}
 
 
-	function save_msg($msisdn,$msg,$status){
+	function save_msg($no,$msg,$status,$response){
 		$Outbound_SMS = array(
-			"number" => $msisdn,
-			"msg" => $msg,
+			"number" => $no,
+			"message" => $msg,
 			"status" => $status,
-
+			"response" => $response
 			);
 
-		$this->db->insert("Outbound_SMS",$Outbound_SMS);
+		$this->db->insert("outbound_sms",$Outbound_SMS);
+
+
 	}
 
 	function retrieve_msg($name=""){

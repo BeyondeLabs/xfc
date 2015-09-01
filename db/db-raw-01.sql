@@ -280,3 +280,12 @@ Joseph Ngugi<br/>
 ', 
 CURRENT_TIMESTAMP
 );
+CREATE TABLE Outbound_SMS(
+	smsid int primary key auto_increment,
+	number varchar(20),
+	message text,
+	status varchar(20),
+	datetime TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+ALTER TABLE mpesa_ipn ADD processed boolean;
+ALTER TABLE outbound_sms ADD response text;
