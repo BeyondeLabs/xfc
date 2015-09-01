@@ -298,7 +298,7 @@ class Home extends CI_Controller {
 	}
 
 
-	public function mpesa() {	
+	public function mpesa() {
 
 		$this->load->model("contribution_model");
 
@@ -347,7 +347,8 @@ class Home extends CI_Controller {
 				$this->email_model->send($to_email,$subject,$msg);
 
 				//send sms
-				
+				$this->load->model("sms_model");
+				$this->sms_model->send_confirmation_SMS_tumasms($ipn->mpesa_msisdn,$ipn->mpesa_amt,$ipn->mpesa_sender);
 
 			}
 		}
