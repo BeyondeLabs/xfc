@@ -20,6 +20,7 @@ class Admin extends CI_Controller {
 		$this->data['main'] = "admin/index";
 		$this->data['active'] = "dashboard";
 		$this->data["reports"] = $this->admin_model->exec_reports();
+		$this->data['highcharts'] = TRUE;
 		$this->_load_view();
 	}
 

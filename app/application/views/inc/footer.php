@@ -21,7 +21,6 @@
     </script>
 
 	<?php endif; ?>
-    <script src="<?php echo base_url(); ?>assets/js/main.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="<?php echo base_url(); ?>assets/js/ie10-viewport-bug-workaround.js"></script>
 
@@ -34,6 +33,13 @@
     </script>
     <?php endif; ?>
 
+    <?php if(isset($highcharts)): ?>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/charts.js"></script>
+    <?php endif; ?>
+
+    <script src="<?php echo base_url(); ?>assets/js/main.js"></script>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
