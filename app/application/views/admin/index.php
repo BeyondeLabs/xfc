@@ -8,7 +8,7 @@
 
 </div>
 
-<div class="col-md-8">
+<div class="col-md-10">
 
 	<div class="widgets">
 		<div class="col-md-2">
@@ -36,7 +36,7 @@
 	</div>
 
 	<div class="widgets">
-		<div class="col-md-3">
+		<div class="col-md-2">
 			<i class="fa fa-thumbs-o-up"></i>
 			<span class="title">Commitments</span>
 			<span><?php echo $reports["commitments"]; ?> / 
@@ -52,7 +52,7 @@
 		</div>
 	</div>
 
-	<div class="col-md-12" id="container" style="min-width: 310px; height: 400px; margin: 0 auto">
+	<div class="col-md-12" id="container" style="padding:15px 0px;">
 	</div>
 
 
