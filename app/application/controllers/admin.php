@@ -147,6 +147,11 @@ class Admin extends CI_Controller {
 		$this->_load_view();
 	}
 
+	public function reports() {
+		// returned as JSON
+		echo $this->admin_model->chart_reports();
+	}
+
 	private function is_logged_in(){
 		if(!$this->session->userdata('logged_in') ||
 			!$this->session->userdata('is_admin')){

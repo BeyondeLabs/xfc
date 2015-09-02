@@ -11,6 +11,10 @@
     <title>FOCUS Champions &#187; Support FOCUS in reaching the nations</title>
     <link href="<?php echo base_url();?>assets/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo base_url();?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript">
+      // for ajax calls
+      var $base_url = "<?php echo base_url(); ?>"; 
+    </script>
     <?php
     if(isset($date_picker)):
     ?>

@@ -44,7 +44,7 @@ class Admin_model extends CI_Model{
 
 		// invite responses
 		$sql = "SELECT COUNT( cid_to ) AS count
-						FROM  `invite` 
+						FROM  `invite`
 						WHERE cid_to >0";
 		$result = $this->db->query($sql)->result();
 		$reports["responses"] = $result[0]->count;
@@ -69,5 +69,29 @@ class Admin_model extends CI_Model{
 		$sql = "SELECT *, date_format(tstamp,'%h:%i %p %M %e, %Y') as tstamp
 						FROM mpesa_ipn";
 		return $this->db->query($sql);
+	}
+
+	function chart_reports() {
+		// monthly reports
+		$reports = array();
+		$_array = array_fill(0, 12, 0);
+		// sign-ups
+		$sql = "SELECT MONTH(date_time) as month, count(cid) as count
+						FROM champion
+						WHERE YEAR(date_time ) = YEAR(CURDATE())
+						GROUP BY MONTH(date_time)";
+		$result = $this->db->query($sql)->result();
+		$signups = $_array;
+		foreach($result as $row) {
+			$signups[$row->month - 1] = intval($row->count);
+		}
+
+		$reports['signups'] = $signups;
+
+		// invites
+		
+
+		$reports = json_encode($reports);
+		return $reports;
 	}
 }
