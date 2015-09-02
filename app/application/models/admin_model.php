@@ -93,7 +93,7 @@ class Admin_model extends CI_Model{
 		// echo $sql; die();
 		$result = $this->db->query($sql)->result();
 		// transforms the result set into an 'array_year'
-		$report = array_fill(0, 12, 0);
+		$report = array_fill(0, intval(date('m')), 0);
 		foreach($result as $row) {
 			$report[$row->month - 1] = intval($row->count);
 		}
