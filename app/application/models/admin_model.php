@@ -72,26 +72,32 @@ class Admin_model extends CI_Model{
 	}
 
 	function chart_reports() {
-		// monthly reports
-		$reports = array();
-		$_array = array_fill(0, 12, 0);
-		// sign-ups
-		$sql = "SELECT MONTH(date_time) as month, count(cid) as count
-						FROM champion
-						WHERE YEAR(date_time ) = YEAR(CURDATE())
-						GROUP BY MONTH(date_time)";
-		$result = $this->db->query($sql)->result();
-		$signups = $_array;
-		foreach($result as $row) {
-			$signups[$row->month - 1] = intval($row->count);
-		}
-
-		$reports['signups'] = $signups;
-
-		// invites
-		
+		// monthly reports, for the year
+		$reports = array(
+				"signups" => $this->_get_year_report('champion', 'cid'),
+				"invites" => $this->_get_year_report('invite', 'iid'),
+				"commitments" => $this->_get_year_report('commitment', 
+														'cmid', 'commit_date'),
+				"contributions" => $this->_get_year_report('contribution', 'ctid')
+			);
 
 		$reports = json_encode($reports);
 		return $reports;
+	}
+
+	function _get_year_report($table_name, $id, $date = 'date_time') {
+		$sql = "SELECT MONTH($date) as month, count($id) as count
+						FROM $table_name
+						WHERE YEAR($date) = YEAR(CURDATE())
+						GROUP BY MONTH($date)";
+		// echo $sql; die();
+		$result = $this->db->query($sql)->result();
+		// transforms the result set into an 'array_year'
+		$report = array_fill(0, 12, 0);
+		foreach($result as $row) {
+			$report[$row->month - 1] = intval($row->count);
+		}
+
+		return $report;
 	}
 }
