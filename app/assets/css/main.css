@@ -451,6 +451,21 @@ li.active-inverse a.white:hover{
 	text-align: center;
 }
 
+.paginate {
+	min-height: 396px;
+}
+
+.simplePagerNav {
+	float: right;
+	text-align: center;
+}
+
+.pagination .currentPage a,
+.pagination li a:hover {
+	background: #555;
+	color: #eee;
+}
+
 /* -- Admin Section --*/
 .widgets div{
 	border: solid 1px #cecece;

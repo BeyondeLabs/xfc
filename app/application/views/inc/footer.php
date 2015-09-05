@@ -39,6 +39,19 @@
     <script src="<?php echo base_url(); ?>assets/js/charts.js"></script>
     <?php endif; ?>
 
+    <?php if(isset($pagination)):?>
+    <script src="<?php echo base_url(); ?>assets/js/quick.pagination.js"></script>
+
+    <script>
+      $(".paginate").quickPager({
+        pageSize: "9"
+      });
+      $(".simplePagerNav").addClass("pagination")
+                  .addClass("col-md-10");
+    </script>
+
+    <?php endif; ?>
+
     <script src="<?php echo base_url(); ?>assets/js/main.js"></script>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

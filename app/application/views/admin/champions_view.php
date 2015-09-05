@@ -7,7 +7,7 @@
 	<?php $this->load->view("admin/sidebar"); ?>
 </div>
 
-<div class="col-md-10">
+<div class="col-md-10 paginate">
 <?php
 foreach($champs->result() as $row):
 ?>

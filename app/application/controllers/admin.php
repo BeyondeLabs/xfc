@@ -77,6 +77,7 @@ class Admin extends CI_Controller {
 			//view list of champions
 			$this->data['champs'] = $this->champion_model->get_champs_list();
 			$this->data['main'] = "admin/champions_view";
+			$this->data['pagination'] = true; // trying to follow PSR now
 			$this->_load_view();
 		}
 	}
