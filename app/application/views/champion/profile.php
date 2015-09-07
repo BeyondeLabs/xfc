@@ -212,7 +212,14 @@
 				$date_to = $row->date_to;
 			}
 			echo "<div class='col-md-6'>";
-			echo "<p class='co'> $row->name </p>";
+			echo "<p class='co'> $row->name";
+			echo "<span>";
+			echo anchor("champion/org/edit/" . $row->oid,
+				 	"<i class='fa fa-pencil'></i>");
+			echo anchor("champion/org/del/" . $row->oid,
+				 	"<i class='fa fa-close'></i>");
+			echo "</span>";
+			echo "</p>";
 			echo "<p><em>$row->designation</em> </p>";
 			echo "<p> $row->date_from - $date_to </p>";
 			echo "</div>";

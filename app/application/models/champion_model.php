@@ -370,6 +370,25 @@ class Champion_model extends CI_Model{
 		return $this->db->query($sql);
 	}
 
+	function get_one_org($oid) {
+		$this->db->where("oid", $oid);
+		$result = $this->db->get("organization")->result();
+		return $result[0];
+	}
+
+	function update_org($oid) {
+		$this->db->where("oid", $oid);
+		$org = $this->input->post();
+		unset($org['submit']);
+
+		$this->db->update("organization", $org);
+	}
+
+	function delete_org($oid) {
+		$this->db->where("oid", $oid);
+		$this->db->delete("organization");
+	}
+
 	function invite($cid){
 		//clean up cases (capitalization)
 		$first_name = $this->input->post("first_name");

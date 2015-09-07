@@ -496,6 +496,14 @@ li.active-inverse a.white:hover{
 	color: #777;
 }
 
+.work p span {
+	float: right;
+}
+
+.work p span a {
+	margin-left: 5px;
+}
+
 /*formating scroll-bars src: http://bit.ly/1xX6WQH*/
 
 ::-webkit-scrollbar {
