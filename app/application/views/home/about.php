@@ -34,7 +34,8 @@
 		 as supporters (champions).</li>
 </ul>
 
-
+<?php echo anchor("home/pre", "Join Now", 
+"class='btn btn-lg btn-success'"); ?>
 </div>
 
 </div>
