@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/BeyondeLabs/focus-champions.svg)](https://travis-ci.org/BeyondeLabs/focus-champions/)
+[![Build Status](https://travis-ci.org/BeyondeLabs/focus-champions.svg)](https://travis-ci.org/BeyondeLabs/focus-champions/) [![StyleCI](https://styleci.io/repos/26587963/shield)](https://styleci.io/repos/26587963)
 
 FOCUS Champions
 ===============
