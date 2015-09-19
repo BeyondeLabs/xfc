@@ -34,8 +34,8 @@
     <?php endif; ?>
 
     <?php if(isset($highcharts)): ?>
-    <script src="http://code.highcharts.com/highcharts.js"></script>
-    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/charts.js"></script>
     <?php endif; ?>
 
