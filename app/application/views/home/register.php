@@ -16,7 +16,7 @@ foreach($aff_type->result() as $row){
 
 //generate list of years
 $_year = array();
-for($i=date("Y"); $i>=1950; $i--){
+for($i = (date("Y") + 10); $i >= 1950; $i--){
 	$_year[$i] = $i;
 }
 
@@ -53,24 +53,30 @@ if(isset($_POST['register'])){
 		echo validation_errors('<div class="alert alert-danger" role="alert">','</div>');
 
 		echo form_open("home/register/submit","class='form'");
+		echo form_label("*All the fields are mandory","__");
 		echo form_input("first_name",set_value("first_name"),"class='half'");
 		echo form_input("last_name",set_value("last_name"),"class='half'");
 		echo form_label("First Name <span class='right'>Last Name</span>","first_name");
 		echo form_dropdown("title",
 			array(
-				"Mr." => "Mr.","Ms."=>"Ms.","Mrs."=>"Mrs.",
-				"Prof."=>"Prof.","Dr."=>"Dr."
+				"Mr." => "Mr.",
+				"Ms." => "Ms.",
+				"Mrs." => "Mrs.",
+				"Prof." => "Prof.",
+				"Dr." => "Dr.",
+				"Pastor" => "Pastor",
+				"Reverend" => "Reverend",
 				),$_title, "class='half'");
 		echo form_dropdown("marital_status",
 			array("Single"=>"Single","Married"=>"Married","Other"=>"Other"),
 				$_marital_status,"class='half'");
 		echo form_label("Title <span class='right'>Marital Status</span>","first_name");
 		if($in_cu == 1){
-			echo form_dropdown("cuid",$_uni_cu,$_cuid);
-			echo form_label("Christian Union","cuid");
 			echo form_dropdown("atid",$_aff_type,$_atid, "class='half'");
 			echo form_dropdown("grad_year",$_year,"","class='half'");
-			echo form_label("Affiliation <span class='right'>Year of Graduation</span>","atid");
+			echo form_label("Category <span class='right'>Year of Graduation</span>","atid");
+			echo form_dropdown("cuid",$_uni_cu,$_cuid);
+			echo form_label("Christian Union","cuid");
 		}else{
 			echo form_hidden(
 				array(

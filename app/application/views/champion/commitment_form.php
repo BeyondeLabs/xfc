@@ -60,8 +60,6 @@ Commitment Form
 
 
 		echo form_open("champion/commitment/submit/$mode2","class='form'");
-		echo form_dropdown("ctid",$_commitment_type,"2");
-		echo form_label("Commitment Type","ctid");
 		if(isset($_POST["amount"])){
 			$_amount = $this->input->post("amount");
 		}else{
@@ -71,6 +69,8 @@ Commitment Form
 		echo form_dropdown("amount",$amount,$_amount,"class='half'");
 		echo form_input("other_amount",set_value("other_amount"),"class='half'");
 		echo form_label("Choose Amount (KES) <span class='right'>If Other, specify Amount (KES)</span>","amount");
+		echo form_dropdown("ctid",$_commitment_type,"2");
+		echo form_label("Commitment Type","ctid");
 		echo form_input("date_from",set_value("date_from"), "class='half date-picker'");
 		echo form_input("date_to",set_value("date_to"),"class='half date-picker'");
 		echo form_label("Start Date <span class='right'>End Date</span>","date_to date-picker");
@@ -81,10 +81,10 @@ Commitment Form
 		echo form_radio("payment_mode","Airtel",$airtel)." Airtel Money ";
 		echo form_radio("payment_mode","SO",$so)." Standing Orders ";
 		echo "</div>";
-		echo form_submit("commit","Commit","class='btn btn-lg btn-success'");
+		echo form_submit("commit","Submit","class='btn btn-lg btn-success'");
 
 		if($mode2==1){
-			echo anchor("champion/commitment/later","<i class='fa fa-clock-o'></i> Commit Later");
+			echo anchor("champion/commitment/later","<i class='fa fa-clock-o'></i> Make Commitment Later");
 		}
 
 		echo form_close();

@@ -26,8 +26,6 @@ Commitment Form
 		echo validation_errors('<div class="alert alert-danger" role="alert">','</div>');
 
 		echo form_open("champion/commitment/update","class='form'");
-		echo form_dropdown("ctid",$_commitment_type,$cd->ctid);
-		echo form_label("Commitment Type","ctid");
 		if(isset($_POST["amount"])){
 			$_amount = $this->input->post("amount");
 		}else{
@@ -35,6 +33,8 @@ Commitment Form
 		}
 		echo form_input("amount",$_amount);
 		echo form_label("Amount (KES)","amount");
+		echo form_dropdown("ctid",$_commitment_type,$cd->ctid);
+		echo form_label("Commitment Type","ctid");
 		echo form_input("date_from",$cd->date_from, "class='half date-picker'");
 		if($cd->date_to == "0000-00-00"){
 			echo form_input("date_to","","class='half date-picker'");

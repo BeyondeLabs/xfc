@@ -13,8 +13,8 @@
 	Out of the estimated <strong>7000 – 10,000</strong> young Christian graduates 
 	who are graduating every year from the <strong>Christian Unions</strong>, only
 	 a handful are <strong>supporting FOCUS financially</strong>. FOCUS Champions has 
-	 therefore been developed to mobilize these Associates to support 
-	 FOCUS in 	 an <strong>easy and convenient</strong> way.
+	 therefore been developed to mobilize these Associates, Students and partners to support 
+	 FOCUS in an <strong>easy and convenient</strong> way.
 </p>
 <h3><i class="fa fa-gears"></i> How it Works</h3>
 <ul>

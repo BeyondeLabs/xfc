@@ -9,7 +9,7 @@
 		<div class="profile">
 			<h4>Personal Information 
 				<?php echo anchor("champion/profile/edit",
-					"<i class='fa fa-pencil'></i> Update Profile",
+					"<i class='fa fa-pencil'></i> Edit Profile",
 					"class='btn btn-default'"); ?></h4>
 			<p><span class="left">Gender</span>
 				<span class="right">
@@ -87,7 +87,7 @@
 						style='margin-left:5px;'");
 
 						echo anchor("champion/commitment/edit",
-					 	"<i class='fa fa-pencil'></i> Update",
+					 	"<i class='fa fa-pencil'></i> Edit",
 						"class='btn btn-default'"); 
 					}
 					?>
