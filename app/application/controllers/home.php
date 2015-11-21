@@ -58,6 +58,7 @@ class Home extends CI_Controller {
 			$this->data['in_cu'] = $cu;
 			$this->data['step'] = array(1,3);
 			$this->data['main'] = "home/register";
+			$this->data['recaptcha'] = true;
 			$this->_load_view();
 		}
 		elseif($mode=="submit"){

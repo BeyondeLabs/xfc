@@ -99,6 +99,8 @@ if(isset($_POST['register'])){
 
 		echo form_hidden("in_cu",$in_cu);
 
+		echo '<div class="g-recaptcha" data-sitekey="6LePexETAAAAADiIZvQW2TdKxlbrdFQyuCPp7qsU"></div>';
+
 		echo form_submit("register","Register","class='btn btn-lg btn-success'");
 
 		?>

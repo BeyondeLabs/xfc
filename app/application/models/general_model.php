@@ -59,7 +59,12 @@ class General_model extends CI_Model{
 						'field'=>'password_confirm',
 						'label'=>'Password Confirm',
 						'rules'=> 'required'
-					)
+					),
+					array(
+						'field'=>'g-recaptcha-response',
+						'label'=>'reCAPTCHA',
+						'rules'=>'trim|required'
+					),
 				);
 
 			return $rules;
