@@ -39,7 +39,7 @@
     
   </head>
 
-  <body>
+  <body <?php if (isset($home)) echo 'id="home"'; ?>>
 
     <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -51,14 +51,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">FOCUS Champions</a> <span class="beta">beta</span>
+          <?php echo anchor("/home", "FOCUS Champions", "class='navbar-brand'"); ?> <span class="beta">beta</span>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active-"><?php echo anchor("home","Home"); ?></li>
             <li><?php echo anchor("home/about","About"); ?></li>
             <li><?php echo anchor("home/feedback","Feedback"); ?></li>
-            <li><?php echo anchor("home/contact","Contact Us"); ?></li>
+            <li><?php echo anchor("home/contact","Contacts"); ?></li>
+            <li><?php echo anchor("http://focuskenya.org","FOCUS Website", 
+                                    "target='_blank'"); ?></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown active-inverse">
@@ -103,6 +105,10 @@
     <?php
     if(!isset($css_class)) $css_class="none";
     if(!isset($css_id)) $css_id = "none";
+    ?>
+
+    <?php 
+      if (isset($home)) $this->load->view("inc/home_top");
     ?>
 
     <div class="container content <?php echo $css_class; ?>" id="<?php echo $css_id; ?>">

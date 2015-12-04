@@ -33,6 +33,7 @@ class Home extends CI_Controller {
 			redirect("champion/profile");
 			$this->data['main'] = "home/index_auth";
 		}else{
+			$this->data['home'] = true;
 			$this->data['main'] = "home/index";
 		}
 		$this->_load_view();

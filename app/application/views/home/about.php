@@ -1,5 +1,5 @@
 
-<div class="landing x">
+<div class="about">
 
 <h1>About FOCUS Champions<br/>
 	<sub>A <em>resouce mobilization</em> platform</sub>
@@ -13,7 +13,7 @@
 	Out of the estimated <strong>7000 – 10,000</strong> young Christian graduates 
 	who are graduating every year from the <strong>Christian Unions</strong>, only
 	 a handful are <strong>supporting FOCUS financially</strong>. FOCUS Champions has 
-	 therefore been developed to mobilize these Associates, Students and partners to support 
+	 therefore been developed to mobilize these Associates, Students and Partners to support 
 	 FOCUS in an <strong>easy and convenient</strong> way.
 </p>
 <h3><i class="fa fa-gears"></i> How it Works</h3>

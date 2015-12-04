@@ -199,72 +199,6 @@ h1,h2,h3,h4,h5,h6{
 
 /*end of Champ profile*/
 
-/*landing-page*/
-
-/*do responsive one for mobile, later */
-
-.landing{
-	background: url(../img/cross1.jpg) 0 0px no-repeat;
-	min-height: 340px;
-	padding: 10px 20px;
-	margin-bottom: 10px;
-}
-
-.landing.x{
-	min-height: 100px;
-}
-
-.landing h1{
-	padding-top: 20px;
-	font-size: 40px;
-	font-weight: bold;
-}
-
-.landing h1 sub{
-	font-size: 25px;
-	font-weight: normal;
-	color: rgb(37,64,143);
-}
-
-.landing a{
-	margin-right: 10px;
-}
-
-.landing p{
-	font-weight: bold;
-	color: #aaa;
-}
-
-.landing .stats{
-	color: rgb(240,79,37);
-	font-weight: bold;
-}
-
-.landing em{
-	border-bottom: solid 3px rgb(240,79,37);
-	font-style: normal;
-}
-
-.btn{
-	transition: 1s;
-}
-
-.btn-normal{
-	border: solid 2px rgb(37,64,143);
-	color: rgb(37,64,143);
-}
-
-.landing .btn-normal:hover{
-	border: solid 2px rgb(240,79,37);
-	color: rgb(240,79,37);
-}
-
-.landing .btn-success{
-	background: rgb(240,79,37);
-	border-color: rgb(240,79,37);
-}
-
-/* end of landing */
 
 /* champion profiles */
 .c-profile{
@@ -533,3 +467,107 @@ body {
 
 /*end of others */
 
+/*homepage redesign*/
+
+#home .top {
+	background: #555 url("../img/students.png");
+	margin-top: -100px;
+	padding: 200px 0px 50px 0px;
+	text-align: center;
+}
+
+#home .navbar{
+	background: #555;
+	color: #fefefe;
+	opacity: .9;
+	border-bottom: none;
+}
+
+#home .navbar a {
+	color: #bebebe;
+}
+
+#home li.active-inverse {
+	background: none;
+}
+
+#home .top .container {
+	padding: 20px;
+}
+
+#home .top h1 {
+	text-shadow: 1px 1px #555;
+}
+
+#home .blub {
+	padding: 20px 0;
+	font-size: 16px;
+}
+
+#home .stats {
+	padding: 20px 0;
+	font-size: 18px;
+}
+
+#home .stats i {
+	color: rgb(240,79,37);
+}
+
+#home .container.content {
+	min-height: 0;
+}
+
+/*landing-page*/
+
+/*do responsive one for mobile, later */
+
+
+.landing{
+	
+}
+
+.landing.x{
+	min-height: 100px;
+}
+
+.landing h1{
+	padding-top: 20px;
+	font-size: 40px;
+	font-weight: bold;
+	color: #fefefe;
+}
+
+.landing h1 sub{
+	font-size: 25px;
+	font-weight: normal;
+	color: #cecece;
+}
+
+.landing a{
+	margin-right: 10px;
+}
+
+.landing p{
+	font-weight: bold;
+	color: #aaa;
+}
+
+
+.btn{
+	transition: 1s;
+}
+
+.btn-normal{
+	border: solid 2px rgb(37,64,143);
+	color: rgb(37,64,143);
+}
+
+#home .btn-normal:hover{
+	border: solid 2px rgb(240,79,37);
+	color: rgb(240,79,37);
+}
+
+#home .btn-success{
+	background: rgb(240,79,37);
+	border-color: rgb(240,79,37);
+}
